@@ -14,5 +14,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('layout.index');
 });
+
+Route::get('/lapangan', function () {
+    return view('lapangan.index');
+})->name('lapangan.index');
+
+Route::get('/sewa-perlengkapan', function () {
+    return view('sewa-perlengkapan.index');
+})->name('sewa-perlengkapan.index');
+
+Route::get('/kompetisi-sekolah', function () {
+    return view('pengembangan-bakat.kompetisi-sekolah');
+})->name('pengembangan-bakat.kompetisi-sekolah');
