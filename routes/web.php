@@ -17,6 +17,10 @@ Route::get('/', function () {
     return view('layout.index');
 });
 
+Route::get('/login', function () {
+    return view('auth.login');
+});
+
 Route::get('/lapangan', function () {
     return view('lapangan.index');
 })->name('lapangan.index');
