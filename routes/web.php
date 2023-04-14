@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Auth\DashboardController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Features\CompetitionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +16,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Auth
+Route::get('login.index', [LoginController::class, 'index'])->name('login.index');
+Route::post('login.store', [LoginController::class, 'login'])->name('login.store');
+Route::get('dashboard.index', [DashboardController::class, 'index'])->name('dashboard.index');
+Route::get('logout', [LoginController::class, 'logout'])->name('logout');
+
+// Turnamen
+Route::get('tournament.index', [CompetitionController::class, 'index'])->name('tournament.index');
+
+/*---------------- BUAT TESTING DI BAWAH --------------------*/
 Route::get('/', function () {
     return view('layout.index');
 });

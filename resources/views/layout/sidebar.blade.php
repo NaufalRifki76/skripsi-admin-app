@@ -18,38 +18,18 @@
                 <a href="{{ route('sewa-perlengkapan.index') }}"><span class="fa fa-briefcase mr-3" style="color: white"></span> Sewa Perlengkapan</a>
             </li>
             <li>
-                <a href="{{ route('pengembangan-bakat.kompetisi-sekolah') }}"><span class="fa fa-sticky-note mr-3" style="color: white"></span> Kompetisi Sekolah</a>
-            </li>
-            <li>
-                <a href="#"><span class="fa fa-suitcase mr-3"></span> Gallery</a>
-            </li>
-            <li>
-                <a href="#"><span class="fa fa-cogs mr-3"></span> Services</a>
-            </li>
-            <li>
-                <a href="#"><span class="fa fa-paper-plane mr-3"></span> Contacts</a>
+                <a href="{{ route('tournament.index') }}"><span class="fa fa-sticky-note mr-3" style="color: white"></span> Kompetisi Sekolah</a>
             </li>
         </ul>
 
-        <div class="mb-5">
-            <h3 class="h6 mb-3">Subscribe for newsletter</h3>
-            <form action="#" class="subscribe-form">
-                <div class="form-group d-flex">
-                    <div class="icon"><span class="icon-paper-plane"></span></div>
-                    <input type="text" class="form-control" placeholder="Enter Email Address">
-                </div>
-            </form>
-        </div>
-
+        <ul class="list-unstyled components mb-5">
+            <li class="">
+                <a href="{{route('logout')}}"><span class="fa-solid fa-plug-circle-xmark" style="color: white"></span> Logout</a>
+            </li>
+        </ul>
         <div class="footer">
             <p>
-                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                Copyright &copy;
-                <script>
-                    document.write(new Date().getFullYear());
-                </script> All rights reserved | This template is made with <i class="icon-heart"
-                    aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib.com</a>
-                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                Main Bola &copy; 2023
             </p>
         </div>
 

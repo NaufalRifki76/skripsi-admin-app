@@ -48,23 +48,26 @@
                     <div class="card-body text-center">
                         <img src="{{ asset('Assets/logo/logo-tanpa-bg.png') }}" class="img-fluid my-3 w-50"
                             alt="">
-                        <h4 class="fw-bold my-4">Login Admin</h4>
-                        <div class="m-2">
-                            <div class="form-floating mb-3">
-                                <input type="email" class="form-control" id="floatingInput"
-                                    placeholder="name@example.com">
-                                <label for="floatingInput">Email address</label>
+                        <h4 class="fw-bold my-3">Login Admin</h4>
+                        <form action="{{route('login.store')}}" method="POST">
+                            @csrf
+                            <div class="m-2">
+                                <div class="form-floating mb-3">
+                                    <input type="email" class="form-control" id="floatingInput" name="email"
+                                        placeholder="name@example.com">
+                                    <label for="floatingInput">Email address</label>
+                                </div>
+                                <div class="form-floating">
+                                    <input type="password" class="form-control" id="floatingPassword" name="password"
+                                        placeholder="Password">
+                                    <label for="floatingPassword">Password</label>
+                                </div>
                             </div>
-                            <div class="form-floating">
-                                <input type="password" class="form-control" id="floatingPassword"
-                                    placeholder="Password">
-                                <label for="floatingPassword">Password</label>
+                            <div class="m-4">
+                                <button type="submit" id="" name=""
+                                    class="btn-green-hover mt-2">Login</button>
                             </div>
-                        </div>
-                        <div class="m-4">
-                            <button type="submit" id="" name=""
-                                class="btn-green-hover mt-2">Login</button>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
