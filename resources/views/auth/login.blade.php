@@ -48,7 +48,7 @@
                     <div class="card-body text-center">
                         <img src="{{ asset('Assets/logo/logo-tanpa-bg.png') }}" class="img-fluid my-3 w-50"
                             alt="">
-                        <h4 class="fw-bold my-3">Login Admin</h4>
+                        <h4 class="fw-bold my-4">Login Admin</h4>
                         <div class="m-2">
                             <div class="form-floating mb-3">
                                 <input type="email" class="form-control" id="floatingInput"
