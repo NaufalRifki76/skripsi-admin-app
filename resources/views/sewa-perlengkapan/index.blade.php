@@ -20,6 +20,7 @@
                     <thead style="background-color: #439a97">
                         <tr>
                             <th>Nama Perlengkapan</th>
+                            <th>Nama Lapangan</th>
                             <th>Ukuran</th>
                             <th>Jumlah</th>
                             <th>Harga Sewa</th>
