@@ -23,7 +23,8 @@ Route::get('dashboard.index', [DashboardController::class, 'index'])->name('dash
 Route::get('logout', [LoginController::class, 'logout'])->name('logout');
 
 // Turnamen
-Route::get('tournament.index', [CompetitionController::class, 'index'])->name('tournament.index');
+Route::get('tournament.sekolah', [CompetitionController::class, 'sekolah'])->name('tournament.sekolah');
+Route::get('tournament.umur', [CompetitionController::class, 'umur'])->name('tournament.umur');
 
 /*---------------- BUAT TESTING DI BAWAH --------------------*/
 Route::get('/', function () {

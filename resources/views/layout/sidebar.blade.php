@@ -18,7 +18,10 @@
                 <a href="{{ route('sewa-perlengkapan.index') }}"><span class="fa fa-briefcase mr-3" style="color: white"></span> Sewa Perlengkapan</a>
             </li>
             <li>
-                <a href="{{ route('tournament.index') }}"><span class="fa fa-sticky-note mr-3" style="color: white"></span> Kompetisi Sekolah</a>
+                <a href="{{ route('tournament.sekolah') }}"><span class="fa fa-sticky-note mr-3" style="color: white"></span> Kompetisi Sekolah</a>
+            </li>
+            <li>
+                <a href="{{ route('tournament.umur') }}"><span class="fa fa-sticky-note mr-3" style="color: white"></span> Kompetisi Umur</a>
             </li>
         </ul>
 
