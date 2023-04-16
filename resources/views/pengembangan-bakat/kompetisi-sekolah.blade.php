@@ -4,26 +4,27 @@
     <div class="card shadow">
         <div class="card-body">
             <div class="row">
-                <h3 class="mb-3">Daftar Turnamen</h3>
+                <h3 class="mb-3">Daftar Kompetisi</h3>
                 <div class="newbtn">
                     <div class="row">
                         <div class="col-8">
                             <!-- BUTTON New -->
                             <button type="button" class="btn btn-sm" style="background-color: #064663"><a
                             style="text-decoration: none; color: white;" href=""><i
-                            class="fa-solid fa-file-circle-plus"></i> Tambah Data Turnamen</a></button>
+                            class="fa-solid fa-file-circle-plus"></i> Tambah Data Kompetisi</a></button>
                     </div>
                 </div>
                 <br>
 
-                <table id="tabel-data" class="table table-striped table-bordered display" width="100%" cellspacing="0">
+                <table id="tabel-kompetisi-sekolah" class="table table-striped table-bordered display" width="100%" cellspacing="0">
                     <thead style="background-color: #439a97">
                         <tr>
-                            <th>Nama Turnamen</th>
-                            <th>Mulai Turnamen</th>
-                            <th>End Turnamen</th>
-                            <th>Alamat Turnamen</th>
-                            <th>Detail Turnamen</th>
+                            <th>Nama Kompetisi</th>
+                            <th>Logo Kompetisi</th>
+                            <th>Mulai Kompetisi</th>
+                            <th>End Kompetisi</th>
+                            <th>Alamat Kompetisi</th>
+                            <th>Detail Kompetisi</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -49,7 +50,7 @@
     <script src="https://cdn.datatables.net/buttons/2.3.2/js/buttons.colVis.min.js"></script>
     <script>
         $(document).ready(function(){
-            $('#tabel-data').DataTable();
+            $('#tabel-kompetisi-sekolah').DataTable();
         });
     </script>
         
