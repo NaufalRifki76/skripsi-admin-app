@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 // Auth
 Route::get('login.index', [LoginController::class, 'index'])->name('login.index');
 Route::post('login.store', [LoginController::class, 'login'])->name('login.store');
-Route::get('dashboard.index', [DashboardController::class, 'index'])->name('dashboard.index');
+Route::get('/', [DashboardController::class, 'index'])->name('dashboard.index');
 Route::get('logout', [LoginController::class, 'logout'])->name('logout');
 
 // Turnamen
@@ -27,9 +27,9 @@ Route::get('tournament.sekolah', [CompetitionController::class, 'sekolah'])->nam
 Route::get('tournament.umur', [CompetitionController::class, 'umur'])->name('tournament.umur');
 
 /*---------------- BUAT TESTING DI BAWAH --------------------*/
-Route::get('/', function () {
-    return view('layout.index');
-});
+// Route::get('/', function () {
+//     return view('layout.index');
+// });
 
 Route::get('/login', function () {
     return view('auth.login');
