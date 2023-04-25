@@ -5,18 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class TournamentPhotos extends Model
+class FieldPhotos extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'tournament_photo_base64'
+        'field_photo_base64'
     ];
 
     protected $table = 'photos_tournament';
 
-    public function tournamentphoto()
+    public function fieldphoto()
     {
-        return $this->belongsTo(Tournament::class);
+        return $this->belongsTo(Field::class);
     }
 }
