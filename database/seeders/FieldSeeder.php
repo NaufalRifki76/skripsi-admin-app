@@ -18,13 +18,13 @@ class FieldSeeder extends Seeder
         if (Field::count() > 0) {
             $field = [
                 [
-                    'owner_name' => 'Muhammad Caisar',
-                    'field_name' => 'Caisar Salad',
+                    'owner_name'    => 'Muhammad Caisar',
+                    'field_name'    => 'Caisar Salad',
                     'field_address' => 'Jl. Roma 4',
-                    'field_type' => 'Futsal',
-                    'booking_cost' => '100000',
-                    'field_qty' => '2',
-                    'owner_email' => 'caisar@yahoo.com',
+                    'field_type'    => 'Futsal',
+                    'booking_cost'  => '100000',
+                    'field_qty'     => '2',
+                    'owner_email'   => 'caisar@yahoo.com',
                 ]
             ];
 
