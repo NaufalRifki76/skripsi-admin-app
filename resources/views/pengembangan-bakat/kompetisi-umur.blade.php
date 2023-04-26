@@ -9,9 +9,9 @@
                     <div class="row">
                         <div class="col-8">
                             <!-- BUTTON New -->
-                            <button type="button" class="btn btn-sm" style="background-color: #064663"><a
-                            style="text-decoration: none; color: white;" href=""><i
-                            class="fa-solid fa-file-circle-plus"></i> Tambah Data Kompetisi</a></button>
+                            <a class="btn btn-green-hover btn-sm" type="button"
+                            style="text-decoration: none; color: white;" href="{{ route('add.tournament.umur') }}"><i
+                            class="fa-solid fa-file-circle-plus"></i> Tambah Data Kompetisi</a>
                     </div>
                 </div>
                 <br>

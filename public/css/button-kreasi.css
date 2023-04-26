@@ -1,0 +1,30 @@
+/* button transition with hover */
+.btn-green-transition {
+  background-color: #62B6B7;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 10px;
+  margin: 4px 2px;
+  transition: 0.3s;
+}
+
+.btn-green-transition:hover {
+  padding: 15px 15px;
+  background-color: #CBEDD5;
+  color: white;
+}
+
+/* button hover */
+.btn-green-hover {
+  background-color: #62B6B7;
+  color: white;
+  border: none;
+  padding: 7px 15px;
+  transition: 0.3s;
+}
+  
+.btn-green-hover:hover {
+  background-color: #CBEDD5;
+  color: white;
+}

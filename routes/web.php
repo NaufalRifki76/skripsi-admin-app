@@ -24,7 +24,9 @@ Route::get('logout', [LoginController::class, 'logout'])->name('logout');
 
 // Turnamen
 Route::get('tournament.sekolah', [CompetitionController::class, 'sekolah'])->name('tournament.sekolah');
+Route::get('add.sekolah', [CompetitionController::class, 'addsekolah'])->name('add.tournament.sekolah');
 Route::get('tournament.umur', [CompetitionController::class, 'umur'])->name('tournament.umur');
+Route::get('add.umur', [CompetitionController::class, 'addumur'])->name('add.tournament.umur');
 
 /*---------------- BUAT TESTING DI BAWAH --------------------*/
 // Route::get('/', function () {
@@ -46,3 +48,5 @@ Route::get('/sewa-perlengkapan', function () {
 Route::get('/kompetisi-sekolah', function () {
     return view('pengembangan-bakat.kompetisi-sekolah');
 })->name('pengembangan-bakat.kompetisi-sekolah');
+
+
