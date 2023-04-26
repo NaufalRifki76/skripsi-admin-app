@@ -9,25 +9,25 @@
         <h1><a href="index.html" class="logo">Main Bola <span>Website Admin</span></a></h1>
         <ul class="list-unstyled components mb-5">
             <li class="">
-                <a href="/"><span class="fa fa-home mr-3" style="color: white"></span> Home</a>
+                <a href="/"><i class="fa-solid fa-home mr-3 ml-2"></i></span></span> Home</a>
             </li>
             <li>
-                <a href="{{ route('lapangan.index') }}"><span class="fa fa-user mr-3" style="color: white"></span> Lapangan</a>
+                <a href="{{ route('lapangan.index') }}"><i class="fa-solid fa-user mr-3 ml-2"></i></span> Lapangan</a>
             </li>
             <li>
-                <a href="{{ route('sewa-perlengkapan.index') }}"><span class="fa fa-briefcase mr-3" style="color: white"></span> Sewa Perlengkapan</a>
+                <a href="{{ route('sewa-perlengkapan.index') }}"><i class="fa-solid fa-briefcase mr-3 ml-2"></i> Sewa Perlengkapan</a>
             </li>
             <li>
-                <a href="{{ route('tournament.sekolah') }}"><span class="fa fa-sticky-note mr-3" style="color: white"></span> Kompetisi Sekolah</a>
+                <a href="{{ route('tournament.sekolah') }}"><i class="fa-solid fa-school fa-sm mr-3 ml-2"></i> Kompetisi Sekolah</a>
             </li>
             <li>
-                <a href="{{ route('tournament.umur') }}"><span class="fa fa-sticky-note mr-3" style="color: white"></span> Kompetisi Umur</a>
+                <a href="{{ route('tournament.umur') }}"><i class="fa-solid fa-user mr-3 ml-2"></i> Kompetisi Umur</a>
             </li>
         </ul>
 
         <ul class="list-unstyled components mb-5">
-            <li class="">
-                <a href="{{route('logout')}}"><span class="fa-solid fa-plug-circle-xmark" style="color: white"></span> Logout</a>
+            <li>
+                <a href="{{route('logout')}}"><i class="fa-solid fa-right-from-bracket mr-3 ml-2"></i></span> Logout</a>
             </li>
         </ul>
         <div class="footer">
