@@ -16,16 +16,26 @@
                                     placeholder="Tuliskan nama kompetisi...">
                             </div>
                             <div class="mb-3">
+                                <label for="biaya-umur" class="form-label text-dark">Biaya Pendaftaran (per-tim)</label>
+                                <input type="number" class="form-control" id="biaya-umur"
+                                    placeholder="Tuliskan biaya pendaftaran kompetisi...">
+                            </div>
+                            <div class="mb-3">
                                 <div class="row">
                                     <div class="col-md-6">        
-                                            <label for="mulai-kompetisi-umur" class="form-label text-dark">Mulai Kompetisi</label>
-                                            <input type="date" class="form-control" id="mulai-kompetisi-umur">         
+                                            <label for="awal-pendaftaran-umur" class="form-label text-dark">Awal Pendaftaran</label>
+                                            <input type="date" class="form-control" id="awal-pendaftaran-umur">         
                                     </div>
                                     <div class="col-md-6">
-                                            <label for="akhir-kompetisi-umur" class="form-label text-dark">Akhir Kompetisi</label>
-                                            <input type="date" class="form-control" id="akhir-kompetisi-umur"> 
+                                            <label for="akhir-pendaftaran-umur" class="form-label text-dark">Akhir Pendaftaran</label>
+                                            <input type="date" class="form-control" id="akhir-pendaftaran-umur"> 
                                     </div>
                                 </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="jumlahtim-umur" class="form-label text-dark">Jumlah Tim Berpartisipasi</label>
+                                <input type="number" class="form-control" id="jumlahtim-umur"
+                                    placeholder="Tuliskan jumlah tim berpartisipasi...">
                             </div>
                             <div class="mb-3">
                                 <label for="alamat-kompetisi-umur" class="form-label text-dark">Alamat Kompetisi</label>
@@ -47,6 +57,23 @@
                                     <option value="3">U-23</option>
                                     <option value="4">Tidak Ada Batasan Usia</option>
                                 </select>
+                            </div>
+                            <div class="mb-3">
+                                <div class="row">
+                                    <div class="col-md-6">        
+                                            <label for="mulai-kompetisi-umur" class="form-label text-dark">Mulai Kompetisi</label>
+                                            <input type="date" class="form-control" id="mulai-kompetisi-umur">         
+                                    </div>
+                                    <div class="col-md-6">
+                                            <label for="akhir-kompetisi-umur" class="form-label text-dark">Akhir Kompetisi</label>
+                                            <input type="date" class="form-control" id="akhir-kompetisi-umur"> 
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="kontak-umur" class="form-label text-dark">Kontak Info Pendaftaran</label>
+                                <input type="number" class="form-control" id="kontak-umur"
+                                    placeholder="Tuliskan nomor telpon untuk mendaftar...">
                             </div>
                             <div class="mb-3">
                                 <label for="detail-kompetisi-umur" class="form-label text-dark">Detail Kompetisi</label>

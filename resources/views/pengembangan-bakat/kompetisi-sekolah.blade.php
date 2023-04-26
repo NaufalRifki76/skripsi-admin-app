@@ -21,10 +21,15 @@
                         <tr>
                             <th>Nama Kompetisi</th>
                             <th>Logo Kompetisi</th>
+                            <th>Biaya Pendaftaran</th>
+                            <th>Mulai Pendaftaran</th>
+                            <th>End Pendaftaran</th>
                             <th>Mulai Kompetisi</th>
                             <th>End Kompetisi</th>
                             <th>Alamat Kompetisi</th>
                             <th>Detail Kompetisi</th>
+                            <th>Kontak Info</th>
+                            <th>Jumlah Tim</th>
                             <th>Kategori Pendidikan</th>
                             <th>Action</th>
                         </tr>
