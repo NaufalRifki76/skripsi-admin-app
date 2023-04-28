@@ -20,7 +20,7 @@
                     <thead style="background-color: #439a97">
                         <tr>
                             <th>Nama Kompetisi</th>
-                            <th>Logo Kompetisi</th>
+                            {{-- <th>Logo Kompetisi</th> --}}
                             <th>Biaya Pendaftaran</th>
                             <th>Mulai Pendaftaran</th>
                             <th>End Pendaftaran</th>
@@ -38,6 +38,33 @@
             </div>
         </div>
     </div>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            var table_competition = $('#tabel-kompetisi-sekolah').DataTable({
+                processing: true,
+                serverSide: true,
+                responsive: true,
+                ajax: {
+                    url: "",
+                    type: 'GET',
+                },
+                columns: [
+                    {data: 'tournament_name', name: 'tournament_name'},
+                    {data: 'entry_fee', name: 'entry_fee'},
+                    {data: 'registration_start', name: 'registration_start'},
+                    {data: 'registration_end', name: 'registration_end'},
+                    {data: 'start_date', name: 'start_date'},
+                    {data: 'end_date', name: 'end_date'},
+                    {data: 'tournament_address', name: 'tournament_address'},
+                    {data: 'tournament_detail', name: 'tournament_detail'},
+                    {data: 'contact_person', name: 'contact_person'},
+                    {data: 'team_pool', name: 'team_pool'},
+                    {data: 'education_category', name: 'education_category'}
+                ]
+            });
+        });
+    </script>
     @push('css')
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.4.0/css/responsive.bootstrap5.min.css">

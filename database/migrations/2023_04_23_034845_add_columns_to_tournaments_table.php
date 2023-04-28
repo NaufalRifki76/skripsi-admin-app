@@ -15,10 +15,13 @@ return new class extends Migration
     {
         Schema::table('tournaments', function (Blueprint $table) {
             $table->string('tournament_name');
-            $table->string('min_education');
-            $table->string('max_education');
-            $table->integer('min_age');
-            $table->integer('max_age');
+            $table->integer('entry_fee');
+            $table->string('education_category')->nullable();
+            $table->string('age_category')->nullable();
+            $table->date('registration_start');
+            $table->date('registration_end');
+            $table->integer('team_pool');
+            $table->string('contact_person');
         });
     }
 
@@ -31,10 +34,13 @@ return new class extends Migration
     {
         Schema::table('tournaments', function (Blueprint $table) {
             $table->dropColumn('tournament_name');
-            $table->dropColumn('min_education');
-            $table->dropColumn('max_education');
-            $table->dropColumn('min_age');
-            $table->dropColumn('max_age');
+            $table->dropColumn('entry_fee');
+            $table->dropColumn('education_category');
+            $table->dropColumn('age_category');
+            $table->dropColumn('registration_start');
+            $table->dropColumn('registration_end');
+            $table->dropColumn('team_pool');
+            $table->dropColumn('contact_person');
         });
     }
 };

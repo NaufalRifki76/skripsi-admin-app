@@ -22,4 +22,9 @@ class Tournament extends Model
     ];
 
     protected $table = 'tournaments';
+
+    public function photo_base64()
+    {
+        return $this->hasOne(TournamentPhotos::class);
+    }
 }

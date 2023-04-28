@@ -27,6 +27,7 @@ Route::get('tournament.sekolah', [CompetitionController::class, 'sekolah'])->nam
 Route::get('add.sekolah', [CompetitionController::class, 'addsekolah'])->name('add.tournament.sekolah');
 Route::get('tournament.umur', [CompetitionController::class, 'umur'])->name('tournament.umur');
 Route::get('add.umur', [CompetitionController::class, 'addumur'])->name('add.tournament.umur');
+Route::post('tournament.store', [CompetitionController::class, 'store'])->name('tournament.store');
 
 /*---------------- BUAT TESTING DI BAWAH --------------------*/
 // Route::get('/', function () {
