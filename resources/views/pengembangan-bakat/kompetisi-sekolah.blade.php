@@ -46,7 +46,7 @@
                 serverSide: true,
                 responsive: true,
                 ajax: {
-                    url: "",
+                    url: "{{route('tournament.sekolah')}}",
                     type: 'GET',
                 },
                 columns: [
@@ -60,11 +60,17 @@
                     {data: 'tournament_detail', name: 'tournament_detail'},
                     {data: 'contact_person', name: 'contact_person'},
                     {data: 'team_pool', name: 'team_pool'},
-                    {data: 'education_category', name: 'education_category'}
-                ]
+                    {data: 'education_category', name: 'education_category'},
+                    {data: 'action', name: 'action'}
+                ],
+                
+                order: [
+                    [0, 'asc']
+                ],
             });
         });
     </script>
+    
     @push('css')
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.4.0/css/responsive.bootstrap5.min.css">
@@ -81,11 +87,6 @@
     <script src="https://cdn.datatables.net/buttons/2.3.2/js/dataTables.buttons.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.3.2/js/buttons.bootstrap5.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.3.2/js/buttons.colVis.min.js"></script>
-    <script>
-        $(document).ready(function(){
-            $('#tabel-kompetisi-sekolah').DataTable();
-        });
-    </script>
         
     @endpush
 @endsection

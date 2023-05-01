@@ -14,14 +14,19 @@ class CompetitionController extends Controller{
         if(!Sentinel::getUser()) {
             return redirect()->route('login.index');
         } else{
-            $data = Tournament::where('age_category', null);
+            $data = Tournament::where('age_category', null)->get();
             if($request->ajax()){
                 return datatables()->of($data)
                 ->addIndexColumn()
+                ->addColumn('action', function ($row){
+                    $button = "<a style='margin-right: 5px;' class='setuju btn btn-sm  btn-warning' data-id='".$row['id']."' id='editBtn' href=''><i class='fa-solid fa-pen-to-square'></i> Edit </a>";
+                    $button .= "<button class='setuju btn btn-sm  btn-danger' data-id='".$row['id']."' id='delBtn'><i class='fa-solid fa-square-xmark'></i> Delete </button>";
+                    return $button;
+                })
                 ->rawColumns(['action'])
                 ->make(true);
             }
-            return view('pengembangan-bakat.kompetisi-sekolah');
+            return view('pengembangan-bakat.kompetisi-sekolah', compact('data'));
         }
     }
 
@@ -33,11 +38,23 @@ class CompetitionController extends Controller{
         }
     }
 
-    public function umur(){
+    public function umur(Request $request){
         if(!Sentinel::getUser()) {
             return redirect()->route('login.index');
         } else{
-            return view('pengembangan-bakat.kompetisi-umur');
+            $data = Tournament::where('education_category', null)->get();
+            if($request->ajax()){
+                return datatables()->of($data)
+                ->addIndexColumn()
+                ->addColumn('action', function ($row){
+                    $button = "<a style='margin-right: 5px;' class='setuju btn btn-sm  btn-warning' data-id='".$row['id']."' id='editBtn' href=''><i class='fa-solid fa-pen-to-square'></i> Edit </a>";
+                    $button .= "<button class='setuju btn btn-sm  btn-danger' data-id='".$row['id']."' id='delBtn'><i class='fa-solid fa-square-xmark'></i> Delete </button>";
+                    return $button;
+                })
+                ->rawColumns(['action'])
+                ->make(true);
+            }
+            return view('pengembangan-bakat.kompetisi-umur', compact('data'));
         }
     }
 
