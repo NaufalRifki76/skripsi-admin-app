@@ -113,6 +113,12 @@ class CompetitionController extends Controller{
                 ]);
 
                 DB::commit();
+                if ($request->age_category != null) {
+                    return redirect()->route('tournament.umur');
+                } else {
+                    return redirect()->route('tournament.sekolah');
+                }
+                
                 return redirect()->route('dashboard.index');
             } catch (\Throwable $th) {
                 DB::rollBack();
