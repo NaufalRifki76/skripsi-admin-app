@@ -14,7 +14,6 @@ return new class extends Migration
     public function up()
     {
         Schema::table('field_owner', function (Blueprint $table) {
-            $table->string('field_qty');
             $table->timestamps();
         });
     }
@@ -27,7 +26,6 @@ return new class extends Migration
     public function down()
     {
         Schema::table('field_owner', function (Blueprint $table) {
-            $table->dropColumn('field_qty');
         });
     }
 };

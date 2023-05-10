@@ -13,15 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('field_owner', function (Blueprint $table) {
+        Schema::create('venue', function (Blueprint $table) {
             $table->id();
-            $table->string('owner_name');
-            $table->string('field_name');
-            $table->string('field_address');
-            $table->string('field_type');
-            $table->integer('booking_cost');
-            $table->string('facilities');
-            $table->string('owner_email')->unique();
+            $table->string('venue_name');
+            $table->string('venue_address');
+            $table->date('open_hour');
+            $table->date('close_hour');
+            // $table->string('owner_email')->unique();
         });
     }
 
