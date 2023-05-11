@@ -13,11 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('photos_venue', function (Blueprint $table) {
+        Schema::create('venue_rent_items', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('field_id');
-            $table->string('field_photo_base64');
-            $table->foreign('field_id')->references('id')->on('field_owner');
+            $table->unsignedBigInteger('venue_id');
+            $table->unsignedBigInteger('item_id');
+            $table->integer('item_qty');
+            $table->string('item_rent_cost');
+            $table->foreign('venue_id')->references('id')->on('venue');
+            $table->foreign('item_id')->references('id')->on('rent_items');
             $table->timestamps();
         });
     }
@@ -29,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('photos_field');
+        Schema::dropIfExists('venue_rent_items');
     }
 };

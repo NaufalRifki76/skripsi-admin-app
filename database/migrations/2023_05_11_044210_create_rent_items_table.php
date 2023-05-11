@@ -13,8 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('field_detail_photo', function (Blueprint $table) {
+        Schema::create('rent_items', function (Blueprint $table) {
             $table->id();
+            $table->string('item_name');
             $table->timestamps();
         });
     }
@@ -26,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('field_detail_photo');
+        Schema::dropIfExists('rent_items');
     }
 };

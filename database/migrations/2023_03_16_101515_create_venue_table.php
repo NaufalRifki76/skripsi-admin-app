@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('venue_address');
             $table->date('open_hour');
             $table->date('close_hour');
+            $table->string('venue_desc');
+            $table->timestamps();
             // $table->string('owner_email')->unique();
         });
     }

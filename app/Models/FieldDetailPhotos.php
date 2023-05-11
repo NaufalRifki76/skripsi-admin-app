@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class FieldPhotos extends Model
+class FieldDetailPhotos extends Model
 {
     use HasFactory;
 
@@ -13,10 +13,10 @@ class FieldPhotos extends Model
         'field_photo_base64'
     ];
 
-    protected $table = 'photos_tournament';
+    protected $table = 'photos_field_detail';
 
-    public function fieldphoto()
+    public function photo_field_detail()
     {
-        return $this->belongsTo(Field::class);
+        return $this->belongsTo(FieldDetail::class);
     }
 }

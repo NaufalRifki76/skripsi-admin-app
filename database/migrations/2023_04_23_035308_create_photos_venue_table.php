@@ -13,7 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('tournaments', function (Blueprint $table) {
+        Schema::create('photos_venue', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('venue_id');
+            $table->string('venue_photo_base64');
+            $table->foreign('venue_id')->references('id')->on('venue');
             $table->timestamps();
         });
     }
@@ -25,8 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('tournaments', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('photos_field');
     }
 };

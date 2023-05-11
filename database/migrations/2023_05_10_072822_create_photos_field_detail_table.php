@@ -13,7 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('field_owner', function (Blueprint $table) {
+        Schema::create('photos_field_detail', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('field_id');
+            $table->string('field_photo_base64');
+            $table->foreign('field_id')->references('id')->on('field_detail');
             $table->timestamps();
         });
     }
@@ -25,7 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('field_owner', function (Blueprint $table) {
-        });
+        Schema::dropIfExists('field_detail_photo');
     }
 };
