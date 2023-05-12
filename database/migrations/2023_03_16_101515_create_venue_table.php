@@ -17,9 +17,15 @@ return new class extends Migration
             $table->id();
             $table->string('venue_name');
             $table->string('venue_address');
-            $table->date('open_hour');
-            $table->date('close_hour');
+            $table->time('open_hour');
+            $table->time('close_hour');
             $table->string('venue_desc');
+            $table->boolean('drinks')->default(0);
+            $table->boolean('locker_room')->default(0);
+            $table->boolean('toilet')->default(0);
+            $table->boolean('parking_space')->default(0);
+            $table->boolean('wifi')->default(0);
+            $table->boolean('rent_equipments')->default(0);
             $table->timestamps();
             // $table->string('owner_email')->unique();
         });
