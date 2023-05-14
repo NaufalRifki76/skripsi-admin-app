@@ -19,8 +19,8 @@ class CompetitionController extends Controller{
                 return datatables()->of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function ($row){
-                    $button = "<a style='margin-right: 5px;' class='setuju btn btn-sm  btn-warning' data-id='".$row['id']."' id='editBtn' href=''><i class='fa-solid fa-pen-to-square'></i> Edit </a>";
-                    $button .= "<button class='setuju btn btn-sm  btn-danger' data-id='".$row['id']."' id='delBtn'><i class='fa-solid fa-square-xmark'></i> Delete </button>";
+                    $button = "<div class='d-flex'><a style='margin-right: 5px;' class='setuju btn btn-sm  btn-warning text-white' data-id='".$row['id']."' id='editBtn' href='edit.sekolah'>Edit</a>";
+                    $button .= "<button class='setuju btn btn-sm  btn-danger text-white' data-id='".$row['id']."' id='delBtn'>Hapus</button></div>";
                     return $button;
                 })
                 ->rawColumns(['action'])
@@ -47,8 +47,8 @@ class CompetitionController extends Controller{
                 return datatables()->of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function ($row){
-                    $button = "<a style='margin-right: 5px;' class='setuju btn btn-sm  btn-warning' data-id='".$row['id']."' id='editBtn' href=''><i class='fa-solid fa-pen-to-square'></i> Edit </a>";
-                    $button .= "<button class='setuju btn btn-sm  btn-danger' data-id='".$row['id']."' id='delBtn'><i class='fa-solid fa-square-xmark'></i> Delete </button>";
+                    $button = "<div class='d-flex'><a style='margin-right: 5px;' class='setuju btn btn-sm  btn-warning' data-id='".$row['id']."' id='editBtn' href='edit.umur'>Edit</a>";
+                    $button .= "<button class='setuju btn btn-sm  btn-danger' data-id='".$row['id']."' id='delBtn'>Hapus</button></div>";
                     return $button;
                 })
                 ->rawColumns(['action'])
@@ -126,6 +126,22 @@ class CompetitionController extends Controller{
                 dd($th);
                 abort(404, 'Oops!');
             }
+        }
+    }
+
+    public function editsekolah(){
+        if(!Sentinel::getUser()) {
+            return redirect()->route('login.index');
+        } else{
+            return view('pengembangan-bakat.edit-komsekolah');
+        }
+    }
+
+    public function editumur(){
+        if(!Sentinel::getUser()) {
+            return redirect()->route('login.index');
+        } else{
+            return view('pengembangan-bakat.edit-komumur');
         }
     }
 }

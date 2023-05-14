@@ -28,6 +28,8 @@ Route::get('add.sekolah', [CompetitionController::class, 'addsekolah'])->name('a
 Route::get('tournament.umur', [CompetitionController::class, 'umur'])->name('tournament.umur');
 Route::get('add.umur', [CompetitionController::class, 'addumur'])->name('add.tournament.umur');
 Route::post('tournament.store', [CompetitionController::class, 'store'])->name('tournament.store');
+Route::get('edit.sekolah', [CompetitionController::class, 'editsekolah'])->name('edit.tournament.sekolah');
+Route::get('edit.umur', [CompetitionController::class, 'editumur'])->name('edit.tournament.umur');
 
 /*---------------- BUAT TESTING DI BAWAH --------------------*/
 // Route::get('/', function () {

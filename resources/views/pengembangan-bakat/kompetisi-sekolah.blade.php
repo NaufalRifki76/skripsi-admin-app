@@ -16,22 +16,16 @@
                 </div>
                 <br>
 
-                <table id="tabel-kompetisi-sekolah" class="table table-striped table-bordered display" width="100%" cellspacing="0">
+                <table id="tabel-kompetisi-sekolah" class="table table-striped table-bordered display text-center" width="100%" cellspacing="0">
                     <thead style="background-color: #439a97">
                         <tr>
-                            <th>Nama Kompetisi</th>
-                            {{-- <th>Logo Kompetisi</th> --}}
-                            <th>Biaya Pendaftaran</th>
-                            <th>Mulai Pendaftaran</th>
-                            <th>End Pendaftaran</th>
-                            <th>Mulai Kompetisi</th>
-                            <th>End Kompetisi</th>
-                            <th>Alamat Kompetisi</th>
-                            <th>Detail Kompetisi</th>
-                            <th>Kontak Info</th>
-                            <th>Jumlah Tim</th>
-                            <th>Kategori Pendidikan</th>
-                            <th>Action</th>
+                            <th class="text-center">Nama Kompetisi</th>
+                            <th class="text-center">Biaya Pendaftaran</th>
+                            <th class="text-center">Mulai Pendaftaran</th>
+                            <th class="text-center">Mulai Kompetisi</th>
+                            <th class="text-center">Jumlah Tim</th>
+                            <th class="text-center">Kategori Pendidikan</th>
+                            <th class="text-center">Action</th>
                         </tr>
                     </thead>
                 </table>
@@ -53,12 +47,7 @@
                     {data: 'tournament_name', name: 'tournament_name'},
                     {data: 'entry_fee', name: 'entry_fee'},
                     {data: 'registration_start', name: 'registration_start'},
-                    {data: 'registration_end', name: 'registration_end'},
                     {data: 'start_date', name: 'start_date'},
-                    {data: 'end_date', name: 'end_date'},
-                    {data: 'tournament_address', name: 'tournament_address'},
-                    {data: 'tournament_detail', name: 'tournament_detail'},
-                    {data: 'contact_person', name: 'contact_person'},
                     {data: 'team_pool', name: 'team_pool'},
                     {data: 'education_category', name: 'education_category'},
                     {data: 'action', name: 'action'}
