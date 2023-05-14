@@ -14,7 +14,6 @@ return new class extends Migration
     public function up()
     {
         Schema::table('tournaments', function (Blueprint $table) {
-            $table->string('tournament_name');
             $table->integer('entry_fee');
             $table->string('education_category')->nullable();
             $table->string('age_category')->nullable();
@@ -33,7 +32,6 @@ return new class extends Migration
     public function down()
     {
         Schema::table('tournaments', function (Blueprint $table) {
-            $table->dropColumn('tournament_name');
             $table->dropColumn('entry_fee');
             $table->dropColumn('education_category');
             $table->dropColumn('age_category');

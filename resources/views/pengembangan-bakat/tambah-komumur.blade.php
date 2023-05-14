@@ -7,7 +7,7 @@
                 <h3 class="mb-3">Tambah Kompetisi Umur</h3>
                 <p class="fs-6" style="color: #FCE700;">Tambahkan daftar kompetisi antar umur dengan mengisi formulir di
                     bawah!</p>
-                <form action="{{route('tournament.store')}}" method="POST">
+                <form action="{{route('tournament.store')}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
                         <div class="col-md-6">

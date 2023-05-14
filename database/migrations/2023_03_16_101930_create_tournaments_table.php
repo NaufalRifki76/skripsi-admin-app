@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('tournaments', function (Blueprint $table) {
             $table->id();
+            $table->string('tournament_name');
             $table->string('tournament_address');
             $table->dateTime('start_date');
             $table->dateTime('end_date');

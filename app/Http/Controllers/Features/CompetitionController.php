@@ -108,7 +108,7 @@ class CompetitionController extends Controller{
                 // $imageData = file_get_contents($imageFile->getRealPath());
                 $tournamentBase64 = base64_encode($imageFile);
 
-                $tournament_photo = $tournament->photo_base64()->create([
+                $tournament_photo = $tournament->tournament_base64()->create([
                     'tournament_photo_base64' => $tournamentBase64,
                 ]);
 
