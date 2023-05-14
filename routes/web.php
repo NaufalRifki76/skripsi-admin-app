@@ -42,12 +42,22 @@ Route::get('/lapangan', function () {
     return view('lapangan.index');
 })->name('lapangan.index');
 
+Route::get('/kompetisi-sekolah', function () {
+    return view('pengembangan-bakat.kompetisi-sekolah');
+})->name('pengembangan-bakat.kompetisi-sekolah');
+
+
+// sewa perlengkapan
 Route::get('/sewa-perlengkapan', function () {
     return view('sewa-perlengkapan.index');
 })->name('sewa-perlengkapan.index');
 
-Route::get('/kompetisi-sekolah', function () {
-    return view('pengembangan-bakat.kompetisi-sekolah');
-})->name('pengembangan-bakat.kompetisi-sekolah');
+Route::get('/tambah-sewa-perlengkapan', function () {
+    return view('sewa-perlengkapan.tambah');
+})->name('sewa-perlengkapan.tambah');
+
+Route::get('/edit-sewa-perlengkapan', function () {
+    return view('sewa-perlengkapan.edit');
+})->name('sewa-perlengkapan.edit');
 
 

@@ -4,29 +4,40 @@
     <div class="card shadow">
         <div class="card-body">
             <div class="row">
-                <h3 class="mb-3">Daftar Perlengkapan</h3>
+                <h3 class="mb-3">Daftar Tempat Sewa Perlengkapan</h3>
                 <div class="newbtn">
                     <div class="row">
                         <div class="col-8">
                             <!-- BUTTON New -->
-                            <button type="button" class="btn btn-sm" style="background-color: #064663"><a
-                            style="text-decoration: none; color: white;" href=""><i
-                            class="fa-solid fa-file-circle-plus"></i> Tambah Data Perlengkapan</a></button>
+                            <a class="btn btn-green-hover btn-sm" type="button"
+                            style="text-decoration: none; color: white;" href="{{ route('sewa-perlengkapan.tambah') }}"><i
+                            class="fa-solid fa-file-circle-plus"></i> Tambah Sewa Perlengkapan</a>
                     </div>
                 </div>
                 <br>
 
-                <table id="tabel-sewa-perlengkapan" class="table table-striped table-bordered display" width="100%" cellspacing="0">
+                <table id="tabel-sewa-perlengkapan" class="table table-striped table-bordered display text-center" width="100%" cellspacing="0">
                     <thead style="background-color: #439a97">
                         <tr>
+                            <th>Nama Tempat</th>
                             <th>Nama Perlengkapan</th>
-                            <th>Nama Lapangan</th>
-                            <th>Ukuran</th>
                             <th>Jumlah</th>
                             <th>Harga Sewa</th>
                             <th>Action</th>
                         </tr>
                     </thead>
+                    <tbody class="text-center">
+                        <tr>
+                          <td>Vini Vidi Vici</td>
+                          <td>Sepatu</td>
+                          <td>10</td>
+                          <td>15000<br></td>
+                          <td class="d-flex justify-content-center text-center">
+                            <button class="btn btn-sm btn-danger">Hapus</button>
+                            <a href="{{ route('sewa-perlengkapan.edit') }}"><button class="btn btn-sm btn-warning ms-2 px-3">Edit</button></a> 
+                        </td>
+                        </tr>
+                    </tbody>
                 </table>
             </div>
         </div>
@@ -39,7 +50,7 @@
     @endpush
 
     @push('scripts')
-   <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.4.0/js/dataTables.responsive.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.4.0/js/responsive.bootstrap5.min.js"></script>
