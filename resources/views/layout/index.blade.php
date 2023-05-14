@@ -63,6 +63,6 @@
 
 <script src="js/main.js"></script>
 
-@stack('script')
+@stack('scripts')
 
 </html>

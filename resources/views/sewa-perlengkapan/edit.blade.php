@@ -5,8 +5,8 @@
 <div class="card shadow">
     <div class="card-body">
         <div class="row">
-            <h3 class="mb-3">Tambah Daftar Tempat Sewa Perlengkapan</h3>
-            <p class="fs-6" style="color: #FCE700;">Tambahkan daftar tempat sewa perlengkapan dengan mengisi formulir di
+            <h3 class="mb-3">Edit Daftar Tempat Sewa Perlengkapan</h3>
+            <p class="fs-6" style="color: #FCE700;">Edit daftar tempat sewa perlengkapan dengan mengisi formulir di
                 bawah!</p>
             <form action="" method="">
                 <div class="row">
