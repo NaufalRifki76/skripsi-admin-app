@@ -12,6 +12,9 @@
                 <a href="/"><i class="fa-solid fa-home mr-3 ml-2"></i></span></span> Home</a>
             </li>
             <li>
+                <a href="{{ route('data-user.index') }}"><i class="fa-solid fa-user mr-3 ml-2"></i></span> Data User</a>
+            </li>
+            <li>
                 <a href="{{ route('lapangan.index') }}"><i class="fa-solid fa-user mr-3 ml-2"></i></span> Lapangan</a>
             </li>
             <li>

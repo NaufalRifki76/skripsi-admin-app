@@ -62,4 +62,11 @@ Route::get('/edit-sewa-perlengkapan', function () {
     return view('sewa-perlengkapan.edit');
 })->name('sewa-perlengkapan.edit');
 
+// Data User
+Route::get('/data-user', function () {
+    return view('data-user.index');
+})->name('data-user.index');
 
+Route::get('/edit-user', function () {
+    return view('data-user.edit');
+})->name('data-user.edit');
