@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('venue_rent_items', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('venue_id');
-            $table->unsignedBigInteger('item_id');
+            $table->unsignedBigInteger('item_id')->nullable();
             $table->integer('item_qty');
             $table->string('item_rent_cost');
             $table->foreign('venue_id')->references('id')->on('venue');
