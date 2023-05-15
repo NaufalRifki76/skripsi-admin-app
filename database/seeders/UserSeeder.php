@@ -25,5 +25,16 @@ class UserSeeder extends Seeder
         $user = Sentinel::registerAndActivate($dataroot);
         $role = Sentinel::findRoleBySlug('root_admin');
         $role->users()->attach($user);
+
+        $dataroot2 = [
+            'name'          => "Faris Benhill",
+            'email'         => "paris@google.com",
+            'password'      => "Password123",
+            'no_telephone'  => "087777777778",
+            'vip_status'    => "0",
+        ];
+        $user2 = Sentinel::registerAndActivate($dataroot2);
+        $role2 = Sentinel::findRoleBySlug('user');
+        $role2->users()->attach($user2);
     }
 }
