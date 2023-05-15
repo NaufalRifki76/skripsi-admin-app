@@ -44,4 +44,12 @@ class User extends EloquentUser
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function user_role(){
+        return $this->hasOne(UserRole::class, 'user_id', 'id');
+    }
+
+    public function user_venue(){
+        return $this->hasOne(Venue::class, 'user_id', 'id');
+    }
 }

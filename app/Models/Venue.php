@@ -15,6 +15,12 @@ class Venue extends Model
         'open_hour',
         'close_hour',
         'venue_desc',
+        'drinks',
+        'locker_room',
+        'toilet',
+        'parking_space',
+        'wifi',
+        'rent_equipments'
     ];
     
     protected $table = 'venue';

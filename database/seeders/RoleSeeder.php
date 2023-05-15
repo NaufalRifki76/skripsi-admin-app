@@ -28,5 +28,12 @@ class RoleSeeder extends Seeder
             "permissions"   => [    
             ]
         ]);
+
+        $roles = Sentinel::getRoleRepository()->createModel()->create([
+            'name'          => 'Vendor',
+            'slug'          => 'vendor',
+            "permissions"   => [    
+            ]
+        ]);
     }
 }

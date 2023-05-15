@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('venue', function (Blueprint $table) {
             $table->id();
             $table->string('venue_name');
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->string('venue_address');
             $table->time('open_hour');
             $table->time('close_hour');
@@ -27,6 +28,7 @@ return new class extends Migration
             $table->boolean('wifi')->default(0);
             $table->boolean('rent_equipments')->default(0);
             $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users');
             // $table->string('owner_email')->unique();
         });
     }
@@ -38,7 +40,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('field_owner', function (Blueprint $table) {
+        Schema::table('venue', function (Blueprint $table) {
             //
         });
     }
