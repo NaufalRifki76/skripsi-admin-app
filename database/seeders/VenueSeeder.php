@@ -23,6 +23,12 @@ class VenueSeeder extends Seeder
                     'open_hour'     => Carbon::createFromTimeString('10:00:00'),
                     'close_hour'    => Carbon::createFromTimeString('20:00:00'),
                     'venue_desc'    => 'Kururin',
+                    'drinks'        => 0,
+                    'locker_room'        => 0,
+                    'toilet'        => 0,
+                    'parking_space'        => 0,
+                    'wifi'        => 0,
+                    'rent_equipments'        => 0,
                 ]
             ];
 

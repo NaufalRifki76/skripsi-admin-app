@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('photos_field_detail', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('field_id');
-            $table->text('field_photo_base64');
+            $table->longText('field_photo_base64');
             $table->foreign('field_id')->references('id')->on('field_detail');
             $table->timestamps();
         });

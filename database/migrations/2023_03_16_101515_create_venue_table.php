@@ -21,12 +21,12 @@ return new class extends Migration
             $table->time('open_hour');
             $table->time('close_hour');
             $table->string('venue_desc');
-            $table->boolean('drinks')->default(0);
-            $table->boolean('locker_room')->default(0);
-            $table->boolean('toilet')->default(0);
-            $table->boolean('parking_space')->default(0);
-            $table->boolean('wifi')->default(0);
-            $table->boolean('rent_equipments')->default(0);
+            $table->integer('drinks')->nullable();
+            $table->integer('locker_room')->nullable();
+            $table->integer('toilet')->nullable();
+            $table->integer('parking_space')->nullable();
+            $table->integer('wifi')->nullable();
+            $table->integer('rent_equipments')->nullable();
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users');
             // $table->string('owner_email')->unique();

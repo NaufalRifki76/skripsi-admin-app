@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('photos_tournament', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('tournament_id');
-            $table->text('tournament_photo_base64');
+            $table->longText('tournament_photo_base64');
             $table->foreign('tournament_id')->references('id')->on('tournaments');
             $table->timestamps();
         });
