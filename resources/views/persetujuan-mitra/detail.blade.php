@@ -9,9 +9,8 @@
 
     <div class="container">
         <div class="py-5">
-            <p class="h1 fw-bold text-center" style="color: #439A97">Bergabung Menjadi Mitra Kami</p>
-            <p class="h5 fw-normal text-center" style="color: #FCE700">Isi formulir di bawah untuk mendaftarkan lapangan yang
-                anda miliki!</p>
+            <p class="h1 fw-bold text-center" style="color: #439A97">Detail Informasi Pendaftaran Mitra</p>
+            <p class="h5 fw-normal text-center" style="color: #FCE700">Detail informasi formulir pendaftaran mitra terdapat di bawah!</p>
         </div>
         <div class="row">
             <div class="col-md-1"></div>

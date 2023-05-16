@@ -5,15 +5,8 @@
         <div class="card-body">
             <div class="row">
                 <h3 class="mb-3">Data Pendaftaran Mitra</h3>
-                <div class="newbtn">
-                    <div class="row">
-                        <div class="col-8">
-                            <!-- BUTTON New -->
-                            <a class="btn btn-green-hover btn-sm" type="button" style="text-decoration: none; color: white;"
-                                href="{{ route('sewa-perlengkapan.tambah') }}"><i class="fa-solid fa-file-circle-plus"></i>
-                                Tambah Mitra</a>
-                        </div>
-                    </div>
+             
+                
                     <br>
 
                     <table id="tabel-sewa-perlengkapan" class="table table-striped table-bordered display text-center"
@@ -71,7 +64,7 @@
                             </tr>
                         </tbody>
                     </table>
-                </div>
+            
             </div>
         </div>
         @push('css')
