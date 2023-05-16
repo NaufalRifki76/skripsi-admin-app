@@ -13,9 +13,9 @@ class FieldDetailPhotos extends Model
         'field_photo_base64'
     ];
 
-    protected $table = 'photos_field_detail';
+    protected $table = 'field_detail_photos';
 
-    public function photo_field_detail()
+    public function field_detail_photos()
     {
         return $this->belongsTo(FieldDetail::class);
     }
