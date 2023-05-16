@@ -18,6 +18,9 @@
                 <a href="{{ route('lapangan.index') }}"><i class="fa-solid fa-user mr-3 ml-2"></i></span> Lapangan</a>
             </li>
             <li>
+                <a href="{{ route('persetujuan-mitra.index') }}"><i class="fa-solid fa-person-circle-check mr-3 ml-2"></i></span> Persetujuan Mitra</a>
+            </li>
+            <li>
                 <a href="{{ route('sewa-perlengkapan.index') }}"><i class="fa-solid fa-briefcase mr-3 ml-2"></i> Sewa Perlengkapan</a>
             </li>
             <li>

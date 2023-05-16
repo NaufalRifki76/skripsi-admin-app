@@ -70,3 +70,12 @@ Route::get('/data-user', function () {
 Route::get('/edit-user', function () {
     return view('data-user.edit');
 })->name('data-user.edit');
+
+// Persetujuan Pendaftaran Mitra
+Route::get('/persetujuan-mitra', function () {
+    return view('persetujuan-mitra.index');
+})->name('persetujuan-mitra.index');
+
+Route::get('/detail-persetujuan-mitra', function () {
+    return view('persetujuan-mitra.detail');
+})->name('persetujuan-mitra.detail');
