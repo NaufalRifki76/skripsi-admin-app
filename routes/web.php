@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\DashboardController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Features\CompetitionController;
+use App\Http\Controllers\Features\MitraController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,6 +31,10 @@ Route::get('add.umur', [CompetitionController::class, 'addumur'])->name('add.tou
 Route::post('tournament.store', [CompetitionController::class, 'store'])->name('tournament.store');
 Route::get('edit.sekolah', [CompetitionController::class, 'editsekolah'])->name('edit.tournament.sekolah');
 Route::get('edit.umur', [CompetitionController::class, 'editumur'])->name('edit.tournament.umur');
+
+// Mitra
+Route::get('index-view', [MitraController::class, 'view'])->name('index-view');
+Route::get('index-sewa', [MitraController::class, 'index'])->name('index-sewa');
 
 /*---------------- BUAT TESTING DI BAWAH --------------------*/
 // Route::get('/', function () {
@@ -72,10 +77,10 @@ Route::get('/edit-user', function () {
 })->name('data-user.edit');
 
 // Persetujuan Pendaftaran Mitra
-Route::get('/persetujuan-mitra', function () {
-    return view('persetujuan-mitra.index');
-})->name('persetujuan-mitra.index');
+// Route::get('/persetujuan-mitra', function () {
+//     return view('persetujuan-mitra.index');
+// })->name('persetujuan-mitra.index');
 
-Route::get('/detail-persetujuan-mitra', function () {
-    return view('persetujuan-mitra.detail');
-})->name('persetujuan-mitra.detail');
+// Route::get('/detail-persetujuan-mitra', function () {
+//     return view('persetujuan-mitra.detail');
+// })->name('persetujuan-mitra.detail');

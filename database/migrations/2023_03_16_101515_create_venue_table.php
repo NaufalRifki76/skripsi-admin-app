@@ -27,6 +27,7 @@ return new class extends Migration
             $table->integer('parking_space')->nullable();
             $table->integer('wifi')->nullable();
             $table->integer('rent_equipments')->nullable();
+            $table->boolean('isapproved')->default(0);
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users');
             // $table->string('owner_email')->unique();

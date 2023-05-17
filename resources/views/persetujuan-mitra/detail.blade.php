@@ -281,7 +281,7 @@
                             </div> --}}
 
                             <div class="text-center">
-                                <a href="{{ route('persetujuan-mitra.index') }}">
+                                <a href="{{ route('index-view') }}">
                                     <button type="button" class="btn btn-danger mt-4">Kembali</button>
                                 </a>
                             </div>

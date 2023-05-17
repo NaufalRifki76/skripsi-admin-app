@@ -5,68 +5,53 @@
         <div class="card-body">
             <div class="row">
                 <h3 class="mb-3">Data Pendaftaran Mitra</h3>
-             
-                
-                    <br>
-
-                    <table id="tabel-sewa-perlengkapan" class="table table-striped table-bordered display text-center"
-                        width="100%" cellspacing="0">
-                        <thead style="background-color: #439a97">
-                            <tr>
-                                <th class="text-center">Nama Tempat</th>
-                                <th class="text-center">Jam Buka</th>
-                                <th class="text-center">Lapangan Tersedia</th>
-                                <th class="text-center">Harga Sewa</th>
-                                <th class="text-center">Status</th>
-                                <th class="text-center">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody class="text-center">
-                            <tr>
-                                <td>Vini Vidi Vici</td>
-                                <td>09.00</td>
-                                <td>2</td>
-                                <td>150000<br></td>
-                                <td><span class="badge bg-warning p-2 text-white">Menunggu</span></td>
-                                <td class="d-flex justify-content-center text-center">
-                                    <a href="{{ route('persetujuan-mitra.detail') }}">
-                                        <button class="btn btn-sm btn-warning text-white">Detail</button>
-                                    </a>
-                                    <button class="btn btn-sm btn-primary text-white ms-2">Terima</button>
-                                    <button class="btn btn-sm btn-danger text-white ms-2 px-2">Tolak</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Vini Vidi Vici</td>
-                                <td>09.00</td>
-                                <td>1</td>
-                                <td>250000<br></td>
-                                <td><span class="badge bg-success p-2 text-white">Diterima</span></td>
-                                <td class="d-flex justify-content-center text-center">
-                                    <a href="{{ route('persetujuan-mitra.detail') }}">
-                                        <button class="btn btn-sm btn-warning text-white">Detail</button>
-                                    </a>
-                                    <button class="btn btn-sm btn-danger ms-2">Hapus</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Vini Vidi Vici</td>
-                                <td>09.00</td>
-                                <td>1</td>
-                                <td>250000<br></td>
-                                <td><span class="badge bg-danger p-2 text-white">Ditolak</span></td>
-                                <td class="d-flex justify-content-center text-center"> 
-                                    <a href="{{ route('persetujuan-mitra.detail') }}">
-                                        <button class="btn btn-sm btn-warning text-white">Detail</button>
-                                    </a>
-                                    <button class="btn btn-sm btn-danger ms-2">Hapus</button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-            
+                <br>
+                <table id="table_mitra" class="table table-striped table-bordered display text-center"
+                    width="100%" cellspacing="0">
+                    <thead style="background-color: #439a97">
+                        <tr>
+                            <th class="text-center">Nama Venue</th>
+                            <th class="text-center">Jam Buka</th>
+                            <th class="text-center">Jumlah Lapangan</th>
+                            <th class="text-center">Mulai Harga Sewa Lapangan</th>
+                            <th class="text-center">Status</th>
+                            <th class="text-center">Action</th>
+                        </tr>
+                    </thead>
+                </table>
             </div>
         </div>
+
+        <script type="text/javascript">
+            $(document).ready(function(){  
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                }); 
+                var table_mitra = $('#table_mitra').DataTable({
+                    processing: true,
+                    serverSide: true,
+                    responsive: true,
+                    ajax: {
+                        url: "{{route('index-sewa')}}",
+                        type: 'GET',
+                    },
+                    columns: [
+                        {data: 'venue_name', name: 'venue_name'},
+                        {data: 'open_hour', name: 'open_hour'},
+                        {data: 'field_qty', name: 'field_qty'},
+                        {data: 'starting_fee', name: 'starting_fee'},
+                        {data: 'status', name: 'status'},
+                        {data: 'action', name: 'action'}
+                    ],
+                    
+                    order: [
+                        [0, 'asc']
+                    ],
+                });
+            });
+        </script>
         @push('css')
             <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css">
             <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.4.0/css/responsive.bootstrap5.min.css">
@@ -83,10 +68,5 @@
             <script src="https://cdn.datatables.net/buttons/2.3.2/js/dataTables.buttons.min.js"></script>
             <script src="https://cdn.datatables.net/buttons/2.3.2/js/buttons.bootstrap5.min.js"></script>
             <script src="https://cdn.datatables.net/buttons/2.3.2/js/buttons.colVis.min.js"></script>
-            <script>
-                $(document).ready(function() {
-                    $('#tabel-sewa-perlengkapan').DataTable();
-                });
-            </script>
         @endpush
     @endsection
