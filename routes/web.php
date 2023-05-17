@@ -35,6 +35,8 @@ Route::get('edit.umur', [CompetitionController::class, 'editumur'])->name('edit.
 // Mitra
 Route::get('index-view', [MitraController::class, 'view'])->name('index-view');
 Route::get('index-sewa', [MitraController::class, 'index'])->name('index-sewa');
+Route::get('acc-mitra/{id}', [MitraController::class, 'accmitra'])->name('acc-mitra');
+Route::get('deny-mitra/{id}', [MitraController::class, 'denymitra'])->name('deny-mitra');
 
 /*---------------- BUAT TESTING DI BAWAH --------------------*/
 // Route::get('/', function () {
