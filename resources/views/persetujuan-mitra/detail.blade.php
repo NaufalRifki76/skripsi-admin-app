@@ -61,15 +61,30 @@
                                         <input type="time" disabled class="form-control bg-white" id="close_hour"
                                             name="close_hour" placeholder="">
                                     </div>
-                                    {{-- <div class="mb-3">
-                                        <label for="inputState" class="form-label h5 text-white">Harga Sewa Lapangan
-                                            Per-Jam <span class="text-danger">*</span></label>
-                                        <div class="input-group mb-3">
-                                            <span class="input-group-text" id="">Rp</span>
-                                            <input type="number" class="form-control" required id=""
-                                                aria-describedby="">
-                                        </div>
-                                    </div> --}}
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="mb-3">
+                                        <label for="inputState" class="form-label h5 text-white">Nama Rekening <span
+                                                class="text-danger">*</span></label>
+                                        <input type="text" disabled class="form-control bg-white" id=""
+                                            name="" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="mb-3">
+                                        <label for="inputState" class="form-label h5 text-white">Nomor Rekening <span
+                                                class="text-danger">*</span></label>
+                                        <input type="number" disabled class="form-control bg-white" id=""
+                                            name="" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="mb-3">
+                                        <label for="inputState" class="form-label h5 text-white">Atas Nama Rekening <span
+                                                class="text-danger">*</span></label>
+                                        <input type="text" disabled class="form-control bg-white" id=""
+                                            name="" placeholder="">
+                                    </div>
                                 </div>
                                 <div class="mb-3">
                                     <label for="" class="form-label h5 text-white">Fasilitas Lapangan (Ceklis
