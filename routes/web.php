@@ -78,11 +78,20 @@ Route::get('/edit-user', function () {
     return view('data-user.edit');
 })->name('data-user.edit');
 
+// Pengembalian Dana
+Route::get('/pengembalian-dana', function () {
+    return view('pengembalian-dana.index');
+})->name('pengembalian-dana.index');
+
+Route::get('/detail-pengembalian-dana', function () {
+    return view('pengembalian-dana.detail');
+})->name('pengembalian-dana.detail');
+
 // Persetujuan Pendaftaran Mitra
 // Route::get('/persetujuan-mitra', function () {
 //     return view('persetujuan-mitra.index');
 // })->name('persetujuan-mitra.index');
 
-// Route::get('/detail-persetujuan-mitra', function () {
-//     return view('persetujuan-mitra.detail');
-// })->name('persetujuan-mitra.detail');
+Route::get('/detail-persetujuan-mitra', function () {
+    return view('persetujuan-mitra.detail');
+})->name('persetujuan-mitra.detail');

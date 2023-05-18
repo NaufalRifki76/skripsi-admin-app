@@ -18,6 +18,9 @@
                 <a href="{{ route('lapangan.index') }}"><i class="fa-solid fa-user mr-3 ml-2"></i></span> Lapangan</a>
             </li>
             <li>
+                <a href="{{ route('pengembalian-dana.index') }}"><i class="fa-solid fa-money-bill mr-3 ml-2"></i></span> Pengembalian Dana</a>
+            </li>
+            <li>
                 <a href="{{ route('index-view') }}"><i class="fa-solid fa-person-circle-check mr-3 ml-2"></i></span> Persetujuan Mitra</a>
             </li>
             <li>
