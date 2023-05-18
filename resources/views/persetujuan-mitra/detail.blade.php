@@ -25,19 +25,19 @@
                                     <div class="mb-3">
                                         <label for="inputState" class="form-label h5 text-white">Nama Lapangan <span
                                                 class="text-danger">*</span></label>
-                                        <input type="text" class="form-control bg-white" disabled id="venue_name"
+                                        <input type="text" class="form-control bg-white" disabled id="venue_name" value="{{$mitra->venue_name}}"
                                             name="venue_name" placeholder="Nama lapangan anda...">
                                     </div>
                                     <div class="mb-3">
                                         <label for="" class="form-label h5 text-white">Alamat <span
                                                 class="text-danger">*</span></label>
                                         <textarea class="form-control" disabled placeholder="Alamat lapangan anda..." id="venue_address" name="venue_address"
-                                            rows="3"></textarea>
+                                            rows="3">{{$mitra->venue_address}}</textarea>
                                     </div>
                                     <div class="mb-3">
                                         <label for="inputState" class="form-label h5 text-white">Jam Buka <span
                                                 class="text-danger">*</span></label>
-                                        <input type="time" disabled class="form-control bg-white" id="open_hour"
+                                        <input type="time" disabled class="form-control bg-white" id="open_hour" value="{{$mitra->open_hour}}"
                                             name="open_hour" placeholder="">
                                     </div>
                                 </div>
@@ -45,20 +45,23 @@
                                     <div class="mb-3">
                                         <label for="inputState" class="form-label h5 text-white">Foto Lapangan (.jpg,
                                             .png)</label>
-                                        <input type="file" class="form-control bg-white" disabled accept=".jpg, .jpeg, .png"
+                                        {{-- <input type="file" class="form-control bg-white" disabled accept=".jpg, .jpeg, .png"
                                             id="venue_photo_base64" name="venue_photo_base64"
-                                            placeholder="Jumlah lapangan tersedia...">
+                                            placeholder="Jumlah lapangan tersedia..."> --}}
+                                            <div class="card-image card-circular">
+                                                <img class="rounded img-fluid" src="data:image/png;base64,{{$venue_photo->venue_photo_base64}}">
+                                            </div>
                                     </div>
                                     <div class="mb-3">
                                         <label for="" class="form-label h5 text-white">Deskripsi Lapangan <span
                                                 class="text-danger">*</span></label>
                                         <textarea class="form-control" disabled placeholder="Deskripsi lapangan anda..." id="venue_desc" name="venue_desc"
-                                            rows="3"></textarea>
+                                            rows="3">{{$mitra->venue_desc}}</textarea>
                                     </div>
                                     <div class="mb-3">
                                         <label for="inputState" class="form-label h5 text-white">Jam Tutup <span
                                                 class="text-danger">*</span></label>
-                                        <input type="time" disabled class="form-control bg-white" id="close_hour"
+                                        <input type="time" disabled class="form-control bg-white" id="close_hour" value="{{$mitra->close_hour}}"
                                             name="close_hour" placeholder="">
                                     </div>
                                 </div>
@@ -66,7 +69,7 @@
                                     <div class="mb-3">
                                         <label for="inputState" class="form-label h5 text-white">Nama Rekening <span
                                                 class="text-danger">*</span></label>
-                                        <input type="text" disabled class="form-control bg-white" id=""
+                                        <input type="text" disabled class="form-control bg-white" id="" value="{{$mitra->bank}}"
                                             name="" placeholder="">
                                     </div>
                                 </div>
@@ -74,7 +77,7 @@
                                     <div class="mb-3">
                                         <label for="inputState" class="form-label h5 text-white">Nomor Rekening <span
                                                 class="text-danger">*</span></label>
-                                        <input type="number" disabled class="form-control bg-white" id=""
+                                        <input type="number" disabled class="form-control bg-white" id="" value="{{$mitra->bank_acc_no}}"
                                             name="" placeholder="">
                                     </div>
                                 </div>
@@ -82,7 +85,7 @@
                                     <div class="mb-3">
                                         <label for="inputState" class="form-label h5 text-white">Atas Nama Rekening <span
                                                 class="text-danger">*</span></label>
-                                        <input type="text" disabled class="form-control bg-white" id=""
+                                        <input type="text" disabled class="form-control bg-white" id="" value="{{$mitra->bank_acc_name}}"
                                             name="" placeholder="">
                                     </div>
                                 </div>
@@ -93,14 +96,20 @@
                                     <div class="row px-4">
                                         <div class="col-md-4">
                                             <div class="form-check mb-3">
-                                                <input class="form-check-input" disabled type="checkbox" value="1"
+                                                <input class="form-check-input" disabled type="checkbox" value=""
+                                                @if ($mitra->drinks != null)
+                                                    @checked(true)
+                                                @endif
                                                     id="drinks" name="drinks">
                                                 <label class="form-check-label text-white" for="">
                                                     Minuman
                                                 </label>
                                             </div>
                                             <div class="form-check mb-3">
-                                                <input class="form-check-input" disabled type="checkbox" value="1"
+                                                <input class="form-check-input" disabled type="checkbox" value=""
+                                                @if ($mitra->locker_room != null)
+                                                    @checked(true)
+                                                @endif
                                                     id="locker_room" name="locker_room">
                                                 <label class="form-check-label text-white" for="">
                                                     Ruang Ganti
@@ -109,14 +118,20 @@
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-check mb-3">
-                                                <input class="form-check-input" disabled type="checkbox" value="1"
+                                                <input class="form-check-input" disabled type="checkbox" value=""
+                                                @if ($mitra->toilet != null)
+                                                    @checked(true)
+                                                @endif
                                                     id="toilet" name="toilet">
                                                 <label class="form-check-label text-white" for="">
                                                     Toilet
                                                 </label>
                                             </div>
                                             <div class="form-check mb-3">
-                                                <input class="form-check-input" disabled type="checkbox" value="1"
+                                                <input class="form-check-input" disabled type="checkbox" value=""
+                                                @if ($mitra->parking_space != null)
+                                                    @checked(true)
+                                                @endif
                                                     id="parking_space" name="parking_space">
                                                 <label class="form-check-label text-white" for="">
                                                     Parkir Kendaraan
@@ -125,14 +140,20 @@
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-check mb-3"> 
-                                                <input class="form-check-input" disabled type="checkbox" value="1"
+                                                <input class="form-check-input" disabled type="checkbox" value=""
+                                                @if ($mitra->wifi != null)
+                                                    @checked(true)
+                                                @endif
                                                     id="wifi" name="wifi">
                                                 <label class="form-check-label text-white" for="">
                                                     Wifi
                                                 </label>
                                             </div>
                                             <div class="form-check mb-3">
-                                                <input class="form-check-input" disabled type="checkbox" value="1"
+                                                <input class="form-check-input" disabled type="checkbox" value=""
+                                                @if ($mitra->rent_equipments != null)
+                                                    @checked(true)
+                                                @endif
                                                     id="perlengkapan" name="rent_equipments">
                                                 <label class="form-check-label text-white" for="">
                                                     Sewa Perlengkapan
@@ -144,156 +165,89 @@
                             </div>
 
                             {{-- Data Lapangan Tersedia --}}
-                            <div class="row fieldGroup mb-3">
-                                <div class="col-md-10">
-                                    <h3 class="fw-bold mb-3 mt-2 text-white">Data Lapangan Tersedia</h3>
-                                </div>
-                                <div class="col-md-2 text-end">
-                                    <button disabled type="button" class="btn-green2-hover addMore shadow-lg"
-                                        style="margin-top: 10px;"><i class="fa-solid fa-plus"></i></button>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="mb-3">
-                                        <label for="inputState" class="form-label h5 text-white">Nama Lapangan <span
-                                                class="text-danger">*</span></label>
-                                        <input type="text" class="form-control bg-white" disabled id="field_name"
-                                            name="field_name[]" placeholder="Nama lapangan anda...">
+                            @foreach ($field_detail as $key => $detail)
+                                <div class="row fieldGroup mb-3">
+                                    <div class="col-md-10">
+                                        <h3 class="fw-bold mb-3 mt-2 text-white">Data Lapangan Tersedia</h3>
                                     </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="mb-3">
-                                        <label for="inputState" class="form-label h5 text-white">Foto Lapangan (.jpg,
-                                            .png)</label>
-                                        <input type="file" class="form-control bg-white" disabled accept=".jpg, .jpeg, .png"
-                                            id="field_photo_base64" name="field_photo_base64[]"
-                                            placeholder="Jumlah lapangan tersedia...">
+                                    {{-- <div class="col-md-2 text-end">
+                                        <button disabled type="button" class="btn-green2-hover addMore shadow-lg"
+                                            style="margin-top: 10px;"><i class="fa-solid fa-plus"></i></button>
+                                    </div> --}}
+                                    <div class="col-md-4">
+                                        <div class="mb-3">
+                                            <label for="inputState" class="form-label h5 text-white">Nama Lapangan <span
+                                                    class="text-danger">*</span></label>
+                                            <input type="text" class="form-control bg-white" disabled id="field_name" value="{{$detail->field_name}}"
+                                                name="field_name[]" placeholder="Nama lapangan anda...">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="mb-3">
-                                        <label for="inputState" class="form-label h5 text-white">Harga Sewa
-                                            Per-Jam <span class="text-danger">*</span></label>
-                                        <div class="input-group mb-3">
-                                            <span class="input-group-text" id="">Rp</span>
-                                            <input type="number" class="form-control" disabled id="field_cost_hour"
-                                                name="field_cost_hour[]" aria-describedby="">
+                                    <div class="col-md-4">
+                                        <div class="mb-3">
+                                            <label for="inputState" class="form-label h5 text-white">Foto Lapangan (.jpg,
+                                                .png)</label>
+                                            {{-- <input type="file" class="form-control bg-white" disabled accept=".jpg, .jpeg, .png"
+                                                id="field_photo_base64" name="field_photo_base64[]"
+                                                placeholder="Jumlah lapangan tersedia..."> --}}
+                                                <div class="card-image card-circular">
+                                                    <img class="rounded img-fluid" src="data:image/png;base64,{{$field_photo[$key]}}">
+                                                </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="mb-3">
+                                            <label for="inputState" class="form-label h5 text-white">Harga Sewa
+                                                Per-Jam <span class="text-danger">*</span></label>
+                                            <div class="input-group mb-3">
+                                                <span class="input-group-text" id="">Rp</span>
+                                                <input type="number" class="form-control" disabled id="field_cost_hour" value="{{$detail->field_cost_hour}}"
+                                                    name="field_cost_hour[]" aria-describedby="">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            {{-- <div class="row fieldGroupCopy" style="display: none;">
-                                <div class="col-md-4">
-                                    <div class="mb-3">
-                                        <label for="inputState" class="form-label h5 text-white">Nama Lapangan <span
-                                                class="text-danger">*</span></label>
-                                        <input type="text" class="form-control bg-white" required id="field_name"
-                                            name="field_name[]" placeholder="Nama lapangan anda...">
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="mb-3">
-                                        <label for="inputState" class="form-label h5 text-white">Foto Lapangan (.jpg,
-                                            .png)</label>
-                                        <input type="file" class="form-control bg-white" accept=".jpg, .jpeg, .png"
-                                            id="field_photo_base64" name="field_photo_base64[]"
-                                            placeholder="Jumlah lapangan tersedia...">
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="mb-3">
-                                        <label for="inputState" class="form-label h5 text-white">Harga Sewa
-                                            Per-Jam <span class="text-danger">*</span></label>
-                                        <div class="input-group mb-3">
-                                            <span class="input-group-text" id="">Rp</span>
-                                            <input type="number" class="form-control" required id="field_cost_hour"
-                                                name="field_cost_hour[]" aria-describedby="">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-12 text-end">
-                                    <button type="button" class="btn-red-hover remove mt-2"><i
-                                            class="fa-solid fa-trash"></i></button>
-                                </div>
-                            </div> --}}
+                            @endforeach
 
                             {{-- Perlengkapan Tersedia --}}
-                            <div class="row fieldGroup2 showthis-upload">
-                                <div class="col-md-10">
-                                    <h3 class="fw-bold mb-3 mt-2 text-white">Data Perlengkapan Tersedia</h3>
-                                </div>
-                                <div class="col-md-2 text-end">
-                                    <button disabled type="button" class="btn-green2-hover addMore2 shadow-lg"
-                                        style="margin-top: 10px;"><i class="fa-solid fa-plus"></i></button>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="mb-3">
-                                        <label for="namaPerlengkapan" class="form-label h5 text-white">Nama Perlengkapan
-                                            <span class="text-danger">*</span></label>
-                                        <select id="namaPerlengkapan" name="item_id[]" disabled class="form-select">
-                                            <option disabled selected>Pilih perlengkapan...</option>
-                                            {{-- @foreach ($rent as $key => $perlengkapan)
-                                                <option value="{{$perlengkapan->id}}">{{$perlengkapan->item_name}}</option>
-                                            @endforeach --}}
-                                        </select>
+                            @foreach ($rent_items as $flag => $rent)
+                                <div class="row fieldGroup2 showthis-upload">
+                                    <div class="col-md-10">
+                                        <h3 class="fw-bold mb-3 mt-2 text-white">Data Perlengkapan Tersedia</h3>
                                     </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="mb-3">
-                                        <label for="inputState" class="form-label h5 text-white">Jumlah <span
-                                                class="text-danger">*</span></label>
-                                        <input type="text" class="form-control bg-white" disabled id="item_qty"
-                                            name="item_qty[]" placeholder="Jumlah perlengkapan...">
+                                    <div class="col-md-2 text-end">
+                                        <button disabled type="button" class="btn-green2-hover addMore2 shadow-lg"
+                                            style="margin-top: 10px;"><i class="fa-solid fa-plus"></i></button>
                                     </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="mb-3">
-                                        <label for="inputState" class="form-label h5 text-white">Harga Sewa
-                                            Per-Jam <span class="text-danger">*</span></label>
-                                        <div class="input-group mb-3">
-                                            <span class="input-group-text" id="">Rp</span>
-                                            <input type="number" class="form-control" disabled id="item_rent_cost" name="item_rent_cost[]"
-                                                aria-describedby="">
+                                    <div class="col-md-4">
+                                        <div class="mb-3">
+                                            <label for="namaPerlengkapan" class="form-label h5 text-white">Nama Perlengkapan
+                                                <span class="text-danger">*</span></label>
+                                            <select id="namaPerlengkapan" name="item_id[]" disabled class="form-select">
+                                                <option disabled value="{{$rent->id}}">{{$rent->item_name}}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="mb-3">
+                                            <label for="inputState" class="form-label h5 text-white">Jumlah <span
+                                                    class="text-danger">*</span></label>
+                                            <input type="text" class="form-control bg-white" disabled id="item_qty" value="{{$rent->item_qty}}"
+                                                name="item_qty[]" placeholder="Jumlah perlengkapan...">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="mb-3">
+                                            <label for="inputState" class="form-label h5 text-white">Harga Sewa
+                                                Per-Jam <span class="text-danger">*</span></label>
+                                            <div class="input-group mb-3">
+                                                <span class="input-group-text" id="">Rp</span>
+                                                <input type="number" class="form-control" disabled id="item_rent_cost" name="item_rent_cost[]" value="{{$rent->item_rent_cost}}"
+                                                    aria-describedby="">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            {{-- <div class="row fieldGroupCopy2" style="display: none;">
-                                <div class="col-md-4">
-                                    <div class="mb-3">
-                                        <label for="namaPerlengkapan" class="form-label h5 text-white">Nama Perlengkapan
-                                            <span class="text-danger">*</span></label>
-                                        <select id="namaPerlengkapan" name="item_id[]" required class="form-select">
-                                            <option selected>Pilih perlengkapan...</option>
-                                            @foreach ($rent as $key => $perlengkapan)
-                                                <option value="{{$perlengkapan->id}}">{{$perlengkapan->item_name}}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="mb-3">
-                                        <label for="inputState" class="form-label h5 text-white">Jumlah <span
-                                                class="text-danger">*</span></label>
-                                        <input type="text" class="form-control bg-white" required id="item_qty" name="item_qty[]"
-                                            placeholder="Jumlah perlengkapan...">
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="mb-3">
-                                        <label for="inputState" class="form-label h5 text-white">Harga Sewa
-                                            Per-Jam <span class="text-danger">*</span></label>
-                                        <div class="input-group mb-3">
-                                            <span class="input-group-text" id="">Rp</span>
-                                            <input type="number" class="form-control" required id="item_rent_cost" name="item_rent_cost[]"
-                                                aria-describedby="">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-12 text-end">
-                                    <button type="button" class="btn-red-hover remove2 mt-2"><i
-                                            class="fa-solid fa-trash"></i></button>
-                                </div>
-                            </div> --}}
+                            @endforeach
 
                             <div class="text-center">
                                 <a href="{{ route('index-view') }}">

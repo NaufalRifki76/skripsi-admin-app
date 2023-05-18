@@ -102,6 +102,7 @@ class MigrationCartalystSentinel extends Migration
             $table->string('password');
             $table->string('no_telephone');
             $table->boolean('vip_status')->default(0);
+            $table->integer('successful_transaction')->default(0);
             $table->timestamp('last_login')->nullable();
             $table->timestamps();
             $table->engine = 'InnoDB';

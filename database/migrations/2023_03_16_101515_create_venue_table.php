@@ -21,6 +21,9 @@ return new class extends Migration
             $table->time('open_hour');
             $table->time('close_hour');
             $table->string('venue_desc');
+            $table->string('bank');
+            $table->string('bank_acc_no');
+            $table->string('bank_acc_name');
             $table->integer('drinks')->nullable();
             $table->integer('locker_room')->nullable();
             $table->integer('toilet')->nullable();
