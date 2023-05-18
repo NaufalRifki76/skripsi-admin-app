@@ -7,7 +7,7 @@
             <div class="row">
                 <h3 class="mb-3">Data Pengembalian Dana</h3>
                 <br>
-                <table id="tabel-user" class="table table-striped table-bordered display text-center" width="100%"
+                <table id="pengembalian-dana" class="table table-striped table-bordered display text-center" width="100%"
                     cellspacing="0">
                     <thead style="background-color: #439a97">
                         <tr>
@@ -26,7 +26,7 @@
                             <td>Faris Futsal</td>
                             <td>19/02/2023</td>
                             <td>150000</td>
-                            <td><button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#bukti-transfer"><i
+                            <td><button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#bukti-transfer"><i
                                         class="fa-solid fa-eye"></i></button></td>
                             <td>Diterima, Ditolak, Pending</td>
                             <td class="d-flex justify-content-center text-center">
@@ -58,7 +58,7 @@
         <script src="https://cdn.datatables.net/buttons/2.3.2/js/buttons.colVis.min.js"></script>
         <script>
             $(document).ready(function() {
-                $('#tabel-user').DataTable();
+                $('#pengembalian-dana').DataTable();
             });
         </script>
     @endpush
