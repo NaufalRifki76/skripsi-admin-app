@@ -42,9 +42,9 @@ class MitraController extends Controller{
                     }
                 })
                 ->addColumn('action', function ($row){
-                    $button = "<div class='d-flex'><a style='margin-right: 5px;' class='setuju btn btn-sm  btn-danger text-white' data-id='".$row['id']."' id='accBtn' href='".route('deny-mitra', [$row->id])."'>Tolak</a></div>";
-                    $button .= "<div class='d-flex'><a style='margin-right: 5px;' class='setuju btn btn-sm  btn-success text-white' data-id='".$row['id']."' id='denyBtn' href='".route('acc-mitra', [$row->id])."'>Terima</a></div>";
-                    $button .= "<div class='d-flex'><a style='margin-right: 5px;' class='setuju btn btn-sm  btn-info text-white' data-id='".$row['id']."' id='denyBtn' href='".route('detail-show', [$row->id])."'>Detail</a></div>";
+                    $button = "<div class='d-flex'><a style='margin-right: 5px;' class='setuju btn btn-sm  btn-danger text-white' data-id='".$row['id']."' id='accBtn' href='".route('deny-mitra', [$row->id])."'>Tolak</a>";
+                    $button .= "<a style='margin-right: 5px;' class='setuju btn btn-sm  btn-success text-white' data-id='".$row['id']."' id='denyBtn' href='".route('acc-mitra', [$row->id])."'>Terima</a>";
+                    $button .= "<a style='margin-right: 5px;' class='setuju btn btn-sm  btn-info text-white' data-id='".$row['id']."' id='denyBtn' href='".route('detail-show', [$row->id])."'>Detail</a></div>";
                     return $button;
                 })
                 ->rawColumns(['action'])
