@@ -1,11 +1,6 @@
 @extends('layout.index')
 
 @section('content')
-    <style>
-        .background-img-riwayat {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("Assets/bg/bg.jpg");
-        }
-    </style>
 
     <div class="container">
         <div class="py-5">
@@ -15,26 +10,27 @@
         <div class="row">
             <div class="col-md-1"></div>
             <div class="col-md-10">
-                <div class="card shadow-lg background-img-riwayat mb-5" style="border: none; border-radius: 12px">
+                <div class="card shadow-lg mb-5" style="border: none; border-radius: 12px; background-image: ">
                     <div class="card-body">
+                        <form action="" method="" enctype="">
                             {{-- Data Venue --}}
                             <div class="row">
-                                <h3 class="fw-bold text-white mb-3">Informasi Lapangan Yang Anda Daftarkan</h3>
+                                <h3 class="fw-bold mb-3">Informasi Lapangan Yang Anda Daftarkan</h3>
                                 <div class="col-md-6">
                                     <div class="mb-3">
-                                        <label for="inputState" class="form-label h5 text-white">Nama Lapangan <span
+                                        <label for="inputState" class="form-label h5">Nama Lapangan <span
                                                 class="text-danger">*</span></label>
                                         <input type="text" class="form-control bg-white" disabled id="venue_name" value="{{$mitra->venue_name}}"
                                             name="venue_name" placeholder="Nama lapangan anda...">
                                     </div>
                                     <div class="mb-3">
-                                        <label for="" class="form-label h5 text-white">Alamat <span
+                                        <label for="" class="form-label h5">Alamat <span
                                                 class="text-danger">*</span></label>
                                         <textarea class="form-control" disabled placeholder="Alamat lapangan anda..." id="venue_address" name="venue_address"
                                             rows="3">{{$mitra->venue_address}}</textarea>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="inputState" class="form-label h5 text-white">Jam Buka <span
+                                        <label for="inputState" class="form-label h5">Jam Buka <span
                                                 class="text-danger">*</span></label>
                                         <input type="time" disabled class="form-control bg-white" id="open_hour" value="{{$mitra->open_hour}}"
                                             name="open_hour" placeholder="">
@@ -42,23 +38,23 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="mb-3">
-                                        <label for="inputState" class="form-label h5 text-white">Foto Lapangan (.jpg,
+                                        <label for="inputState" class="form-label h5">Foto Lapangan (.jpg,
                                             .png)</label>
                                         {{-- <input type="file" class="form-control bg-white" disabled accept=".jpg, .jpeg, .png"
                                             id="venue_photo_base64" name="venue_photo_base64"
                                             placeholder="Jumlah lapangan tersedia..."> --}}
                                             <div class="card-image card-circular">
-                                                <img class="rounded img-fluid" src="data:image/png;base64,{{$venue_photo->venue_photo_base64}}">
+                                                <img class="rounded img-fluid" width="250px" src="data:image/png;base64,{{$venue_photo->venue_photo_base64}}">
                                             </div>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="" class="form-label h5 text-white">Deskripsi Lapangan <span
+                                        <label for="" class="form-label h5">Deskripsi Lapangan <span
                                                 class="text-danger">*</span></label>
                                         <textarea class="form-control" disabled placeholder="Deskripsi lapangan anda..." id="venue_desc" name="venue_desc"
                                             rows="3">{{$mitra->venue_desc}}</textarea>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="inputState" class="form-label h5 text-white">Jam Tutup <span
+                                        <label for="inputState" class="form-label h5">Jam Tutup <span
                                                 class="text-danger">*</span></label>
                                         <input type="time" disabled class="form-control bg-white" id="close_hour" value="{{$mitra->close_hour}}"
                                             name="close_hour" placeholder="">
@@ -66,7 +62,7 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="mb-3">
-                                        <label for="inputState" class="form-label h5 text-white">Nama Rekening <span
+                                        <label for="inputState" class="form-label h5">Nama Rekening <span
                                                 class="text-danger">*</span></label>
                                         <input type="text" disabled class="form-control bg-white" id="" value="{{$mitra->bank}}"
                                             name="" placeholder="">
@@ -74,7 +70,7 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="mb-3">
-                                        <label for="inputState" class="form-label h5 text-white">Nomor Rekening <span
+                                        <label for="inputState" class="form-label h5">Nomor Rekening <span
                                                 class="text-danger">*</span></label>
                                         <input type="number" disabled class="form-control bg-white" id="" value="{{$mitra->bank_acc_no}}"
                                             name="" placeholder="">
@@ -82,14 +78,14 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="mb-3">
-                                        <label for="inputState" class="form-label h5 text-white">Atas Nama Rekening <span
+                                        <label for="inputState" class="form-label h5">Atas Nama Rekening <span
                                                 class="text-danger">*</span></label>
                                         <input type="text" disabled class="form-control bg-white" id="" value="{{$mitra->bank_acc_name}}"
                                             name="" placeholder="">
                                     </div>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="" class="form-label h5 text-white">Fasilitas Lapangan (Ceklis
+                                    <label for="" class="form-label h5">Fasilitas Lapangan (Ceklis
                                         fasilitas yang
                                         tersedia di tempat anda).</label>
                                     <div class="row px-4">
@@ -100,7 +96,7 @@
                                                     @checked(true)
                                                 @endif
                                                     id="drinks" name="drinks">
-                                                <label class="form-check-label text-white" for="">
+                                                <label class="form-check-label" for="">
                                                     Minuman
                                                 </label>
                                             </div>
@@ -110,7 +106,7 @@
                                                     @checked(true)
                                                 @endif
                                                     id="locker_room" name="locker_room">
-                                                <label class="form-check-label text-white" for="">
+                                                <label class="form-check-label" for="">
                                                     Ruang Ganti
                                                 </label>
                                             </div>
@@ -122,7 +118,7 @@
                                                     @checked(true)
                                                 @endif
                                                     id="toilet" name="toilet">
-                                                <label class="form-check-label text-white" for="">
+                                                <label class="form-check-label" for="">
                                                     Toilet
                                                 </label>
                                             </div>
@@ -132,7 +128,7 @@
                                                     @checked(true)
                                                 @endif
                                                     id="parking_space" name="parking_space">
-                                                <label class="form-check-label text-white" for="">
+                                                <label class="form-check-label" for="">
                                                     Parkir Kendaraan
                                                 </label>
                                             </div>
@@ -144,7 +140,7 @@
                                                     @checked(true)
                                                 @endif
                                                     id="wifi" name="wifi">
-                                                <label class="form-check-label text-white" for="">
+                                                <label class="form-check-label" for="">
                                                     Wifi
                                                 </label>
                                             </div>
@@ -154,7 +150,7 @@
                                                     @checked(true)
                                                 @endif
                                                     id="perlengkapan" name="rent_equipments">
-                                                <label class="form-check-label text-white" for="">
+                                                <label class="form-check-label" for="">
                                                     Sewa Perlengkapan
                                                 </label>
                                             </div>
@@ -167,7 +163,7 @@
                             @foreach ($field_detail as $key => $detail)
                                 <div class="row fieldGroup mb-3">
                                     <div class="col-md-10">
-                                        <h3 class="fw-bold mb-3 mt-2 text-white">Data Lapangan Tersedia</h3>
+                                        <h3 class="fw-bold mb-3 mt-2">Data Lapangan Tersedia</h3>
                                     </div>
                                     {{-- <div class="col-md-2 text-end">
                                         <button disabled type="button" class="btn-green2-hover addMore shadow-lg"
@@ -175,7 +171,7 @@
                                     </div> --}}
                                     <div class="col-md-4">
                                         <div class="mb-3">
-                                            <label for="inputState" class="form-label h5 text-white">Nama Lapangan <span
+                                            <label for="inputState" class="form-label h5">Nama Lapangan <span
                                                     class="text-danger">*</span></label>
                                             <input type="text" class="form-control bg-white" disabled id="field_name" value="{{$detail->field_name}}"
                                                 name="field_name[]" placeholder="Nama lapangan anda...">
@@ -183,7 +179,7 @@
                                     </div>
                                     <div class="col-md-4">
                                         <div class="mb-3">
-                                            <label for="inputState" class="form-label h5 text-white">Foto Lapangan (.jpg,
+                                            <label for="inputState" class="form-label h5">Foto Lapangan (.jpg,
                                                 .png)</label>
                                             {{-- <input type="file" class="form-control bg-white" disabled accept=".jpg, .jpeg, .png"
                                                 id="field_photo_base64" name="field_photo_base64[]"
@@ -195,7 +191,7 @@
                                     </div>
                                     <div class="col-md-4">
                                         <div class="mb-3">
-                                            <label for="inputState" class="form-label h5 text-white">Harga Sewa
+                                            <label for="inputState" class="form-label h5">Harga Sewa
                                                 Per-Jam <span class="text-danger">*</span></label>
                                             <div class="input-group mb-3">
                                                 <span class="input-group-text" id="">Rp</span>
@@ -211,7 +207,7 @@
                             @foreach ($rent_items as $flag => $rent)
                                 <div class="row fieldGroup2 showthis-upload">
                                     <div class="col-md-10">
-                                        <h3 class="fw-bold mb-3 mt-2 text-white">Data Perlengkapan Tersedia</h3>
+                                        <h3 class="fw-bold mb-3 mt-2">Data Perlengkapan Tersedia</h3>
                                     </div>
                                     <div class="col-md-2 text-end">
                                         <button disabled type="button" class="btn-green2-hover addMore2 shadow-lg"
@@ -219,7 +215,7 @@
                                     </div>
                                     <div class="col-md-4">
                                         <div class="mb-3">
-                                            <label for="namaPerlengkapan" class="form-label h5 text-white">Nama Perlengkapan
+                                            <label for="namaPerlengkapan" class="form-label h5">Nama Perlengkapan
                                                 <span class="text-danger">*</span></label>
                                             <select id="namaPerlengkapan" name="item_id[]" disabled class="form-select">
                                                 <option disabled value="{{$rent->id}}">{{$rent->item_name}}</option>
@@ -228,7 +224,7 @@
                                     </div>
                                     <div class="col-md-4">
                                         <div class="mb-3">
-                                            <label for="inputState" class="form-label h5 text-white">Jumlah <span
+                                            <label for="inputState" class="form-label h5">Jumlah <span
                                                     class="text-danger">*</span></label>
                                             <input type="text" class="form-control bg-white" disabled id="item_qty" value="{{$rent->item_qty}}"
                                                 name="item_qty[]" placeholder="Jumlah perlengkapan...">
@@ -236,7 +232,7 @@
                                     </div>
                                     <div class="col-md-4">
                                         <div class="mb-3">
-                                            <label for="inputState" class="form-label h5 text-white">Harga Sewa
+                                            <label for="inputState" class="form-label h5">Harga Sewa
                                                 Per-Jam <span class="text-danger">*</span></label>
                                             <div class="input-group mb-3">
                                                 <span class="input-group-text" id="">Rp</span>
@@ -253,6 +249,7 @@
                                     <button type="button" class="btn btn-danger mt-4">Kembali</button>
                                 </a>
                             </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -262,8 +259,9 @@
 
     @push('css')
         {{-- Select --}}
-        <link href="{{ asset('public/Assets/css/select2.css') }}" rel="stylesheet" />
-        <link rel="stylesheet" href="{{ asset('public/Assets/css/select2theme.css') }}" />
+        <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+        <link rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css" />
     @endpush
 
     @push('script')
