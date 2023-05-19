@@ -33,11 +33,10 @@ Route::get('edit.sekolah', [CompetitionController::class, 'editsekolah'])->name(
 Route::get('edit.umur', [CompetitionController::class, 'editumur'])->name('edit.tournament.umur');
 
 // Mitra
-Route::get('index-view', [MitraController::class, 'view'])->name('index-view');
 Route::get('index-sewa', [MitraController::class, 'index'])->name('index-sewa');
 Route::get('acc-mitra/{id}', [MitraController::class, 'accmitra'])->name('acc-mitra');
 Route::get('deny-mitra/{id}', [MitraController::class, 'denymitra'])->name('deny-mitra');
-Route::get('detail-mitra/{id}', [MitraController::class, 'detail'])->name('detail-mitra');
+Route::get('detail-show/{id}', [MitraController::class, 'detail'])->name('detail-show');
 
 /*---------------- BUAT TESTING DI BAWAH --------------------*/
 // Route::get('/', function () {
@@ -93,6 +92,6 @@ Route::get('/detail-pengembalian-dana', function () {
 //     return view('persetujuan-mitra.index');
 // })->name('persetujuan-mitra.index');
 
-Route::get('/detail-persetujuan-mitra', function () {
-    return view('persetujuan-mitra.detail');
-})->name('persetujuan-mitra.detail');
+// Route::get('/detail-persetujuan-mitra', function () {
+//     return view('persetujuan-mitra.detail');
+// })->name('persetujuan-mitra.detail');

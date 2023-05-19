@@ -17,7 +17,6 @@
             <div class="col-md-10">
                 <div class="card shadow-lg background-img-riwayat mb-5" style="border: none; border-radius: 12px">
                     <div class="card-body">
-                        <form action="" method="" enctype="">
                             {{-- Data Venue --}}
                             <div class="row">
                                 <h3 class="fw-bold text-white mb-3">Informasi Lapangan Yang Anda Daftarkan</h3>
@@ -250,11 +249,10 @@
                             @endforeach
 
                             <div class="text-center">
-                                <a href="{{ route('index-view') }}">
+                                <a href="{{ route('index-sewa') }}">
                                     <button type="button" class="btn btn-danger mt-4">Kembali</button>
                                 </a>
                             </div>
-                        </form>
                     </div>
                 </div>
             </div>
@@ -264,9 +262,8 @@
 
     @push('css')
         {{-- Select --}}
-        <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-        <link rel="stylesheet"
-            href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css" />
+        <link href="{{ asset('public/Assets/css/select2.css') }}" rel="stylesheet" />
+        <link rel="stylesheet" href="{{ asset('public/Assets/css/select2theme.css') }}" />
     @endpush
 
     @push('script')

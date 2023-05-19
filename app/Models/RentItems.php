@@ -10,9 +10,7 @@ class RentItems extends Model
     use HasFactory;
 
     protected $fillable = [
-        'venue_id',
         'item_name',
-        'item_cost_hour'
     ];
 
     protected $table = 'rent_items';

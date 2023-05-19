@@ -4,8 +4,6 @@ namespace App\Http\Controllers\Features;
 
 use App\Http\Controllers\Controller;
 use App\Models\FieldDetail;
-use App\Models\FieldDetailPhotos;
-use App\Models\RentItems;
 use App\Models\Venue;
 use App\Models\VenuePhotos;
 use App\Models\VenueRentItems;
@@ -14,48 +12,46 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class MitraController extends Controller{
-    public function view(){
+    public function index(Request $request){
         if(!Sentinel::getUser()) {
             return redirect()->route('login.index');
         } else{
-            return view('persetujuan-mitra.index');
-        }
-    }
-
-    public function index(Request $request){
-        $data = Venue::all();
-        if($request->ajax()){
-            return datatables()->of($data)
-            ->addIndexColumn()
-            ->addColumn('field_qty', function($row){
-                if($row->id != NULL){
-                    return $row->field_detail->count();
-                }
-            })
-            ->addColumn('starting_fee', function($row){
-                if($row->id != NULL){
-                    return $row->field_detail->min('field_cost_hour');
-                }
-            })
-            ->addColumn('status', function($row){
-                if($row->id != NULL){
-                    if ($row->isapproved == 0) {
-                        return "Pending";
-                    } elseif ($row->isapproved == 1) {
-                        return "Approved";
-                    } elseif ($row->isapproved == 2) {
-                        return "Ditolak";
+            $data = Venue::all();
+            if($request->ajax()){
+                return datatables()->of($data)
+                ->addIndexColumn()
+                ->addColumn('field_qty', function($row){
+                    if($row->id != NULL){
+                        return $row->field_detail->count();
                     }
-                }
-            })
-            ->addColumn('action', function ($row){
-                $button = "<div class='d-flex'><a style='margin-right: 5px;' class='setuju btn btn-sm  btn-danger text-white' data-id='".$row['id']."' id='accBtn' href='".route('deny-mitra', [$row->id])."'>Tolak</a>";
-                $button .= "<div class='d-flex'><a style='margin-right: 5px;' class='setuju btn btn-sm  btn-success text-white' data-id='".$row['id']."' id='denyBtn' href='".route('acc-mitra', [$row->id])."'>Terima</a>";
-                $button .= "<div class='d-flex'><a style='margin-right: 5px;' class='setuju btn btn-sm  btn-info text-white' data-id='".$row['id']."' id='denyBtn' href='".route('detail-mitra', [$row->id])."'>Detail</a>";
-                return $button;
-            })
-            ->rawColumns(['action'])
-            ->make(true);
+                })
+                ->addColumn('starting_fee', function($row){
+                    if($row->id != NULL){
+                        return $row->field_detail->min('field_cost_hour');
+                    }
+                })
+                ->addColumn('status', function($row){
+                    if($row->id != NULL){
+                        if ($row->isapproved == 0) {
+                            return "Pending";
+                        } elseif ($row->isapproved == 1) {
+                            return "Approved";
+                        } elseif ($row->isapproved == 2) {
+                            return "Ditolak";
+                        }
+                    }
+                })
+                ->addColumn('action', function ($row){
+                    $button = "<div class='d-flex'><a style='margin-right: 5px;' class='setuju btn btn-sm  btn-danger text-white' data-id='".$row['id']."' id='accBtn' href='".route('deny-mitra', [$row->id])."'>Tolak</a></div>";
+                    $button .= "<div class='d-flex'><a style='margin-right: 5px;' class='setuju btn btn-sm  btn-success text-white' data-id='".$row['id']."' id='denyBtn' href='".route('acc-mitra', [$row->id])."'>Terima</a></div>";
+                    $button .= "<div class='d-flex'><a style='margin-right: 5px;' class='setuju btn btn-sm  btn-info text-white' data-id='".$row['id']."' id='denyBtn' href='".route('detail-show', [$row->id])."'>Detail</a></div>";
+                    return $button;
+                })
+                ->rawColumns(['action'])
+                ->make(true);
+            }
+
+            return view('persetujuan-mitra.index', compact('data'));
         }
     }
 
@@ -70,14 +66,14 @@ class MitraController extends Controller{
         $mitra = Venue::where('id', $id)->first();
         $mitra->isapproved = 1;
         $mitra->save();
-        return redirect()->route('index-view');
+        return redirect()->route('index-sewa');
     }
 
     public function denymitra($id){
         $mitra = Venue::where('id', $id)->first();
         $mitra->isapproved = 2;
         $mitra->save();
-        return redirect()->route('index-view');
+        return redirect()->route('index-sewa');
     }
 
     public function detail($id){
