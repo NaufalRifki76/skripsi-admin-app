@@ -8,6 +8,7 @@ use App\Models\FieldDetailPhotos;
 use App\Models\RentItems;
 use App\Models\Venue;
 use App\Models\VenuePhotos;
+use App\Models\VenueRentItems;
 use Cartalyst\Sentinel\Laravel\Facades\Sentinel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -84,7 +85,7 @@ class MitraController extends Controller{
         $mitra = Venue::where('id', $id)->first();
         $venue_photo = VenuePhotos::where('venue_id', $id)->first();
         $field_detail = FieldDetail::where('venue_id', $id)->get();
-        $rent_items = RentItems::where('venue_id', $id)->get();
+        $rent_items = VenueRentItems::where('venue_id', $id)->get();
         $field_photo = DB::table('field_detail_photos')
         ->join('field_detail', 'field_detail_photos.field_detail_id', '=', 'field_detail.id')
         ->join('venue', 'field_detail.venue_id', '=', 'venue.id')

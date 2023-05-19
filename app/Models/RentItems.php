@@ -15,5 +15,5 @@ class RentItems extends Model
         'item_cost_hour'
     ];
 
-    protected $table = 'venue_rent_items';
+    protected $table = 'rent_items';
 }
