@@ -42,9 +42,9 @@ class MitraController extends Controller{
                     }
                 })
                 ->addColumn('action', function ($row){
-                    $button = "<div class='d-flex'><a style='margin-right: 5px;' class='setuju btn btn-sm  btn-danger text-white' data-id='".$row['id']."' id='accBtn' href='".route('deny-mitra', [$row->id])."'>Tolak</a>";
+                    $button = "<a style='margin-right: 5px;' class='setuju btn btn-sm  btn-danger text-white' data-id='".$row['id']."' id='accBtn' href='".route('deny-mitra', [$row->id])."'>Tolak</a>";
                     $button .= "<a style='margin-right: 5px;' class='setuju btn btn-sm  btn-success text-white' data-id='".$row['id']."' id='denyBtn' href='".route('acc-mitra', [$row->id])."'>Terima</a>";
-                    $button .= "<a style='margin-right: 5px;' class='setuju btn btn-sm  btn-info text-white' data-id='".$row['id']."' id='denyBtn' href='".route('detail-show', [$row->id])."'>Detail</a></div>";
+                    $button .= "<a style='margin-right: 5px;' class='setuju btn btn-sm  btn-info text-white' data-id='".$row['id']."' id='denyBtn' href='".route('detail-show', [$row->id])."'>Detail</a>";
                     return $button;
                 })
                 ->rawColumns(['action'])
@@ -82,6 +82,12 @@ class MitraController extends Controller{
         $venue_photo = VenuePhotos::where('venue_id', $id)->first();
         $field_detail = FieldDetail::where('venue_id', $id)->get();
         $rent_items = VenueRentItems::where('venue_id', $id)->get();
+        $item_type = DB::table('rent_items')
+        ->join('venue_rent_items', 'rent_items.id', '=', 'venue_rent_items.item_id')
+        ->join('venue', 'venue_rent_items.venue_id', '=', 'venue.id')
+        ->where('venue_id', '=', $id)
+        ->pluck('rent_items.item_name')
+        ->toArray();
         $field_photo = DB::table('field_detail_photos')
         ->join('field_detail', 'field_detail_photos.field_detail_id', '=', 'field_detail.id')
         ->join('venue', 'field_detail.venue_id', '=', 'venue.id')
@@ -89,6 +95,6 @@ class MitraController extends Controller{
         ->pluck('field_detail_photos.field_photo_base64')
         ->toArray();
         // dd($field_photo);
-        return view('persetujuan-mitra.detail', compact('mitra', 'venue_photo', 'field_detail', 'rent_items', 'field_photo'));
+        return view('persetujuan-mitra.detail', compact('mitra', 'venue_photo', 'field_detail', 'rent_items', 'field_photo', 'item_type'));
     }
 }

@@ -10,6 +10,7 @@ class VenueRentItems extends Model
     use HasFactory;
 
     protected $fillable = [
+        'item_id',
         'item_qty',
         'item_rent_cost'
     ];
