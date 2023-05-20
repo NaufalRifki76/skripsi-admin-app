@@ -218,7 +218,7 @@
                                             <label for="namaPerlengkapan" class="form-label h5">Nama Perlengkapan
                                                 <span class="text-danger">*</span></label>
                                             <select id="namaPerlengkapan" name="item_id[]" disabled class="form-select">
-                                                <option disabled value="{{$rent->id}}">{{$rent->item_name}}</option>
+                                                <option disabled selected value="">{{$item_type[$flag]}}</option>
                                             </select>
                                         </div>
                                     </div>
