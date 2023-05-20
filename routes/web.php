@@ -87,6 +87,16 @@ Route::get('/detail-pengembalian-dana', function () {
     return view('pengembalian-dana.detail');
 })->name('pengembalian-dana.detail');
 
+
+// Data pemesanan
+Route::get('/data-pemesanan', function () {
+    return view('data-pemesanan.index');
+})->name('data-pemesanan.index');
+
+Route::get('/detail-data-pemesanan', function () {
+    return view('data-pemesanan.detail');
+})->name('data-pemesanan.detail');
+
 // Persetujuan Pendaftaran Mitra
 // Route::get('/persetujuan-mitra', function () {
 //     return view('persetujuan-mitra.index');
