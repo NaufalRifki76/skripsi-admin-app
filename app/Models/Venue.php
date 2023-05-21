@@ -43,4 +43,14 @@ class Venue extends Model
     {
         return $this->hasMany(VenueRentItems::class);
     }
+
+    public function rent_hours()
+    {
+        return $this->hasMany(RentHours::class);
+    }
+
+    public function rent_hours_available()
+    {
+        return $this->hasOne(RentHoursAvailable::class);
+    }
 }

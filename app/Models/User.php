@@ -54,4 +54,8 @@ class User extends EloquentUser
     public function user_venue(){
         return $this->hasOne(Venue::class, 'user_id', 'id');
     }
+
+    public function rent_order(){
+        return $this->hasMany(RentOrder::class, 'user_id', 'id');
+    }
 }

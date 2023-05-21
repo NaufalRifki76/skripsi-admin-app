@@ -22,11 +22,13 @@ return new class extends Migration
             $table->string('cust_number');
             $table->string('cust_email');
             $table->string('field');
-            $table->string('order_date');
-            $table->time('start_hour');
-            $table->time('end_hour');
+            $table->date('order_date');
+            // $table->time('start_hour');
+            // $table->time('end_hour');
             $table->string('price_sum');
             $table->boolean('confirmation')->default(0);
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('venue_id')->references('id')->on('venue');
             $table->timestamps();
         });
     }
