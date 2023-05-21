@@ -47,9 +47,19 @@ Route::get('/login', function () {
     return view('auth.login');
 });
 
+// lapangan
 Route::get('/lapangan', function () {
     return view('lapangan.index');
 })->name('lapangan.index');
+
+Route::get('/jam-operasional-lapangan', function () {
+    return view('lapangan.jam-operasional');
+})->name('lapangan.jam-operasional');
+
+Route::get('/edit-lapangan', function () {
+    return view('lapangan.edit');
+})->name('lapangan.edit');
+
 
 Route::get('/kompetisi-sekolah', function () {
     return view('pengembangan-bakat.kompetisi-sekolah');
