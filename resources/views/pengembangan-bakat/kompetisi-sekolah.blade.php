@@ -9,7 +9,7 @@
                     <div class="row">
                         <div class="col-8">
                             <!-- BUTTON New -->
-                            <a class="btn btn-green-hover btn-sm" type="button"
+                            <a class="btn-green-hover" type="button"
                             style="text-decoration: none; color: white;" href="{{ route('add.tournament.sekolah') }}"><i
                             class="fa-solid fa-file-circle-plus"></i> Tambah Data Kompetisi</a>
                     </div>

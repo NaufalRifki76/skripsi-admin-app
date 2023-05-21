@@ -5,15 +5,6 @@
         <div class="card-body">
             <div class="row">
                 <h3 class="mb-3">Daftar Tempat Sewa Perlengkapan</h3>
-                <div class="newbtn">
-                    <div class="row">
-                        <div class="col-8">
-                            <!-- BUTTON New -->
-                            <a class="btn btn-green-hover btn-sm" type="button"
-                            style="text-decoration: none; color: white;" href="{{ route('sewa-perlengkapan.tambah') }}"><i
-                            class="fa-solid fa-file-circle-plus"></i> Tambah Sewa Perlengkapan</a>
-                    </div>
-                </div>
                 <br>
 
                 <table id="tabel-sewa-perlengkapan" class="table table-striped table-bordered display text-center" width="100%" cellspacing="0">
@@ -34,7 +25,7 @@
                           <td>15000<br></td>
                           <td class="d-flex justify-content-center text-center">
                             <button class="btn btn-sm btn-danger">Hapus</button>
-                            <a href="{{ route('sewa-perlengkapan.edit') }}"><button class="btn btn-sm btn-warning ms-2 px-3">Edit</button></a> 
+                            <a href="{{ route('sewa-perlengkapan.edit') }}"><button class="btn btn-sm btn-warning text-white ms-2 px-3">Edit</button></a> 
                         </td>
                         </tr>
                     </tbody>
