@@ -7,17 +7,18 @@
         <div class="row">
             <h3 class="mb-3">Tambah Daftar Jam Operasional Lapangan</h3>
             <p class="fs-6" style="color: #FCE700;">Tambahkan daftar jam operasional lapangan yang diingin dengan mengisi formulir di bawah!</p>
-            <form action="" method="">
+            <form action="{{route('store-hours-venue')}}" method="POST">
+                @csrf
                 <div class="row">
                     <div class="col-md-12">
                         <div class="mb-3">
                             <label for="tournament_name" class="form-label fw-bold text-dark h6">Nama Tempat Futsal <span
                                 class="text-danger">*</span></label>
-                            <select id="nama_tempat" class="form-select" required>
+                            <select id="nama_tempat" class="form-select" name="venue_id" required>
                                 <option selected disabled>Pilih nama tempat futsal...</option>
-                                <option value="1">Champion Futsal</option>
-                                <option value="2">Elang Futsal</option>
-                                <option value="3">Vini Vidi Vici FUtsal</option>
+                                @foreach ($venue as $key => $venues)
+                                <option value="{{$venues->id}}">{{$venues->venue_name}}</option>
+                                @endforeach
                             </select>
                         </div>
                     </div>
@@ -27,7 +28,7 @@
                             <div class="col-md-2">
                                 <div class="form-check mb-3">
                                     <input class="form-check-input" type="checkbox" value="1"
-                                        id="" name="">
+                                        id="" name="up00">
                                     <label class="form-check-label" for="">
                                         00.00 - 01.00
                                     </label>
@@ -36,7 +37,7 @@
                             <div class="col-md-2">
                                 <div class="form-check mb-3">
                                     <input class="form-check-input" type="checkbox" value="1"
-                                        id="" name="">
+                                        id="" name="up01">
                                     <label class="form-check-label" for="">
                                         01.00 - 02.00
                                     </label>
@@ -45,7 +46,7 @@
                             <div class="col-md-2">
                                 <div class="form-check mb-3">
                                     <input class="form-check-input" type="checkbox" value="1"
-                                        id="" name="">
+                                        id="" name="up02">
                                     <label class="form-check-label" for="">
                                         02.00 - 03.00
                                     </label>
@@ -54,7 +55,7 @@
                             <div class="col-md-2">
                                 <div class="form-check mb-3">
                                     <input class="form-check-input" type="checkbox" value="1"
-                                        id="" name="">
+                                        id="" name="up03">
                                     <label class="form-check-label" for="">
                                         03.00 - 04.00
                                     </label>
@@ -63,7 +64,7 @@
                             <div class="col-md-2">
                                 <div class="form-check mb-3">
                                     <input class="form-check-input" type="checkbox" value="1"
-                                        id="" name="">
+                                        id="" name="up04">
                                     <label class="form-check-label" for="">
                                         04.00 - 05.00
                                     </label>
@@ -72,7 +73,7 @@
                             <div class="col-md-2">
                                 <div class="form-check mb-3">
                                     <input class="form-check-input" type="checkbox" value="1"
-                                        id="" name="">
+                                        id="" name="up05">
                                     <label class="form-check-label" for="">
                                         05.00 - 06.00
                                     </label>
@@ -81,7 +82,7 @@
                             <div class="col-md-2">
                                 <div class="form-check mb-3">
                                     <input class="form-check-input" type="checkbox" value="1"
-                                        id="" name="">
+                                        id="" name="up06">
                                     <label class="form-check-label" for="">
                                         06.00 - 07.00
                                     </label>
@@ -90,7 +91,7 @@
                             <div class="col-md-2">
                                 <div class="form-check mb-3">
                                     <input class="form-check-input" type="checkbox" value="1"
-                                        id="" name="">
+                                        id="" name="up07">
                                     <label class="form-check-label" for="">
                                         07.00 - 08.00
                                     </label>
@@ -99,7 +100,7 @@
                             <div class="col-md-2">
                                 <div class="form-check mb-3">
                                     <input class="form-check-input" type="checkbox" value="1"
-                                        id="" name="">
+                                        id="" name="up08">
                                     <label class="form-check-label" for="">
                                         08.00 - 09.00
                                     </label>
@@ -108,7 +109,7 @@
                             <div class="col-md-2">
                                 <div class="form-check mb-3">
                                     <input class="form-check-input" type="checkbox" value="1"
-                                        id="" name="">
+                                        id="" name="up09">
                                     <label class="form-check-label" for="">
                                         09.00 - 10.00
                                     </label>
@@ -117,7 +118,7 @@
                             <div class="col-md-2">
                                 <div class="form-check mb-3">
                                     <input class="form-check-input" type="checkbox" value="1"
-                                        id="" name="">
+                                        id="" name="up10">
                                     <label class="form-check-label" for="">
                                         10.00 - 11.00
                                     </label>
@@ -126,7 +127,7 @@
                             <div class="col-md-2">
                                 <div class="form-check mb-3">
                                     <input class="form-check-input" type="checkbox" value="1"
-                                        id="" name="">
+                                        id="" name="up11">
                                     <label class="form-check-label" for="">
                                         11.00 - 12.00
                                     </label>
@@ -135,7 +136,7 @@
                             <div class="col-md-2">
                                 <div class="form-check mb-3">
                                     <input class="form-check-input" type="checkbox" value="1"
-                                        id="" name="">
+                                        id="" name="up12">
                                     <label class="form-check-label" for="">
                                         12.00 - 13.00
                                     </label>
@@ -144,7 +145,7 @@
                             <div class="col-md-2">
                                 <div class="form-check mb-3">
                                     <input class="form-check-input" type="checkbox" value="1"
-                                        id="" name="">
+                                        id="" name="up13">
                                     <label class="form-check-label" for="">
                                         13.00 - 14.00
                                     </label>
@@ -153,7 +154,7 @@
                             <div class="col-md-2">
                                 <div class="form-check mb-3">
                                     <input class="form-check-input" type="checkbox" value="1"
-                                        id="" name="">
+                                        id="" name="up14">
                                     <label class="form-check-label" for="">
                                         14.00 - 15.00
                                     </label>
@@ -162,7 +163,7 @@
                             <div class="col-md-2">
                                 <div class="form-check mb-3">
                                     <input class="form-check-input" type="checkbox" value="1"
-                                        id="" name="">
+                                        id="" name="up15">
                                     <label class="form-check-label" for="">
                                         15.00 - 16.00
                                     </label>
@@ -171,7 +172,7 @@
                             <div class="col-md-2">
                                 <div class="form-check mb-3">
                                     <input class="form-check-input" type="checkbox" value="1"
-                                        id="" name="">
+                                        id="" name="up16">
                                     <label class="form-check-label" for="">
                                         16.00 - 17.00
                                     </label>
@@ -180,7 +181,7 @@
                             <div class="col-md-2">
                                 <div class="form-check mb-3">
                                     <input class="form-check-input" type="checkbox" value="1"
-                                        id="" name="">
+                                        id="" name="up17">
                                     <label class="form-check-label" for="">
                                         17.00 - 18.00
                                     </label>
@@ -189,7 +190,7 @@
                             <div class="col-md-2">
                                 <div class="form-check mb-3">
                                     <input class="form-check-input" type="checkbox" value="1"
-                                        id="" name="">
+                                        id="" name="up18">
                                     <label class="form-check-label" for="">
                                         18.00 - 19.00
                                     </label>
@@ -198,7 +199,7 @@
                             <div class="col-md-2">
                                 <div class="form-check mb-3">
                                     <input class="form-check-input" type="checkbox" value="1"
-                                        id="" name="">
+                                        id="" name="up19">
                                     <label class="form-check-label" for="">
                                         19.00 - 20.00
                                     </label>
@@ -207,7 +208,16 @@
                             <div class="col-md-2">
                                 <div class="form-check mb-3">
                                     <input class="form-check-input" type="checkbox" value="1"
-                                        id="" name="">
+                                        id="" name="up20">
+                                    <label class="form-check-label" for="">
+                                        20.00 - 21.00
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input" type="checkbox" value="1"
+                                        id="" name="up21">
                                     <label class="form-check-label" for="">
                                         21.00 - 22.00
                                     </label>
@@ -216,7 +226,7 @@
                             <div class="col-md-2">
                                 <div class="form-check mb-3">
                                     <input class="form-check-input" type="checkbox" value="1"
-                                        id="" name="">
+                                        id="" name="up22">
                                     <label class="form-check-label" for="">
                                         22.00 - 23.00
                                     </label>
@@ -225,7 +235,7 @@
                             <div class="col-md-2">
                                 <div class="form-check mb-3">
                                     <input class="form-check-input" type="checkbox" value="1"
-                                        id="" name="">
+                                        id="" name="up23">
                                     <label class="form-check-label" for="">
                                         23.00 - 00.00
                                     </label>
@@ -236,7 +246,7 @@
                 </div>
                 <div class="d-flex justify-content-end mt-3 mb-2">
                     <div class="mr-3">
-                        <a class="btn btn-danger" href="{{ route('lapangan.index') }}" role="button">Kembali</a>
+                        <a class="btn btn-danger" href="{{ route('index-venue') }}" role="button">Kembali</a>
                     </div>
                     <div class="">
                         <button type="submit" class="btn-green-hover">Tambahkan</button>

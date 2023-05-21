@@ -425,7 +425,7 @@
                     </div>
                     <div class="d-flex justify-content-end mt-3 mb-2">
                         <div class="mr-3">
-                            <a class="btn btn-danger" href="{{ route('lapangan.index') }}" role="button">Kembali</a>
+                            <a class="btn btn-danger" href="{{ route('index-venue') }}" role="button">Kembali</a>
                         </div>
                         <div class="">
                             <button type="submit" class="btn-green-hover">Simpan</button>

@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\DashboardController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Features\CompetitionController;
 use App\Http\Controllers\Features\MitraController;
+use App\Http\Controllers\Features\VenueController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -38,6 +39,11 @@ Route::get('acc-mitra/{id}', [MitraController::class, 'accmitra'])->name('acc-mi
 Route::get('deny-mitra/{id}', [MitraController::class, 'denymitra'])->name('deny-mitra');
 Route::get('detail-show/{id}', [MitraController::class, 'detail'])->name('detail-show');
 
+// Data Lappangan
+Route::get('index-venue', [VenueController::class, 'index'])->name('index-venue');
+Route::get('create-hours-venue', [VenueController::class, 'createhours'])->name('create-hours-venue');
+Route::post('store-hours-venue', [VenueController::class, 'storehours'])->name('store-hours-venue');
+
 /*---------------- BUAT TESTING DI BAWAH --------------------*/
 // Route::get('/', function () {
 //     return view('layout.index');
@@ -48,9 +54,9 @@ Route::get('/login', function () {
 });
 
 // lapangan
-Route::get('/lapangan', function () {
-    return view('lapangan.index');
-})->name('lapangan.index');
+// Route::get('/lapangan', function () {
+//     return view('lapangan.index');
+// })->name('lapangan.index');
 
 Route::get('/jam-operasional-lapangan', function () {
     return view('lapangan.jam-operasional');
@@ -116,8 +122,6 @@ Route::get('/index-faq', function () {
 Route::get('/tambah-faq', function () {
     return view('faq.tambah');
 })->name('faq.tambah');
-
-
 
 // Persetujuan Pendaftaran Mitra
 // Route::get('/persetujuan-mitra', function () {

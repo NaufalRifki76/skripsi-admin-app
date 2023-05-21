@@ -11,7 +11,7 @@ class DashboardController extends Controller{
             return view('layout.dashboard'); //ke home
         }
         else{
-            return redirect()->route('login.dashboard'); //ke login
+            return redirect()->route('login.index'); //ke login
         }
     }
 }

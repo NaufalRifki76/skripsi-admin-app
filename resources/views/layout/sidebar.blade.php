@@ -18,7 +18,7 @@
                 <a href="{{ route('data-user.index') }}"><i class="fa-solid fa-user mr-3 ml-2"></i></span> Data User</a>
             </li>
             <li>
-                <a href="{{ route('lapangan.index') }}"><i class="fa-solid fa-futbol mr-3 ml-2"></i></span> Data Lapangan</a>
+                <a href="{{ route('index-venue') }}"><i class="fa-solid fa-futbol mr-3 ml-2"></i></span> Data Lapangan</a>
             </li>
             <li>
                 <a href="{{ route('pengembalian-dana.index') }}"><i class="fa-solid fa-money-bill mr-3 ml-2"></i></span> Pengembalian Dana</a>
