@@ -107,6 +107,18 @@ Route::get('/detail-data-pemesanan', function () {
     return view('data-pemesanan.detail');
 })->name('data-pemesanan.detail');
 
+
+// FAQ
+Route::get('/index-faq', function () {
+    return view('faq.index');
+})->name('faq.index');
+
+Route::get('/tambah-faq', function () {
+    return view('faq.tambah');
+})->name('faq.tambah');
+
+
+
 // Persetujuan Pendaftaran Mitra
 // Route::get('/persetujuan-mitra', function () {
 //     return view('persetujuan-mitra.index');

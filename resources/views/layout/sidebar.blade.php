@@ -35,6 +35,9 @@
             <li>
                 <a href="{{ route('tournament.umur') }}"><i class="fa-solid fa-user mr-3 ml-2"></i> Kompetisi Umur</a>
             </li>
+            <li>
+                <a href="{{ route('faq.index') }}"><i class="fa-solid fa-question mr-3 ml-2"></i> FAQ</a>
+            </li>
         </ul>
 
         <ul class="list-unstyled components mb-5">
