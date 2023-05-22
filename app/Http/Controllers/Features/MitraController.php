@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Features;
 
 use App\Http\Controllers\Controller;
 use App\Models\FieldDetail;
+use App\Models\Role;
+use App\Models\User;
 use App\Models\Venue;
 use App\Models\VenuePhotos;
 use App\Models\VenueRentItems;
@@ -66,6 +68,12 @@ class MitraController extends Controller{
         $mitra = Venue::where('id', $id)->first();
         $mitra->isapproved = 1;
         $mitra->save();
+
+        $vendorRole = Role::where('slug', 'vendor')->first();
+        $user = User::where('id', $id)->first();
+        $user->roles()->detach();
+        $user->roles()->attach($vendorRole->id);
+
         return redirect()->route('index-sewa');
     }
 
