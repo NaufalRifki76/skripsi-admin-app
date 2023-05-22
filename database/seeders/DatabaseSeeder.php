@@ -19,7 +19,8 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             TournamentSeeder::class,
             VenueSeeder::class,
-            RentItemSeeder::class
+            RentItemSeeder::class,
+            VenuePhotoSeeder::class
         ]);
     }
 }

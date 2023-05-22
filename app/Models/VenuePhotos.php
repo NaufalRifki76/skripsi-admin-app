@@ -17,6 +17,6 @@ class VenuePhotos extends Model
 
     public function fieldphoto()
     {
-        return $this->belongsTo(Field::class);
+        return $this->belongsTo(Venue::class);
     }
 }
