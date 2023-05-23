@@ -70,7 +70,7 @@ class MitraController extends Controller{
         $mitra->save();
 
         $vendorRole = Role::where('slug', 'vendor')->first();
-        $user = User::where('id', $id)->first();
+        $user = User::where('id', $mitra->user_id)->first();
         $user->roles()->detach();
         $user->roles()->attach($vendorRole->id);
 
