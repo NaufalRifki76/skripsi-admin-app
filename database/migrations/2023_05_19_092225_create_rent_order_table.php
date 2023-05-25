@@ -27,6 +27,7 @@ return new class extends Migration
             // $table->time('end_hour');
             $table->string('price_sum');
             $table->boolean('confirmation')->default(0);
+            $table->longText('transfer_confirm_base64')->nullable();
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('venue_id')->references('id')->on('venue');
             $table->timestamps();

@@ -19,6 +19,7 @@ class RentOrder extends Model
         'order_date',
         'price_sum',
         'confirmation',
+        'transfer_confirm_base64'
     ];
 
     protected $table = 'rent_order';
