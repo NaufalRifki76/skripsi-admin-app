@@ -15,7 +15,7 @@ class VenuePhotos extends Model
 
     protected $table = 'photos_venue';
 
-    public function fieldphoto()
+    public function venuephoto()
     {
         return $this->belongsTo(Venue::class);
     }

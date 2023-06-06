@@ -21,7 +21,7 @@ class FieldDetail extends Model
         return $this->belongsTo(Venue::class);
     }
 
-    public function photo_field_detail()
+    public function field_base64()
     {
         return $this->hasOne(FieldDetailPhotos::class);
     }

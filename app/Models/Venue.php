@@ -53,4 +53,9 @@ class Venue extends Model
     {
         return $this->hasOne(RentHoursAvailable::class);
     }
+
+    public function user_venue()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

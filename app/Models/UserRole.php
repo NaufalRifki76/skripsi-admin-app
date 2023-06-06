@@ -10,7 +10,7 @@ use App\Model\User;
 class UserRole extends Model
 {
     protected $fillable = [
-            'role_id'
+        'role_id'
     ];
 
     protected $table = 'role_users';
