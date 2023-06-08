@@ -12,7 +12,7 @@
                 <div class="card shadow-lg text-center" style="border: none; border-top-right-radius: 24px; border-bottom-left-radius: 24px; background-color: #439A97;">
                     <div class="card-body">
                         <h5 class="fw-bold text-white"><u>Jumlah Lapangan (Mitra)</u></h5>
-                        <h4 class="mt-3 text-white">10</h4>
+                        <h4 class="mt-3 text-white">{{ $venues->count() }}</h4>
                     </div>
                 </div>
             </div>
@@ -20,7 +20,7 @@
                 <div class="card shadow-lg text-center" style="border: none; border-top-right-radius: 24px; border-bottom-left-radius: 24px; background-color: #439A97;">
                     <div class="card-body">
                         <h5 class="fw-bold text-white"><u>Jumlah Pengguna Website</u></h5>
-                        <h4 class="mt-3 text-white">10</h4>
+                        <h4 class="mt-3 text-white">{{ $user_players }}</h4>
                     </div>
                 </div>
             </div>
@@ -28,7 +28,7 @@
                 <div class="card shadow-lg text-center" style="border: none; border-top-right-radius: 24px; border-bottom-left-radius: 24px; background-color: #439A97;">
                     <div class="card-body">
                         <h5 class="fw-bold text-white"><u>Jumlah Transaksi Pemesanan</u></h5>
-                        <h4 class="mt-3 text-white">10</h4>
+                        <h4 class="mt-3 text-white">{{ $rent }}</h4>
                     </div>
                 </div>
             </div>
