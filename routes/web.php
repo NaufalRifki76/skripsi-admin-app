@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\DashboardController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Features\CompetitionController;
 use App\Http\Controllers\Features\MitraController;
+use App\Http\Controllers\Features\OrdersController;
 use App\Http\Controllers\Features\VenueController;
 use Illuminate\Support\Facades\Route;
 
@@ -43,6 +44,11 @@ Route::get('detail-show/{id}', [MitraController::class, 'detail'])->name('detail
 Route::get('index-venue', [VenueController::class, 'index'])->name('index-venue');
 Route::get('create-hours-venue', [VenueController::class, 'createhours'])->name('create-hours-venue');
 Route::post('store-hours-venue', [VenueController::class, 'storehours'])->name('store-hours-venue');
+
+// Data pemesanan / orders
+Route::get('/orders', [OrdersController::class, 'index'])->name('data-pemesanan.index');
+Route::get('/orders-detail', [OrdersController::class, 'index'])->name('data-pemesanan.detail');
+
 
 /*---------------- BUAT TESTING DI BAWAH --------------------*/
 // Route::get('/', function () {
@@ -104,14 +110,14 @@ Route::get('/detail-pengembalian-dana', function () {
 })->name('pengembalian-dana.detail');
 
 
-// Data pemesanan
-Route::get('/data-pemesanan', function () {
-    return view('data-pemesanan.index');
-})->name('data-pemesanan.index');
+// // Data pemesanan
+// Route::get('/data-pemesanan', function () {
+//     return view('data-pemesanan.index');
+// })->name('data-pemesanan.index');
 
-Route::get('/detail-data-pemesanan', function () {
-    return view('data-pemesanan.detail');
-})->name('data-pemesanan.detail');
+// Route::get('/detail-data-pemesanan', function () {
+//     return view('data-pemesanan.detail');
+// })->name('data-pemesanan.detail');
 
 
 // FAQ
