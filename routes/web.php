@@ -47,7 +47,7 @@ Route::post('store-hours-venue', [VenueController::class, 'storehours'])->name('
 
 // Data pemesanan / orders
 Route::get('/orders', [OrdersController::class, 'index'])->name('data-pemesanan.index');
-Route::get('/orders-detail', [OrdersController::class, 'index'])->name('data-pemesanan.detail');
+Route::get('/orders-detail', [OrdersController::class, 'detail'])->name('data-pemesanan.detail');
 
 
 /*---------------- BUAT TESTING DI BAWAH --------------------*/

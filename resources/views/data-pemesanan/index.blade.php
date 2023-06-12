@@ -21,15 +21,14 @@
                     </thead>
                     <tbody class="text-center">
                         <tr>
-                          <td>Naufal Faris</td>
-                          <td>Vini Vidi Vici Futsal</td>
+                          <td>Faris Hakim</td>
+                          <td>Futsal Koe</td>
                           <td>10/12/2023</td>
                           <td>09.00 - 10.00<br></td>
                           <td>150000<br/></td>
-                          <td>Pending, Sukses, Ditolak<br></td>
+                          <td>Pending<br></td>
                           <td class="d-flex justify-content-center text-center">
                             <a href="{{ route('data-pemesanan.detail') }}"><button class="btn btn-sm btn-warning me-2 px-3 text-white">Detail</button></a> 
-                            <button class="btn btn-sm btn-danger">Hapus</button>
                         </td>
                         </tr>
                     </tbody>

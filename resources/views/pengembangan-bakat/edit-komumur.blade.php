@@ -96,7 +96,7 @@
                             <a class="btn btn-danger" href="{{ route('tournament.umur') }}" role="button">Kembali</a>
                         </div>
                         <div class="">
-                            <button type="submit" class="btn btn-green-hover">Edit</button>
+                            <button type="submit" class="btn-green-hover">Edit</button>
                         </div>
                     </div>
                 </form>

@@ -59,7 +59,7 @@
                                 role="button">Kembali</a>
                         </div>
                         <div class="">
-                            <button type="submit" class="btn btn-green-hover">Simpan</button>
+                            <button type="submit" class="btn-green-hover">Simpan</button>
                         </div>
                     </div>
                 </form>

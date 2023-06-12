@@ -3,19 +3,17 @@
 @section('content')
 
     <div class="container">
-        <div class="py-5">
+        <div class="py-3">
             <p class="h1 fw-bold text-center" style="color: #439A97">Detail Informasi Pendaftaran Mitra</p>
             <p class="h5 fw-normal text-center" style="color: #FCE700">Detail informasi formulir pendaftaran mitra terdapat di bawah!</p>
         </div>
         <div class="row">
-            <div class="col-md-1"></div>
-            <div class="col-md-10">
-                <div class="card shadow-lg mb-5" style="border: none; border-radius: 12px; background-image: ">
-                    <div class="card-body">
+            <div class="card shadow">
+                <div class="card-body">
                         <form action="" method="" enctype="">
                             {{-- Data Venue --}}
                             <div class="row">
-                                <h3 class="fw-bold mb-3">Informasi Lapangan Yang Anda Daftarkan</h3>
+                                <h3 class="fw-bold mb-3">Informasi Lapangan Yang User Daftarkan</h3>
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="inputState" class="form-label h5">Nama Lapangan <span
@@ -38,16 +36,6 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="mb-3">
-                                        <label for="inputState" class="form-label h5">Foto Lapangan (.jpg,
-                                            .png)</label>
-                                        {{-- <input type="file" class="form-control bg-white" disabled accept=".jpg, .jpeg, .png"
-                                            id="venue_photo_base64" name="venue_photo_base64"
-                                            placeholder="Jumlah lapangan tersedia..."> --}}
-                                            <div class="card-image card-circular">
-                                                <img class="rounded img-fluid" width="250px" src="data:image/png;base64,{{$venue_photo->venue_photo_base64}}">
-                                            </div>
-                                    </div>
-                                    <div class="mb-3">
                                         <label for="" class="form-label h5">Deskripsi Lapangan <span
                                                 class="text-danger">*</span></label>
                                         <textarea class="form-control" disabled placeholder="Deskripsi lapangan anda..." id="venue_desc" name="venue_desc"
@@ -58,6 +46,16 @@
                                                 class="text-danger">*</span></label>
                                         <input type="time" disabled class="form-control bg-white" id="close_hour" value="{{$mitra->close_hour}}"
                                             name="close_hour" placeholder="">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="inputState" class="form-label h5">Foto Lapangan (.jpg,
+                                            .png)</label>
+                                        {{-- <input type="file" class="form-control bg-white" disabled accept=".jpg, .jpeg, .png"
+                                            id="venue_photo_base64" name="venue_photo_base64"
+                                            placeholder="Jumlah lapangan tersedia..."> --}}
+                                            <div class="card-image card-circular">
+                                                <img class="rounded img-fluid" width="250px" style="height: 200px" src="data:image/png;base64,{{$venue_photo->venue_photo_base64}}">
+                                            </div>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
@@ -178,14 +176,14 @@
                                         </div>
                                     </div>
                                     <div class="col-md-4">
-                                        <div class="mb-3">
+                                        <div class="mb-3 text-center">
                                             <label for="inputState" class="form-label h5">Foto Lapangan (.jpg,
                                                 .png)</label>
                                             {{-- <input type="file" class="form-control bg-white" disabled accept=".jpg, .jpeg, .png"
                                                 id="field_photo_base64" name="field_photo_base64[]"
                                                 placeholder="Jumlah lapangan tersedia..."> --}}
                                                 <div class="card-image card-circular">
-                                                    <img class="rounded img-fluid" src="data:image/png;base64,{{$field_photo[$key]}}">
+                                                    <img class="rounded img-fluid" width="250px" style="height: 200px" src="data:image/png;base64,{{$field_photo[$key]}}">
                                                 </div>
                                         </div>
                                     </div>
@@ -252,7 +250,6 @@
                         </form>
                     </div>
                 </div>
-            </div>
             <div class="col-md-1"></div>
         </div>
     </div>

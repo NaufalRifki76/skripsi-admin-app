@@ -26,9 +26,9 @@
             <li>
                 <a href="{{ route('index-sewa') }}"><i class="fa-solid fa-person-circle-check mr-3 ml-2"></i></span> Persetujuan Mitra</a>
             </li>
-            <li>
+            {{-- <li>
                 <a href="{{ route('sewa-perlengkapan.index') }}"><i class="fa-solid fa-briefcase mr-3 ml-2"></i> Sewa Perlengkapan</a>
-            </li>
+            </li> --}}
             <li>
                 <a href="{{ route('tournament.sekolah') }}"><i class="fa-solid fa-school fa-sm mr-3 ml-2"></i> Kompetisi Sekolah</a>
             </li>

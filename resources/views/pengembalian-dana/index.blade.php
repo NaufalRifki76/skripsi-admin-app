@@ -23,14 +23,14 @@
                     <tbody class="text-center">
                         <tr>
                             <td>Claudio</td>
-                            <td>Faris Futsal</td>
-                            <td>19/02/2023</td>
+                            <td>Koe Futsal</td>
+                            <td>19/05/2023</td>
                             <td>150000</td>
                             <td><button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#bukti-transfer"><i
                                         class="fa-solid fa-eye"></i></button></td>
-                            <td>Diterima, Ditolak, Pending</td>
+                            <td>Pending</td>
                             <td class="d-flex justify-content-center text-center">
-                                <a href="{{ route('pengembalian-dana.detail') }}" class="btn btn-sm btn-warning text-white me-2">Detail</a>
+                                <a href="{{ route('pengembalian-dana.detail') }}" class="btn-sm btn-warning text-white me-2">Detail</a>
                                 <button class="btn btn-sm btn-danger me-2">Tolak</button>
                                 <button class="btn btn-sm btn-primary">Terima</button>
                             </td>

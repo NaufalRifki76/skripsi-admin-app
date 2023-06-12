@@ -20,27 +20,25 @@
                     </thead>
                     <tbody class="text-center">
                         <tr>
-                          <td>1</td>
-                          <td>Claudio</td>
-                          <td>claudio@gmail.com</td>
-                          <td>081265996988</td>
-                          <td>Pengguna</td>
-                          <td>Vip</td>
-                          <td class="d-flex justify-content-center text-center">
-                            <a href="{{ route('data-user.edit') }}"><button class="btn btn-sm btn-warning text-white me-2 px-3">Edit</button></a> 
-                            <button class="btn btn-sm btn-danger">Hapus</button>
-                        </td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Faris</td>
-                            <td>faris@gmail.com</td>
-                            <td>081265996988</td>
+                            <td>1</td>
+                            <td>Koe Futsal</td>
+                            <td>koefutsal@google.com</td>
+                            <td>021659365448</td>
                             <td>Mitra</td>
                             <td>Normal</td>
                             <td class="d-flex justify-content-center text-center">
                               <a href="{{ route('data-user.edit') }}"><button class="btn btn-sm btn-warning text-white me-2 px-3">Edit</button></a> 
-                              <button class="btn btn-sm btn-danger">Hapus</button>
+                          </td>
+                          </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Faris Hakim</td>
+                            <td>faris@google.com</td>
+                            <td>081265996988</td>
+                            <td>User</td>
+                            <td>Normal</td>
+                            <td class="d-flex justify-content-center text-center">
+                              <a href="{{ route('data-user.edit') }}"><button class="btn btn-sm btn-warning text-white me-2 px-3">Edit</button></a> 
                           </td>
                           </tr>
                     </tbody>

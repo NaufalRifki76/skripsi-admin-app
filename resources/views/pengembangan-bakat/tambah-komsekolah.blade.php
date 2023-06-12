@@ -87,7 +87,7 @@
                             <a class="btn btn-danger" href="{{ route('tournament.sekolah') }}" role="button">Kembali</a>
                         </div>
                         <div class="">
-                            <button type="submit" class="btn btn-green-hover">Tambahkan</button>
+                            <button type="submit" class="btn-green-hover">Tambahkan</button>
                         </div>
                     </div>
                 </form>
