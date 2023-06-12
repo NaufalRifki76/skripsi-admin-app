@@ -40,7 +40,7 @@ Route::get('acc-mitra/{id}', [MitraController::class, 'accmitra'])->name('acc-mi
 Route::get('deny-mitra/{id}', [MitraController::class, 'denymitra'])->name('deny-mitra');
 Route::get('detail-show/{id}', [MitraController::class, 'detail'])->name('detail-show');
 
-// Data Lappangan
+// Data Lapangan
 Route::get('index-venue', [VenueController::class, 'index'])->name('index-venue');
 Route::get('create-hours-venue', [VenueController::class, 'createhours'])->name('create-hours-venue');
 Route::post('store-hours-venue', [VenueController::class, 'storehours'])->name('store-hours-venue');
