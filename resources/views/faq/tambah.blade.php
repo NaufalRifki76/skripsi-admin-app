@@ -7,13 +7,14 @@
                 <h3 class="mb-3">Tambah Daftar FAQ</h3>
                 <p class="fs-6" style="color: #FCE700;">Tambahkan daftar FAQ dengan mengisi formulir di
                     bawah!</p>
-                <form action="" method="">
+                <form action="{{route('store-faq')}}" method="POST">
+                    @csrf
                     <div class="row">
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="tournament_name" class="form-label text-dark h6 fw-bold">Pertanyaan <span
                                         class="text-danger">*</span></label>
-                                <textarea class="form-control" required placeholder="" id="" name=""
+                                <textarea class="form-control" required placeholder="" id="question" name="question"
                                     rows="2"></textarea>
                             </div>
                         </div>
@@ -21,14 +22,14 @@
                             <div class="mb-3">
                                 <label for="tournament_name" class="form-label text-dark h6 fw-bold">Jawaban <span
                                         class="text-danger">*</span></label>
-                                <textarea class="form-control" required placeholder="" id="" name=""
+                                <textarea class="form-control" required placeholder="" id="answer" name="answer"
                                     rows="2"></textarea>
                             </div>
                         </div>
                     </div>
                     <div class="d-flex justify-content-end mt-3 mb-2">
                         <div class="mr-3">
-                            <a class="btn btn-danger" href="{{ route('faq.index') }}"
+                            <a class="btn btn-danger" href="{{ route('index-faq') }}"
                                 role="button">Kembali</a>
                         </div>
                         <div class="">

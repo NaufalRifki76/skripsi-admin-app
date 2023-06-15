@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\DashboardController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Features\CompetitionController;
+use App\Http\Controllers\Features\FAQController;
 use App\Http\Controllers\Features\MitraController;
 use App\Http\Controllers\Features\OrdersController;
 use App\Http\Controllers\Features\VenueController;
@@ -49,6 +50,10 @@ Route::post('store-hours-venue', [VenueController::class, 'storehours'])->name('
 Route::get('/orders', [OrdersController::class, 'index'])->name('data-pemesanan.index');
 Route::get('/orders-detail', [OrdersController::class, 'detail'])->name('data-pemesanan.detail');
 
+// FAQ
+Route::get('index-faq', [FAQController::class, 'index'])->name('index-faq');
+Route::get('create-faq', [FAQController::class, 'create'])->name('create-faq');
+Route::post('store-faq', [FAQController::class, 'store'])->name('store-faq');
 
 /*---------------- BUAT TESTING DI BAWAH --------------------*/
 // Route::get('/', function () {
@@ -121,9 +126,9 @@ Route::get('/detail-pengembalian-dana', function () {
 
 
 // FAQ
-Route::get('/index-faq', function () {
-    return view('faq.index');
-})->name('faq.index');
+// Route::get('/index-faq', function () {
+//     return view('faq.index');
+// })->name('faq.index');
 
 Route::get('/tambah-faq', function () {
     return view('faq.tambah');

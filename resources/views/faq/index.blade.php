@@ -10,7 +10,7 @@
                         <div class="col-8">
                             <!-- BUTTON New -->
                             <a class="btn-green-hover" type="button"
-                            style="text-decoration: none; color: white;" href="{{ route('faq.tambah') }}"><i
+                            style="text-decoration: none; color: white;" href="{{route('create-faq')}}"><i
                             class="fa-solid fa-file-circle-plus"></i> Tambah FAQ</a>
                     </div>
                 </div>
@@ -24,19 +24,34 @@
                             <th class="text-center">Action</th>
                         </tr>
                     </thead>
-                    <tbody class="text-center">
-                        <tr>
-                          <td>Bagaimana cara melakukan pemesanan lapangan di Main Bola?</td>
-                          <td>Cara melakukan pesanan lapangan di Main Bola Pertama klik booking lapangan yang ada di menu navigasi atau halaman home website Main Bola. Kemudian pilih lapangan yang diinginkan, lalu klik card lapangan tersebut. Setelah itu, klik tombol cari lapangan untuk memilih lapangan yang diinginkan di tempat futsal tersebut. Kemudianuser memilih lapangan yang tersedia di tempat tersebut dengan menekan tombol pesan lapangan. Setelah itu isi formulir yang diminta untuk melanjutkan pemesanan. Langkah terakhir pengguna harus upload bukti pembayaran secara trasfer yang dilakukan ke nomor rekening tertera di menu pembayaran. Pesan berhasil dilakukan ketika pengguna sudah klik tombol pesan lapangan dan upload bukti pembayaran atau tarnsfer.</td>
-                          <td class="d-flex justify-content-center text-center">
-                            <button class="btn btn-sm btn-danger">Hapus</button>
-                        </td>
-                        </tr>
-                    </tbody>
                 </table>
             </div>
         </div>
     </div>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            var table_faq = $('#tabel-faq').DataTable({
+                processing: true,
+                serverSide: true,
+                responsive: true,
+                ajax: {
+                    url: "{{route('index-faq')}}",
+                    type: 'GET',
+                },
+                columns: [
+                    {data: 'question', name: 'question'},
+                    {data: 'answer', name: 'answer'},
+                    {data: 'action', name: 'action'}
+                ],
+                
+                order: [
+                    [0, 'asc']
+                ],
+            });
+        });
+    </script>
+    
     @push('css')
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.4.0/css/responsive.bootstrap5.min.css">
