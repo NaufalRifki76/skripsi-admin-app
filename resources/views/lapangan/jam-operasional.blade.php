@@ -249,7 +249,7 @@
                         <a class="btn btn-danger" href="{{ route('index-venue') }}" role="button">Kembali</a>
                     </div>
                     <div class="">
-                        <button type="submit" class="btn-green-hover">Tambahkan</button>
+                        <button type="button" class="btn-green-hover jamOperasional">Tambahkan</button>
                     </div>
                 </div>
             </form>
@@ -265,6 +265,39 @@
 @endpush
 
 @push('scripts')
+{{-- Sweet Alert --}}
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    $(document).ready(function() {
+        //melakukan proses multiple input 
+        $("form .jamOperasional").click(function(e) {
+            let $form = $(this).closest('form');
+            Swal.fire({
+                title: 'Apakah data yang anda tambahkan sudah benar?',
+                text: "Pastikan jam operasional yang anda pilih sudah benar!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#62B6B7',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya, Tambahkan!',
+                cancelButtonText: 'Kembali',
+            }).then((result) => {
+            if (result.isConfirmed) {
+                $form.submit();
+            } else {
+                Swal.fire({
+                    position: 'center',
+                    icon: 'error',
+                    title: 'Batal !',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            }
+        });
+        });
+    });
+</script>
+
 {{-- Select2 --}}
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script>
