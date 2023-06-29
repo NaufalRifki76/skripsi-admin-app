@@ -28,7 +28,7 @@ class VenueController extends Controller{
                     }
                 })
                 ->addColumn('action', function ($row){
-                    $button = "<a style='margin-right: 5px;' class='setuju btn btn-sm  btn-warning text-white' data-id='".$row['id']."' id='accBtn' href=''>Edit</a>";
+                    $button = "<a style='margin-right: 5px;' class='setuju btn btn-sm  btn-warning text-white' data-id='".$row['acc-id']."' id='accBtn' href=''>Edit</a>";
                     $button .= "<a style='margin-right: 5px;' class='setuju btn btn-sm  btn-danger text-white' data-id='".$row['id']."' id='denyBtn' href=''>Delete</a>";
                     return $button;
                 })

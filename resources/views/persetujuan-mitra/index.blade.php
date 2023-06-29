@@ -10,6 +10,7 @@
                     cellspacing="0">
                     <thead style="background-color: #439a97">
                         <tr>
+                            <th class="text-center">ID</th>
                             <th class="text-center">Nama Venue</th>
                             <th class="text-center">Jam Buka</th>
                             <th class="text-center">Jumlah Lapangan</th>
@@ -63,6 +64,10 @@
                     type: 'GET',
                 },
                 columns: [{
+                        data: 'id',
+                        name: 'id'
+                    },
+                    {
                         data: 'venue_name',
                         name: 'venue_name'
                     },
@@ -93,13 +98,14 @@
                 ],
             });
 
-            $(document).on('click', '#delBtn', function() {
+            $(document).on('click', '#accBtn', function() {
                 $.ajaxSetup({
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     }
                 });
-                var delete_id = $(this).data('id');
+                var acc_id = $(this).data('id');
+                console.log('acc_id:', acc_id);
                 Swal.fire({
                 title: 'Apakah anda yakin ingin menerima data ini?',
                 text: "Data yang telah diterima tidak dapat diubah statusnya!",
@@ -114,17 +120,17 @@
                     $.ajax({
                         method: "POST",
                         dataType: "json",
-                        url: '#',
+                        url: '{{route("acc-mitra")}}',
                         data: {
-                            'id': delete_id,
+                            'id': acc_id,
                         }
                     }).done(function(data, textStatus, jqXHR) {
                         Swal.fire(
                         'Berhasil!',
-                        'Data berhasil dihapus',
+                        'Venue berhasil diapprove!',
                         'success'
                         )
-                        daftar_agama.ajax.reload();
+                        table_mitra.ajax.reload();
                     })
                 }
                 else{

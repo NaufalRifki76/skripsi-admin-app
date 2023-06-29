@@ -45,12 +45,12 @@ class MitraController extends Controller{
                 })
                 ->addColumn('action', function ($row){
                     $button = '';
-                    if ($row->isapproved == 1 || $row->isapplied == 2) {
-                        $button .= "<a style='margin-right: 5px;' class='setuju btn btn-sm btn-info text-white' data-id='".$row['id']."' id='denyBtn' href='".route('detail-show', [$row->id])."'>Detail</a>";
+                    if ($row->isapproved == 1 || $row->isapproved == 2) {
+                        $button .= "<a style='margin-right: 5px;' class='setuju btn btn-sm btn-info text-white' data-id='".$row['id']."' id='detailBtn' href='".route('detail-show', [$row->id])."'>Detail</a>";
                     } else {
-                        $button .= "<a style='margin-right: 5px;' class='setuju btn btn-sm btn-danger text-white' data-id='".$row['id']."' id='accBtn' href='".route('deny-mitra', [$row->id])."'>Tolak</a>";
-                        $button .= "<a style='margin-right: 5px;' class='setuju btn btn-sm btn-success text-white' data-id='".$row['id']."' id='denyBtn' href='".route('acc-mitra', [$row->id])."'>Terima</a>";
-                        $button .= "<a style='margin-right: 5px;' class='setuju btn btn-sm btn-info text-white' data-id='".$row['id']."' id='denyBtn' href='".route('detail-show', [$row->id])."'>Detail</a>";
+                        $button .= "<a style='margin-right: 5px;' class='setuju btn btn-sm btn-danger text-white' data-id='".$row['id']."' id='denyBtn' href='".route('deny-mitra', [$row->id])."'>Tolak</a>";
+                        $button .= "<a style='margin-right: 5px;' class='setuju btn btn-sm btn-success text-white' data-id='".$row['id']."' id='accBtn' >Terima</a>";
+                        $button .= "<a style='margin-right: 5px;' class='setuju btn btn-sm btn-info text-white' data-id='".$row['id']."' id='detailBtn' href='".route('detail-show', [$row->id])."'>Detail</a>";
                     }
                     return $button;
                 })
@@ -69,8 +69,8 @@ class MitraController extends Controller{
     2 = Denied
     */
 
-    public function accmitra($id){
-        $mitra = Venue::where('id', $id)->first();
+    public function accmitra(Request $request){
+        $mitra = Venue::where('id', $request->id)->first();
         $mitra->isapproved = 1;
         $mitra->save();
 
