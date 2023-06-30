@@ -33,7 +33,7 @@
                                 role="button">Kembali</a>
                         </div>
                         <div class="">
-                            <button type="submit" class="btn-green-hover">Tambahkan</button>
+                            <button type="button" class="btn-green-hover tambah">Tambahkan</button>
                         </div>
                     </div>
                 </form>
@@ -61,6 +61,39 @@
             $(document).ready(function() {
                 $('#nama_perlengkapan').select2({
                     theme: "bootstrap-5",
+                });
+            });
+        </script>
+
+        {{-- Sweet Alert --}}
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script>
+            $(document).ready(function() {
+                //melakukan proses multiple input 
+                $("form .tambah").click(function(e) {
+                    let $form = $(this).closest('form');
+                    Swal.fire({
+                        title: 'Apakah data yang anda tambahkan sudah benar?',
+                        text: "Pastikan formulir sudah diisi dengan benar!",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#62B6B7',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Ya, Tambahkan!',
+                        cancelButtonText: 'Kembali',
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            $form.submit();
+                        } else {
+                            Swal.fire({
+                                position: 'center',
+                                icon: 'error',
+                                title: 'Batal menambahkan data!',
+                                showConfirmButton: false,
+                                timer: 1500
+                            })
+                        }
+                    });
                 });
             });
         </script>

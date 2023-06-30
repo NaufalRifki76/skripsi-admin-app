@@ -97,11 +97,46 @@
                             <a class="btn btn-danger" href="{{ route('tournament.sekolah') }}" role="button">Kembali</a>
                         </div>
                         <div class="">
-                            <button type="submit" class="btn-green-hover">Edit</button>
+                            <button type="button" class="btn-green-hover edit">Edit</button>
                         </div>
                     </div>
                 </form>
             </div>
         </div>
     </div>
+
+    @push('scripts')
+        {{-- Sweet Alert --}}
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script>
+            $(document).ready(function() {
+                //melakukan proses multiple input 
+                $("form .edit").click(function(e) {
+                    let $form = $(this).closest('form');
+                    Swal.fire({
+                        title: 'Apakah data yang anda edit sudah benar?',
+                        text: "Pastikan formulir sudah diisi dengan benar!",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#62B6B7',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Ya, Edit!',
+                        cancelButtonText: 'Kembali',
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            $form.submit();
+                        } else {
+                            Swal.fire({
+                                position: 'center',
+                                icon: 'error',
+                                title: 'Batal edit data!',
+                                showConfirmButton: false,
+                                timer: 1500
+                            })
+                        }
+                    });
+                });
+            });
+        </script>
+    @endpush
 @endsection

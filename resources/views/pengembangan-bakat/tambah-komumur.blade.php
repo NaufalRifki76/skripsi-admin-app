@@ -7,7 +7,7 @@
                 <h3 class="mb-3">Tambah Kompetisi Umur</h3>
                 <p class="fs-6" style="color: #FCE700;">Tambahkan daftar kompetisi antar umur dengan mengisi formulir di
                     bawah!</p>
-                <form action="{{route('tournament.store')}}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('tournament.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
                         <div class="col-md-6">
@@ -23,13 +23,16 @@
                             </div>
                             <div class="mb-3">
                                 <div class="row">
-                                    <div class="col-md-6">        
-                                            <label for="registration_start" class="form-label text-dark">Awal Pendaftaran</label>
-                                            <input type="date" class="form-control" id="registration_start" name="registration_start">         
+                                    <div class="col-md-6">
+                                        <label for="registration_start" class="form-label text-dark">Awal
+                                            Pendaftaran</label>
+                                        <input type="date" class="form-control" id="registration_start"
+                                            name="registration_start">
                                     </div>
                                     <div class="col-md-6">
-                                            <label for="registration_end" class="form-label text-dark">Akhir Pendaftaran</label>
-                                            <input type="date" class="form-control" id="registration_end" name="registration_end"> 
+                                        <label for="registration_end" class="form-label text-dark">Akhir Pendaftaran</label>
+                                        <input type="date" class="form-control" id="registration_end"
+                                            name="registration_end">
                                     </div>
                                 </div>
                             </div>
@@ -46,11 +49,13 @@
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="tournament_photo_base64" class="form-label text-dark">Logo Kompetisi</label>
-                                <input type="file" class="form-control" id="tournament_photo_base64" name="tournament_photo_base64" placeholder="Gambar logo kompetisi anda">
+                                <input type="file" class="form-control" id="tournament_photo_base64"
+                                    name="tournament_photo_base64" placeholder="Gambar logo kompetisi anda">
                             </div>
                             <div class="mb-3">
                                 <label class="text-dark" for="age_category">Pilih Kategori Umur</label>
-                                <select class="form-select" id="age_category" name="age_category" aria-label="Default select example">
+                                <select class="form-select" id="age_category" name="age_category"
+                                    aria-label="Default select example">
                                     <option selected disabled>Pilih kategori umur yang anda inginkan</option>
                                     <option value="U-16">U-16</option>
                                     <option value="U-19">U-19</option>
@@ -60,13 +65,13 @@
                             </div>
                             <div class="mb-3">
                                 <div class="row">
-                                    <div class="col-md-6">        
-                                            <label for="start_date" class="form-label text-dark">Mulai Kompetisi</label>
-                                            <input type="date" class="form-control" id="start_date" name="start_date">         
+                                    <div class="col-md-6">
+                                        <label for="start_date" class="form-label text-dark">Mulai Kompetisi</label>
+                                        <input type="date" class="form-control" id="start_date" name="start_date">
                                     </div>
                                     <div class="col-md-6">
-                                            <label for="end_date" class="form-label text-dark">Akhir Kompetisi</label>
-                                            <input type="date" class="form-control" id="end_date" name="end_date"> 
+                                        <label for="end_date" class="form-label text-dark">Akhir Kompetisi</label>
+                                        <input type="date" class="form-control" id="end_date" name="end_date">
                                     </div>
                                 </div>
                             </div>
@@ -86,10 +91,45 @@
                             <a class="btn btn-danger" href="{{ route('tournament.umur') }}" role="button">Kembali</a>
                         </div>
                         <div class="">
-                            <button type="submit" class="btn-green-hover">Tambahkan</button>
+                            <button type="button" class="btn-green-hover tambah2">Tambahkan</button>
                         </div>
                     </div>
                 </form>
             </div>
         </div>
+
+        @push('scripts')
+            {{-- Sweet Alert --}}
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+            <script>
+                $(document).ready(function() {
+                    //melakukan proses multiple input 
+                    $("form .tambah2").click(function(e) {
+                        let $form = $(this).closest('form');
+                        Swal.fire({
+                            title: 'Apakah data yang anda tambahkan sudah benar?',
+                            text: "Pastikan formulir sudah diisi dengan benar!",
+                            icon: 'warning',
+                            showCancelButton: true,
+                            confirmButtonColor: '#62B6B7',
+                            cancelButtonColor: '#d33',
+                            confirmButtonText: 'Ya, Tambahkan!',
+                            cancelButtonText: 'Kembali',
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                $form.submit();
+                            } else {
+                                Swal.fire({
+                                    position: 'center',
+                                    icon: 'error',
+                                    title: 'Batal menambahkan data!',
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                })
+                            }
+                        });
+                    });
+                });
+            </script>
+        @endpush
     @endsection

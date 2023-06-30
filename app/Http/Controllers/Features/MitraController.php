@@ -48,8 +48,8 @@ class MitraController extends Controller{
                     if ($row->isapproved == 1 || $row->isapproved == 2) {
                         $button .= "<a style='margin-right: 5px;' class='setuju btn btn-sm btn-info text-white' data-id='".$row['id']."' id='detailBtn' href='".route('detail-show', [$row->id])."'>Detail</a>";
                     } else {
-                        $button .= "<a style='margin-right: 5px;' class='setuju btn btn-sm btn-danger text-white' data-id='".$row['id']."' id='denyBtn' href='".route('deny-mitra', [$row->id])."'>Tolak</a>";
-                        $button .= "<a style='margin-right: 5px;' class='setuju btn btn-sm btn-success text-white' data-id='".$row['id']."' id='accBtn' >Terima</a>";
+                        $button .= "<button style='margin-right: 5px;' class='setuju btn btn-sm btn-danger text-white' data-id='".$row['id']."' id='rejectBtn'>Tolak</button>";
+                        $button .= "<button style='margin-right: 5px;' class='setuju btn btn-sm btn-primary text-white' data-id='".$row['id']."' id='accBtn' >Terima</button>";
                         $button .= "<a style='margin-right: 5px;' class='setuju btn btn-sm btn-info text-white' data-id='".$row['id']."' id='detailBtn' href='".route('detail-show', [$row->id])."'>Detail</a>";
                     }
                     return $button;

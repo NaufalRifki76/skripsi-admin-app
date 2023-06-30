@@ -20,7 +20,7 @@ class CompetitionController extends Controller{
                 ->addIndexColumn()
                 ->addColumn('action', function ($row){
                     $button = "<div class='d-flex'><a style='margin-right: 5px;' class='setuju btn btn-sm  btn-warning text-white' data-id='".$row['id']."' id='editBtn' href='edit.sekolah'>Edit</a>";
-                    $button .= "<button class='setuju btn btn-sm  btn-danger text-white' data-id='".$row['id']."' id='delBtn'>Hapus</button></div>";
+                    $button .= "<button class='setuju btn btn-sm  btn-danger text-white' data-id='".$row['id']."' id='deleteBtn'>Hapus</button></div>";
                     return $button;
                 })
                 ->rawColumns(['action'])
@@ -47,8 +47,8 @@ class CompetitionController extends Controller{
                 return datatables()->of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function ($row){
-                    $button = "<div class='d-flex'><a style='margin-right: 5px;' class='setuju btn btn-sm  btn-warning' data-id='".$row['id']."' id='editBtn' href='edit.umur'>Edit</a>";
-                    $button .= "<button class='setuju btn btn-sm  btn-danger' data-id='".$row['id']."' id='delBtn'>Hapus</button></div>";
+                    $button = "<div class='d-flex'><a style='margin-right: 5px;' class='setuju btn btn-sm text-white btn-warning' data-id='".$row['id']."' id='editBtn' href='edit.umur'>Edit</a>";
+                    $button .= "<button class='setuju btn btn-sm  btn-danger' data-id='".$row['id']."' id='deleteBtn2'>Hapus</button></div>";
                     return $button;
                 })
                 ->rawColumns(['action'])

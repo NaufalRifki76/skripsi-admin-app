@@ -55,11 +55,10 @@
                     </div>
                     <div class="d-flex justify-content-end mt-3 mb-2">
                         <div class="mr-3">
-                            <a class="btn btn-danger" href="{{ route('data-user.index') }}"
-                                role="button">Kembali</a>
+                            <a class="btn btn-danger" href="{{ route('data-user.index') }}" role="button">Kembali</a>
                         </div>
                         <div class="">
-                            <button type="submit" class="btn-green-hover">Simpan</button>
+                            <button type="button" class="btn-green-hover simpan">Simpan</button>
                         </div>
                     </div>
                 </form>
@@ -75,6 +74,39 @@
     @endpush
 
     @push('scripts')
+        {-- Sweet Alert --}}
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script>
+            $(document).ready(function() {
+                //melakukan proses multiple input 
+                $("form .simpan").click(function(e) {
+                    let $form = $(this).closest('form');
+                    Swal.fire({
+                        title: 'Apakah anda yakin ingin edit data ini?',
+                        text: "Pastikan data yang anda edit sudah benar!",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#62B6B7',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Ya, edit!',
+                        cancelButtonText: 'Kembali',
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            $form.submit();
+                        } else {
+                            Swal.fire({
+                                position: 'center',
+                                icon: 'error',
+                                title: 'Batal !',
+                                showConfirmButton: false,
+                                timer: 1500
+                            })
+                        }
+                    });
+                });
+            });
+        </script>
+
         {{-- Select2 --}}
         <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
         <script>

@@ -35,24 +35,41 @@
     </div>
 
     <script type="text/javascript">
-        $(document).ready(function(){
+        $(document).ready(function() {
             $table_venue = $('#tabel-lapangan').DataTable({
                 processing: true,
                 serverSide: true,
                 responsive: true,
                 ajax: {
-                    url: "{{route('index-venue')}}",
+                    url: "{{ route('index-venue') }}",
                     type: 'GET',
                 },
-                columns: [
-                    {data: 'venue_name', name: 'venue_name'},
-                    {data: 'field_qty', name: 'field_qty'},
-                    {data: 'open_hour', name: 'open_hour'},
-                    {data: 'close_hour', name: 'close_hour'},
-                    {data: 'starting_fee', name: 'starting_fee'},
-                    {data: 'action', name: 'action'}
+                columns: [{
+                        data: 'venue_name',
+                        name: 'venue_name'
+                    },
+                    {
+                        data: 'field_qty',
+                        name: 'field_qty'
+                    },
+                    {
+                        data: 'open_hour',
+                        name: 'open_hour'
+                    },
+                    {
+                        data: 'close_hour',
+                        name: 'close_hour'
+                    },
+                    {
+                        data: 'starting_fee',
+                        name: 'starting_fee'
+                    },
+                    {
+                        data: 'action',
+                        name: 'action'
+                    }
                 ],
-                
+
                 order: [
                     [0, 'asc']
                 ],
@@ -68,6 +85,8 @@
     @endpush
 
     @push('scripts')
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
         <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
         <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
         <script src="https://cdn.datatables.net/responsive/2.4.0/js/dataTables.responsive.min.js"></script>
@@ -79,6 +98,47 @@
         <script>
             $(document).ready(function() {
                 $('#tabel-lapangan').DataTable();
+
+                // alert button hapus
+                $(document).on('click', '#deleteBtn', function() {
+                    $.ajaxSetup({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        }
+                    });
+                    var delete_id = $(this).data('id');
+                    console.log('delete_id:', delete_id);
+                    Swal.fire({
+                        title: 'Apakah anda yakin ingin menghapus data ini?',
+                        text: "Data yang telah dihapus tidak dapat dikembalikan!",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        cancelButtonText: 'Batal',
+                        confirmButtonText: 'Ya, hapus data!'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            $.ajax({
+                                method: "POST",
+                                dataType: "json",
+                                // url: '{{ route('acc-mitra') }}',
+                                data: {
+                                    'id': delete_id,
+                                }
+                            }).done(function(data, textStatus, jqXHR) {
+                                Swal.fire(
+                                    'Berhasil!',
+                                    'Data berhasil dihapus!',
+                                    'success'
+                                )
+                                table_mitra.ajax.reload();
+                            })
+                        } else {
+                            console.log('Penghapusan data gagal!');
+                        }
+                    });
+                });
             });
         </script>
     @endpush

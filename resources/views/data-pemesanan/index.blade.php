@@ -12,6 +12,7 @@
                             <th>Nama Pemesan</th>
                             <th>Nama Tempat</th>
                             <th>Tanggal Pemesanan</th>
+                            <th>Jam</th>
                             <th>Harga Sewa</th>
                             <th>Status</th>
                             <th>Action</th>

@@ -18,7 +18,7 @@ class FAQController extends Controller{
                 return datatables()->of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function ($row){
-                    $button = "<button class='setuju btn btn-sm  btn-danger text-white' data-id='".$row['id']."' id='delBtn'>Hapus</button></div>";
+                    $button = "<button class='setuju btn btn-sm  btn-danger text-white' data-id='".$row['id']."' id='deleteBtn'>Hapus</button></div>";
                     return $button;
                 })
                 ->rawColumns(['action'])

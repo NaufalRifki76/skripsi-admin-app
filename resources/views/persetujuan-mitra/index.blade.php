@@ -98,6 +98,7 @@
                 ],
             });
 
+            // alert button terima
             $(document).on('click', '#accBtn', function() {
                 $.ajaxSetup({
                     headers: {
@@ -127,14 +128,56 @@
                     }).done(function(data, textStatus, jqXHR) {
                         Swal.fire(
                         'Berhasil!',
-                        'Venue berhasil diapprove!',
+                        'Data berhasil diterima!',
                         'success'
                         )
                         table_mitra.ajax.reload();
                     })
                 }
                 else{
-                    console.log('Penghapusan data gagal!');
+                    console.log('Penerimaan data gagal!');
+                }
+                });
+            });
+
+            // alert button tolak
+            $(document).on('click', '#rejectBtn', function() {
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                var reject_id = $(this).data('id');
+                console.log('reject_id:', reject_id);
+                Swal.fire({
+                title: 'Apakah anda yakin ingin menolak data ini?',
+                text: "Data yang telah ditolak tidak dapat diubah statusnya!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                cancelButtonText: 'Batal',
+                confirmButtonText: 'Ya, tolak data!'
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        method: "POST",
+                        dataType: "json",
+                        // url: '{{route("acc-mitra")}}',
+                        data: {
+                            'id': reject_id,
+                        }
+                    }).done(function(data, textStatus, jqXHR) {
+                        Swal.fire(
+                        'Berhasil!',
+                        'Data berhasil ditolak!',
+                        'success'
+                        )
+                        table_mitra.ajax.reload();
+                    })
+                }
+                else{
+                    console.log('Penolakan data gagal!');
                 }
                 });
             });

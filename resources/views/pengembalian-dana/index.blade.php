@@ -26,13 +26,14 @@
                             <td>Koe Futsal</td>
                             <td>19/05/2023</td>
                             <td>150000</td>
-                            <td><button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#bukti-transfer"><i
-                                        class="fa-solid fa-eye"></i></button></td>
+                            <td><button class="btn btn-sm btn-primary" data-bs-toggle="modal"
+                                    data-bs-target="#bukti-transfer"><i class="fa-solid fa-eye"></i></button></td>
                             <td>Pending</td>
                             <td class="d-flex justify-content-center text-center">
-                                <a href="{{ route('pengembalian-dana.detail') }}" class="btn-sm btn-warning text-white me-2">Detail</a>
-                                <button class="btn btn-sm btn-danger me-2">Tolak</button>
-                                <button class="btn btn-sm btn-primary">Terima</button>
+                                <a href="{{ route('pengembalian-dana.detail') }}"
+                                    class="btn-sm btn-warning text-white me-2">Detail</a>
+                                <button class="btn btn-sm btn-danger me-2" id="rejectBtn">Tolak</button>
+                                <button class="btn btn-sm btn-primary" id="accBtn">Terima</button>
                             </td>
                         </tr>
                     </tbody>
@@ -48,6 +49,7 @@
     @endpush
 
     @push('scripts')
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
         <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
         <script src="https://cdn.datatables.net/responsive/2.4.0/js/dataTables.responsive.min.js"></script>
@@ -59,6 +61,88 @@
         <script>
             $(document).ready(function() {
                 $('#pengembalian-dana').DataTable();
+
+                // alert button terima
+                $(document).on('click', '#accBtn', function() {
+                    $.ajaxSetup({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        }
+                    });
+                    var acc_id = $(this).data('id');
+                    console.log('acc_id:', acc_id);
+                    Swal.fire({
+                        title: 'Apakah anda yakin ingin menerima data ini?',
+                        text: "Data yang telah diterima tidak dapat diubah statusnya!",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        cancelButtonText: 'Batal',
+                        confirmButtonText: 'Ya, terima data!'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            $.ajax({
+                                method: "POST",
+                                dataType: "json",
+                                // url: '{{ route('acc-mitra') }}',
+                                data: {
+                                    'id': acc_id,
+                                }
+                            }).done(function(data, textStatus, jqXHR) {
+                                Swal.fire(
+                                    'Berhasil!',
+                                    'Data berhasil diterima!',
+                                    'success'
+                                )
+                                table_mitra.ajax.reload();
+                            })
+                        } else {
+                            console.log('Penerimaan data gagal!');
+                        }
+                    });
+                });
+
+                // alert button tolak
+                $(document).on('click', '#rejectBtn', function() {
+                    $.ajaxSetup({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        }
+                    });
+                    var reject_id = $(this).data('id');
+                    console.log('reject_id:', reject_id);
+                    Swal.fire({
+                        title: 'Apakah anda yakin ingin menolak data ini?',
+                        text: "Data yang telah ditolak tidak dapat diubah statusnya!",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        cancelButtonText: 'Batal',
+                        confirmButtonText: 'Ya, tolak data!'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            $.ajax({
+                                method: "POST",
+                                dataType: "json",
+                                // url: '{{ route('acc-mitra') }}',
+                                data: {
+                                    'id': reject_id,
+                                }
+                            }).done(function(data, textStatus, jqXHR) {
+                                Swal.fire(
+                                    'Berhasil!',
+                                    'Data berhasil ditolak!',
+                                    'success'
+                                )
+                                table_mitra.ajax.reload();
+                            })
+                        } else {
+                            console.log('Penolakan data gagal!');
+                        }
+                    });
+                });
             });
         </script>
     @endpush
