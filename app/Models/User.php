@@ -59,6 +59,10 @@ class User extends EloquentUser
         return $this->hasMany(RentOrder::class, 'user_id', 'id');
     }
 
+    public function refund(){
+        return $this->hasMany(Refund::class, 'user_id', 'id');
+    }
+
     public function tournament(){
         return $this->hasMany(Tournament::class);
     }
