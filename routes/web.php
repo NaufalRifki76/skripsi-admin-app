@@ -6,6 +6,7 @@ use App\Http\Controllers\Features\CompetitionController;
 use App\Http\Controllers\Features\FAQController;
 use App\Http\Controllers\Features\MitraController;
 use App\Http\Controllers\Features\OrdersController;
+use App\Http\Controllers\Features\RefundController;
 use App\Http\Controllers\Features\VenueController;
 use Illuminate\Support\Facades\Route;
 
@@ -49,6 +50,10 @@ Route::post('store-hours-venue', [VenueController::class, 'storehours'])->name('
 // Data pemesanan / orders
 Route::get('/orders', [OrdersController::class, 'index'])->name('data-pemesanan.index');
 Route::get('/orders-detail', [OrdersController::class, 'detail'])->name('data-pemesanan.detail');
+
+// Refund
+Route::get('index-refund', [RefundController::class, 'index'])->name('index-refund');
+Route::get('detail-refund/{id}', [RefundController::class, 'detailrefund'])->name('detail-refund');
 
 // FAQ
 Route::get('index-faq', [FAQController::class, 'index'])->name('index-faq');

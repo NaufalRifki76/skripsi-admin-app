@@ -21,7 +21,7 @@
                 <a href="{{ route('index-venue') }}"><i class="fa-solid fa-futbol mr-3 ml-2"></i></span> Data Lapangan</a>
             </li>
             <li>
-                <a href="{{ route('pengembalian-dana.index') }}"><i class="fa-solid fa-money-bill mr-3 ml-2"></i></span> Pengembalian Dana</a>
+                <a href="{{ route('index-refund') }}"><i class="fa-solid fa-money-bill mr-3 ml-2"></i></span> Pengembalian Dana</a>
             </li>
             <li>
                 <a href="{{ route('index-sewa') }}"><i class="fa-solid fa-person-circle-check mr-3 ml-2"></i></span> Persetujuan Mitra</a>

@@ -1,12 +1,14 @@
 @extends('layout.index')
-
+@php
+    use App\Models\RefundHours;
+@endphp
 @section('content')
     <style>
         .background-img-riwayat {
             background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("Assets/bg/bg.jpg");
         }
     </style>
-
+    @include('pengembalian-dana.modal-bukti-pembayaran')
     <div class="container">
         <div class="py-3">
             {{-- <div class="mb-3">
@@ -21,57 +23,61 @@
             <form action="">
                 <div class="row mb-3">
                     <h4 class="fw-bold"> Data Diri Pemesan</h4>
-                    <div class="col-md-12 mb-3">
+                    <div class="col-md-6 mb-3">
                         <label for="inputState" class="form-label h5">Nama Pemesan</label>
-                        <input type="text" class="form-control bg-white" disabled id=""
-                            placeholder="Isinya nama yang didaftarin pas regist, tapi bisa dia ganti sendiri juga">
+                        <input type="text" class="form-control bg-white" disabled id="" value="{{$refund->name}}">
                     </div>
-
+                    <div class="col-md-3 mb-3">
+                        <label class="text-white h5">Status</label><br>
+                        @if ($refund->status == 0)
+                            <h5><span class="badge bg-warning text-white">Pending</span></h5>
+                        @elseif ($refund->status == 1)
+                            <h5><span class="badge bg-info text-white">Dalam Proses</span></h5>
+                        @elseif ($refund->status == 2)
+                            <h5><span class="badge bg-success text-white">Diterima</span></h5>
+                        @elseif ($refund->status == 3)
+                            <h5><span class="badge bg-danger text-white">Ditolak</span></h5>
+                        @endif
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <label class="h5">Bukti Transfer</label><br>
+                        <button class="btn btn-primary text-white" data-bs-toggle="modal" data-bs-target="#bukti-transfer"><i class="fa-solid fa-eye"></i></button>
+                    </div>
                     <div class="col-md-6">
                         <div class="mb-3">
-                            <label for="inputState" class="form-label h5">No Telepon</label>
-                            <input type="text" class="form-control bg-white" disabled id=""
-                                placeholder="Isinya nomor yang didaftarin pas regist, tapi bisa dia ganti sendiri juga">
+                            <label for="inputState" class="form-label h5">No. Telepon</label>
+                            <input type="text" class="form-control bg-white" disabled id="" value="{{$refund->no_telephone}}">
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="mb-3">
                             <label for="inputState" class="form-label h5">Email</label>
-                            <input type="text" class="form-control bg-white" disabled id=""
-                                placeholder="Isinya nomor yang didaftarin pas regist, tapi bisa dia ganti sendiri juga">
+                            <input type="text" class="form-control bg-white" disabled id="" value="{{$refund->email}}">
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="mb-3">
-                            <label for="inputState" class="form-label h5">Nama Bank <span
-                                    class="text-danger">*</span></label>
-                            <input type="text" class="form-control bg-white" disabled id=""
-                                placeholder="Isinya nomor yang didaftarin pas regist, tapi bisa dia ganti sendiri juga">
+                            <label for="inputState" class="form-label h5">Nama Bank </label>
+                            <input type="text" class="form-control bg-white" disabled id="" value="{{$refund->bank}}">
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="mb-3">
-                            <label for="inputState" class="form-label h5">No Rekening Anda <span
-                                    class="text-danger">*</span></label>
-                            <input type="text" class="form-control bg-white" disabled id=""
-                                placeholder="Isinya nomor yang didaftarin pas regist, tapi bisa dia ganti sendiri juga">
+                            <label for="inputState" class="form-label h5">No Rekening </label>
+                            <input type="text" class="form-control bg-white" disabled id="" value="{{$refund->bank_acc_no}}">
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="mb-3">
-                            <label for="inputState" class="form-label h5">Atas Nama Rekening <span
-                                    class="text-danger">*</span></label>
-                            <input type="text" class="form-control bg-white" disabled id=""
-                                placeholder="Isinya nomor yang didaftarin pas regist, tapi bisa dia ganti sendiri juga">
+                            <label for="inputState" class="form-label h5">Atas Nama Rekening </label>
+                            <input type="text" class="form-control bg-white" disabled id="" value="{{$refund->bank_acc_name}}">
                         </div>
                     </div>
-
                 </div>
                 <div class="row mb-3">
                     <h4 class="fw-bold">Lapangan Yang Dipesan</h4>
                     <div class="col-md-6">
-                        <label for="nama-tempat" class="form-label h5">Nama Tempat <span
-                                class="text-danger">*</span></label>
+                        <label for="nama-tempat" class="form-label h5">Nama Tempat </label>
                         <select id="nama-tempat" disabled class="form-select bg-white">
                             <option selected disabled>Pilih tempat melakukan pemesanan...</option>
                             <option value="1">Naufal Futsal</option>
@@ -82,7 +88,7 @@
                     <div class="col-md-6">
                         <div class="mb-3">
                             <label for="nama-lapangan" class="form-label h5">Lapangan Yang Di Pilih
-                                <span class="text-danger">*</span></label>
+                                </label>
                             <select id="nama-lapangan" disabled class="form-select bg-white">
                                 <option selected disabled>Pilih lapangan...</option>
                                 <option value="1">Lapangan A</option>
@@ -92,14 +98,13 @@
                         </div>
                     </div>
                     <div class="mb-3">
-                        <label for="inputState" class="form-label h5">Pilih tanggal pemesanan
-                            lapangan <span class="text-danger">*</span></label>
-                        <input type="date" class="form-control bg-white" disabled id="ExpiredDate" placeholder="">
+                        <label for="inputState" class="form-label h5">Tanggal Pemesanan
+                            Lapangan </label>
+                        <input type="date" class="form-control bg-white" disabled id="ExpiredDate" value="{{$refund->order_date}}">
                     </div>
 
                     <div class="col-md-6 mb-3">
-                        <label for="inputJam" class="form-label h5">Pilih Jam Bermain <span
-                                class="text-danger">*</span></label>
+                        <label for="inputJam" class="form-label h5">Jam Bermain </label>
                         <select id="inputJam" disabled class="form-select bg-white">
                             <option selected>Pilih jam anda bermain...</option>
                             <option selected value="1">09.00 - 10.00</option>
@@ -109,51 +114,20 @@
                     </div>
                     <div class="col-md-6 mb-3">
                         <label for="inputState" class="form-label h5">Harga Sewa</label>
-                        <input type="text" disabled class="form-control bg-white" id="ExpiredDate"
-                            placeholder="Rp. 150000">
-                    </div>
-
-                    <div class="row fieldGroupCopy mb-3" style="display: none;">
-                        <div class="col-md-6">
-                            <label for="inputJam" class="form-label h5">Pilih Jam Bermain <span
-                                    class="text-danger">*</span></label>
-                            <select id="inputJam" class="form-select" disabled>
-                                <option selected>Pilih jam anda bermain...</option>
-                                <option disabled value="1">09.00 - 10.00</option>
-                                <option value="2">10.00 - 11.00</option>
-                                <option value="3">11.00 - 12.00</option>
-                            </select>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="inputState" class="form-label h5">Harga Sewa</label>
-                            <input type="text" disabled class="form-control bg-white" id="ExpiredDate"
-                                placeholder="">
-                        </div>
+                        <input type="text" disabled class="form-control bg-white" id="ExpiredDate" value="">
                     </div>
                     <div class="col-md-6 mb-3">
                         <label for="inputState" class="form-label h5">Biaya Pemesanan</label>
-                        <input type="text" disabled class="form-control bg-white" id="ExpiredDate"
-                            placeholder="Rp. 5000">
+                        <input type="text" disabled class="form-control bg-white" id="ExpiredDate" value="">
                     </div>
                     <div class="col-md-6 mb-3">
                         <label for="inputState" class="form-label h5">Total Biaya Yang Harus
                             Dibayar</label>
-                        <input type="text" disabled class="form-control bg-white" id="ExpiredDate"
-                            placeholder="Rp. 155000">
-                    </div>
-                </div>
-                <div class="row mb-3">
-                    <h4 class="fw-bold">Bukti Transfer</h4>
-                    <div class="mb-3">
-                        <label for="inputState" class="form-label h5">Upload Bukti Pembayaran Anda
-                            <span class="text-danger">*</span></label>
-                        <input type="file" accept=".jpg,.jpeg,.png" class="form-control bg-white" disabled
-                            id=""
-                            placeholder="Isinya nama yang didaftarin pas regist, tapi bisa dia ganti sendiri juga">
+                        <input type="text" disabled class="form-control bg-white" id="ExpiredDate" value="{{$refund->price_sum}}">
                     </div>
                 </div>
                 <div class="text-center mt-4 mb-3">
-                    <a href="{{ route('pengembalian-dana.index') }}"
+                    <a href="{{ route('index-refund') }}"
                         class="btn btn-danger text-decoration-none">kembali</a>
                 </div>
             </form>
