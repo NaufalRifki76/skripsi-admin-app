@@ -123,7 +123,7 @@
                                 $.ajax({
                                     method: "POST",
                                     dataType: "json",
-                                    url: '{{ route("tournament-delete") }}',
+                                    url: '{{ route("umur-delete") }}',
                                     data: {
                                         'id': delete_id,
                                     }

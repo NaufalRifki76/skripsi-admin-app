@@ -27,7 +27,7 @@ class CompetitionController extends Controller{
                 })
                 ->addColumn('action', function ($row){
                     $button = "<div class='d-flex'><a style='margin-right: 5px;' class='setuju btn btn-sm  btn-warning text-white' data-id='".$row['id']."' id='editBtn' href='edit.sekolah'>Edit</a>";
-                    $button .= "<button class='setuju btn btn-sm  btn-danger text-white' data-id='".$row['id']."' id='delBtn'>Hapus</button></div>";
+                    $button .= "<button class='setuju btn btn-sm btn-danger' data-id='".$row['id']."' id='delBtn'>Hapus</button></div>";
                     return $button;
                 })
                 ->rawColumns(['action'])
@@ -156,21 +156,25 @@ class CompetitionController extends Controller{
         }
     }
 
-    public function delete(Request $request){
-        echo "'.$request->id.'";
-        $data = Tournament::find($request->id);
+    public function deletesekolah(Request $request){
+        $photo = TournamentPhotos::where('tournament_id', $request->id)->first();
+        $data = Tournament::where('id', $request->id)->first();
         DB::beginTransaction();
-        try {
-            $data->delete();
-            DB::commit();
-            return response()->json([
-                'message' => 'success'
-            ], 200);
-        } catch (\Throwable $th) {
-            DB::rollBack();
-            return response()->json([
-                'message' => 'Data Not Found'
-            ], 404);
-        }
+        $photo->delete();
+        $data->delete();
+        DB::commit();
+
+        return redirect()->route('tournament.sekolah');
+    }
+
+    public function deleteumur(Request $request){
+        $photo = TournamentPhotos::where('tournament_id', $request->id)->first();
+        $data = Tournament::where('id', $request->id)->first();
+        DB::beginTransaction();
+        $photo->delete();
+        $data->delete();
+        DB::commit();
+
+        return redirect()->route('tournament.umur');
     }
 }

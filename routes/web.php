@@ -35,7 +35,8 @@ Route::get('add.umur', [CompetitionController::class, 'addumur'])->name('add.tou
 Route::post('tournament.store', [CompetitionController::class, 'store'])->name('tournament.store');
 Route::get('edit.sekolah', [CompetitionController::class, 'editsekolah'])->name('edit.tournament.sekolah');
 Route::get('edit.umur', [CompetitionController::class, 'editumur'])->name('edit.tournament.umur');
-Route::post('tournament-delete', [CompetitionController::class, 'delete'])->name('tournament-delete');
+Route::post('sekolah-delete', [CompetitionController::class, 'deletesekolah'])->name('sekolah-delete');
+Route::post('umur-delete', [CompetitionController::class, 'deleteumur'])->name('umur-delete');
 
 // Mitra
 Route::get('index-sewa', [MitraController::class, 'index'])->name('index-sewa');
