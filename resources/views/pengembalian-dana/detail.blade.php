@@ -1,6 +1,8 @@
 @extends('layout.index')
 @php
     use App\Models\RefundHours;
+    use App\Models\Venue;
+    use App\Models\FieldDetail;
 @endphp
 @section('content')
     <style>
@@ -29,13 +31,13 @@
                     </div>
                     <div class="col-md-3 mb-3">
                         <label class="h5">Status</label><br>
-                        @if ($refund->status == 0)
+                        @if ($refund->confirmation == 0)
                             <h5><span class="badge bg-warning text-white">Pending</span></h5>
-                        @elseif ($refund->status == 1)
+                        @elseif ($refund->confirmation == 1)
                             <h5><span class="badge bg-info text-white">Dalam Proses</span></h5>
-                        @elseif ($refund->status == 2)
+                        @elseif ($refund->confirmation == 2)
                             <h5><span class="badge bg-success text-white">Diterima</span></h5>
-                        @elseif ($refund->status == 3)
+                        @elseif ($refund->confirmation == 3)
                             <h5><span class="badge bg-danger text-white">Ditolak</span></h5>
                         @endif
                     </div>
@@ -78,23 +80,18 @@
                     <h4 class="fw-bold">Lapangan Yang Dipesan</h4>
                     <div class="col-md-6">
                         <label for="nama-tempat" class="form-label h5">Nama Tempat </label>
-                        <select id="nama-tempat" disabled class="form-select bg-white">
-                            <option selected disabled>Pilih tempat melakukan pemesanan...</option>
-                            <option value="1">Naufal Futsal</option>
-                            <option value="2">Faris Futsal</option>
-                            <option value="3">Ernest Futsal</option>
-                        </select>
+                        @php
+                            $venue = Venue::where('id', $refund->venue_id)->first();
+                        @endphp
+                        <input type="text" disabled class="form-control bg-white" id="" value="{{$venue->venue_name}}" placeholder="">
                     </div>
                     <div class="col-md-6">
                         <div class="mb-3">
-                            <label for="nama-lapangan" class="form-label h5">Lapangan Yang Di Pilih
-                                </label>
-                            <select id="nama-lapangan" disabled class="form-select bg-white">
-                                <option selected disabled>Pilih lapangan...</option>
-                                <option value="1">Lapangan A</option>
-                                <option value="2">Lapangan B</option>
-                                <option value="3">Lapangan C</option>
-                            </select>
+                            <label for="nama-lapangan" class="form-label h5">Lapangan Yang Di Pilih</label>
+                            @php
+                                $field = FieldDetail::where('id', $refund->field_detail_id)->first();
+                            @endphp
+                            <input type="text" disabled class="form-control bg-white" id="" value="{{$field->field_name}}" placeholder="">
                         </div>
                     </div>
                     <div class="mb-3">
@@ -102,23 +99,148 @@
                             Lapangan </label>
                         <input type="date" class="form-control bg-white" disabled id="ExpiredDate" value="{{$refund->order_date}}">
                     </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="inputJam" class="form-label h5">Jam Bermain </label>
+                            @php
+                                $hours = RefundHours::where('refund_id', $refund->id)->get();
+                                for ($i=0; $i<count($hours) ; $i++) {
+                                    if ($hours[$i]->hours_initial == 0) {
+                                        echo '
+                                        <select class="form-control mb-1" id="inputJam" disabled class="form-select bg-white">
+                                            <option value="">00.00 - 01.00</option>
+                                        </select>';
+                                    } elseif ($hours[$i]->hours_initial == 1) {
+                                        echo '
+                                        <select class="form-control mb-1" id="inputJam" disabled class="form-select bg-white">
+                                            <option value="">01.00 - 02.00</option>
+                                        </select>';
+                                    } elseif ($hours[$i]->hours_initial == 2) {
+                                        echo '
+                                        <select class="form-control mb-1" id="inputJam" disabled class="form-select bg-white">
+                                            <option value="">02.00 - 03.00</option>
+                                        </select>';
+                                    } elseif ($hours[$i]->hours_initial == 3) {
+                                        echo '
+                                        <select class="form-control mb-1" id="inputJam" disabled class="form-select bg-white">
+                                            <option value="">03.00 - 04.00</option>
+                                        </select>';
+                                    } elseif ($hours[$i]->hours_initial == 4) {
+                                        echo '
+                                        <select class="form-control mb-1" id="inputJam" disabled class="form-select bg-white">
+                                            <option value="">04.00 - 05.00</option>
+                                        </select>';
+                                    } elseif ($hours[$i]->hours_initial == 5) {
+                                        echo '
+                                        <select class="form-control mb-1" id="inputJam" disabled class="form-select bg-white">
+                                            <option value="">05.00 - 06.00</option>
+                                        </select>';
+                                    } elseif ($hours[$i]->hours_initial == 6) {
+                                        echo '
+                                        <select class="form-control mb-1" id="inputJam" disabled class="form-select bg-white">
+                                            <option value="">06.00 - 06.00</option>
+                                        </select>';
+                                    } elseif ($hours[$i]->hours_initial == 7) {
+                                        echo '
+                                        <select class="form-control mb-1" id="inputJam" disabled class="form-select bg-white">
+                                            <option value="">07.00 - 08.00</option>
+                                        </select>';
+                                    } elseif ($hours[$i]->hours_initial == 8) {
+                                        echo '
+                                        <select class="form-control mb-1" id="inputJam" disabled class="form-select bg-white">
+                                            <option value="">08.00 - 09.00</option>
+                                        </select>';
+                                    } elseif ($hours[$i]->hours_initial == 9) {
+                                        echo '
+                                        <select class="form-control mb-1" id="inputJam" disabled class="form-select bg-white">
+                                            <option value="">09.00 - 10.00</option>
+                                        </select>';
+                                    } elseif ($hours[$i]->hours_initial == 10) {
+                                        echo '
+                                        <select class="form-control mb-1" id="inputJam" disabled class="form-select bg-white">
+                                            <option value="">10.00 - 11.00</option>
+                                        </select>';
+                                    } elseif ($hours[$i]->hours_initial == 11) {
+                                        echo '
+                                        <select class="form-control mb-1" id="inputJam" disabled class="form-select bg-white">
+                                            <option value="">11.00 - 12.00</option>
+                                        </select>';
+                                    } elseif ($hours[$i]->hours_initial == 12) {
+                                        echo '
+                                        <select class="form-control mb-1" id="inputJam" disabled class="form-select bg-white">
+                                            <option value="">12.00 - 13.00</option>
+                                        </select>';
+                                    } elseif ($hours[$i]->hours_initial == 13) {
+                                        echo '
+                                        <select class="form-control mb-1" id="inputJam" disabled class="form-select bg-white">
+                                            <option value="">13.00 - 14.00</option>
+                                        </select>';
+                                    } elseif ($hours[$i]->hours_initial == 14) {
+                                        echo '
+                                        <select class="form-control mb-1" id="inputJam" disabled class="form-select bg-white">
+                                            <option value="">14.00 - 15.00</option>
+                                        </select>';
+                                    } elseif ($hours[$i]->hours_initial == 15) {
+                                        echo '
+                                        <select class="form-control mb-1" id="inputJam" disabled class="form-select bg-white">
+                                            <option value="">15.00 - 16.00</option>
+                                        </select>';
+                                    } elseif ($hours[$i]->hours_initial == 16) {
+                                        echo '
+                                        <select class="form-control mb-1" id="inputJam" disabled class="form-select bg-white">
+                                            <option value="">16.00 - 17.00</option>
+                                        </select>';
+                                    } elseif ($hours[$i]->hours_initial == 17) {
+                                        echo '
+                                        <select class="form-control mb-1" id="inputJam" disabled class="form-select bg-white">
+                                            <option value="">17.00 - 18.00</option>
+                                        </select>';
+                                    } elseif ($hours[$i]->hours_initial == 18) {
+                                        echo '
+                                        <select class="form-control mb-1" id="inputJam" disabled class="form-select bg-white">
+                                            <option value="">18.00 - 19.00</option>
+                                        </select>';
+                                    } elseif ($hours[$i]->hours_initial == 19) {
+                                        echo '
+                                        <select class="form-control mb-1" id="inputJam" disabled class="form-select bg-white">
+                                            <option value="">19.00 - 20.00</option>
+                                        </select>';
+                                    } elseif ($hours[$i]->hours_initial == 20) {
+                                        echo '
+                                        <select class="form-control mb-1" id="inputJam" disabled class="form-select bg-white">
+                                            <option value="">20.00 - 21.00</option>
+                                        </select>';
+                                    } elseif ($hours[$i]->hours_initial == 21) {
+                                        echo '
+                                        <select class="form-control mb-1" id="inputJam" disabled class="form-select bg-white">
+                                            <option value="">21.00 - 22.00</option>
+                                        </select>';
+                                    } elseif ($hours[$i]->hours_initial == 22) {
+                                        echo '
+                                        <select class="form-control mb-1" id="inputJam" disabled class="form-select bg-white">
+                                            <option value="">22.00 - 23.00</option>
+                                        </select>';
+                                    } elseif ($hours[$i]->hours_initial == 23) {
+                                        echo '
+                                        <select class="form-control mb-1" id="inputJam" disabled class="form-select bg-white">
+                                            <option value="">23.00 - 00.00</option>
+                                        </select>';
+                                    }
+                                }
+                            @endphp
+                            {{-- <select  id="inputJam" disabled class="form-select bg-white">
+                                <option value="">00.00 - 01.00</option>
+                            </select> --}}
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="inputState" class="form-label h5">Harga Sewa</label>
+                            <input type="text" disabled class="form-control bg-white" id="ExpiredDate" value="{{$field->field_cost_hour}}">
+                        </div>
+                    </div>
 
                     <div class="col-md-6 mb-3">
-                        <label for="inputJam" class="form-label h5">Jam Bermain </label>
-                        <select id="inputJam" disabled class="form-select bg-white">
-                            <option selected>Pilih jam anda bermain...</option>
-                            <option selected value="1">09.00 - 10.00</option>
-                            <option value="2">10.00 - 11.00</option>
-                            <option value="3">11.00 - 12.00</option>
-                        </select>
-                    </div>
-                    <div class="col-md-6 mb-3">
-                        <label for="inputState" class="form-label h5">Harga Sewa</label>
-                        <input type="text" disabled class="form-control bg-white" id="ExpiredDate" value="">
-                    </div>
-                    <div class="col-md-6 mb-3">
                         <label for="inputState" class="form-label h5">Biaya Pemesanan</label>
-                        <input type="text" disabled class="form-control bg-white" id="ExpiredDate" value="">
+                        <input type="text" disabled class="form-control bg-white" id="ExpiredDate" value="{{$refund->price_sum - 5000}}">
                     </div>
                     <div class="col-md-6 mb-3">
                         <label for="inputState" class="form-label h5">Total Biaya Yang Harus
@@ -157,63 +279,6 @@
             $(document).ready(function() {
                 $('#nama-lapangan').select2({
                     theme: "bootstrap-5",
-                });
-            });
-
-            // script untuk Data Lapangan Tersedia
-            $(document).ready(function() {
-                // membatasi jumlah inputan
-                var maxGroup = 10;
-
-                //melakukan proses multiple input 
-                $(".addMore").click(function() {
-                    if ($('body').find('.fieldGroup').length < maxGroup) {
-                        var fieldHTML = '<div class="row fieldGroup">' + $(".fieldGroupCopy").html() +
-                            '</div>';
-                        $('body').find('.fieldGroup:last').after(fieldHTML);
-                    } else {
-                        alert('Maximum ' + maxGroup + ' groups are allowed.');
-                    }
-                });
-
-                //remove fields group
-                $("body").on("click", ".remove", function() {
-                    $(this).parents(".fieldGroup").remove();
-                });
-            });
-
-            // Script untuk data perlengkapan
-            $(document).ready(function() {
-                // membatasi jumlah inputan
-                var maxGroup2 = 10;
-
-                //melakukan proses multiple input 
-                $(".addMore2").click(function() {
-                    if ($('body').find('.fieldGroup2').length < maxGroup2) {
-                        var fieldHTML = '<div class="row fieldGroup2">' + $(".fieldGroupCopy2").html() +
-                            '</div>';
-                        $('body').find('.fieldGroup2:last').after(fieldHTML);
-                    } else {
-                        alert('Maximum ' + maxGroup2 + ' groups are allowed.');
-                    }
-                });
-
-                //remove fields group
-                $("body").on("click", ".remove2", function() {
-                    $(this).parents(".fieldGroup2").remove();
-                });
-            });
-            // Cek box perlengkapan
-            $(document).ready(function() {
-                $('.showthis-upload').hide();
-
-                //show it when the checkbox is clicked
-                $('#perlengkapan').on('click', function() {
-                    if ($(this).prop('checked')) {
-                        $('.showthis-upload').fadeIn();
-                    } else {
-                        $('.showthis-upload').hide();
-                    }
                 });
             });
         </script>

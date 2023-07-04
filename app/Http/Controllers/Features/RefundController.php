@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Features;
 
 use App\Http\Controllers\Controller;
+use App\Models\FieldDetail;
 use App\Models\Refund;
 use App\Models\Venue;
 use Cartalyst\Sentinel\Laravel\Facades\Sentinel;
@@ -23,30 +24,30 @@ class RefundController extends Controller{
                         return $venue_id;
                     }
                 })
-                ->addColumn('status', function($row){
+                ->addColumn('confirmation', function($row){
                     if($row->id != NULL){
-                        if ($row->status == 0) {
+                        if ($row->confirmation == 0) {
                             return "Pending";
-                        } elseif ($row->status == 1) {
-                            return "In Progress";
-                        } elseif ($row->status == 2) {
-                            return "Refunded";
-                        } elseif ($row->status == 3) {
-                            return "Declined";
+                        } elseif ($row->confirmation == 1) {
+                            return "Dalam Proses";
+                        } elseif ($row->confirmation == 2) {
+                            return "Diterima";
+                        } elseif ($row->confirmation == 3) {
+                            return "Ditolak";
                         }
                     }
                 })
                 ->addColumn('action', function ($row){
                     $button = '';
-                    if ($row->status == 2 || $row->status == 3) {
+                    if ($row->confirmation == 2 || $row->confirmation == 3) {
                         $button .= "<a style='margin-right: 5px;' class='setuju btn btn-sm btn-info text-white' data-id='".$row['id']."' id='detailBtn' href='".route('detail-refund', [$row->id])."'>Detail</a>";
-                    } elseif ($row->status == 1) {
+                    } elseif ($row->confirmation == 1) {
                         $button .= "<button style='margin-right: 5px;' class='setuju btn btn-sm btn-danger text-white' data-id='".$row['id']."' id='rejectBtn'>Tolak</button>";
                         $button .= "<button style='margin-right: 5px;' class='setuju btn btn-sm btn-primary text-white' data-id='".$row['id']."' id='accBtn' >Terima</button>";
                         $button .= "<a style='margin-right: 5px;' class='setuju btn btn-sm btn-info text-white' data-id='".$row['id']."' id='detailBtn' href='".route('detail-refund', [$row->id])."'>Detail</a>";
-                    } elseif ($row->status == 0) {
+                    } elseif ($row->confirmation == 0) {
                         $button .= "<button style='margin-right: 5px;' class='setuju btn btn-sm btn-danger text-white' data-id='".$row['id']."' id='rejectBtn'>Tolak</button>";
-                        $button .= "<button style='margin-right: 5px;' class='setuju btn btn-sm btn-primary text-white' data-id='".$row['id']."' id='accBtn' >Proses</button>";
+                        $button .= "<button style='margin-right: 5px;' class='setuju btn btn-sm btn-primary text-white' data-id='".$row['id']."' id='procBtn' >Proses</button>";
                         $button .= "<a style='margin-right: 5px;' class='setuju btn btn-sm btn-info text-white' data-id='".$row['id']."' id='detailBtn' href='".route('detail-refund', [$row->id])."'>Detail</a>";
                     }
                     return $button;
@@ -57,6 +58,27 @@ class RefundController extends Controller{
 
             return view('pengembalian-dana.index', compact('data'));
         }
+    }
+
+    public function denyrefund(Request $request){
+        $refund = Refund::where('id', $request->id)->first();
+        $refund->confirmation = 3;
+        $refund->save();
+        return redirect()->route('index-refund');
+    }
+
+    public function processrefund(Request $request){
+        $refund = Refund::where('id', $request->id)->first();
+        $refund->confirmation = 1;
+        $refund->save();
+        return redirect()->route('index-refund');
+    }
+
+    public function accrefund(Request $request){
+        $refund = Refund::where('id', $request->id)->first();
+        $refund->confirmation = 2;
+        $refund->save();
+        return redirect()->route('index-refund');
     }
 
     public function detailrefund($id){

@@ -39,7 +39,7 @@ Route::get('edit.umur', [CompetitionController::class, 'editumur'])->name('edit.
 // Mitra
 Route::get('index-sewa', [MitraController::class, 'index'])->name('index-sewa');
 Route::post('acc-mitra', [MitraController::class, 'accmitra'])->name('acc-mitra');
-Route::get('deny-mitra/{id}', [MitraController::class, 'denymitra'])->name('deny-mitra');
+Route::post('deny-mitra', [MitraController::class, 'denymitra'])->name('deny-mitra');
 Route::get('detail-show/{id}', [MitraController::class, 'detail'])->name('detail-show');
 
 // Data Lapangan
@@ -53,6 +53,9 @@ Route::get('/orders-detail', [OrdersController::class, 'detail'])->name('data-pe
 
 // Refund
 Route::get('index-refund', [RefundController::class, 'index'])->name('index-refund');
+Route::post('deny-refund', [RefundController::class, 'denyrefund'])->name('deny-refund');
+Route::post('process-refund', [RefundController::class, 'processrefund'])->name('process-refund');
+Route::post('acc-refund', [RefundController::class, 'accrefund'])->name('acc-refund');
 Route::get('detail-refund/{id}', [RefundController::class, 'detailrefund'])->name('detail-refund');
 
 // FAQ

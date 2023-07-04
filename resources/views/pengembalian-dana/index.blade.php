@@ -10,6 +10,7 @@
                     cellspacing="0">
                     <thead style="background-color: #439a97">
                         <tr>
+                            <th class="text-center">ID</th>
                             <th class="text-center">Nama</th>
                             <th class="text-center">Nama Tempat</th>
                             <th class="text-center">Tanggal Pemesanan</th>
@@ -51,6 +52,10 @@
                         type: 'GET',
                     },
                     columns: [{
+                            data: 'id',
+                            name: 'id'
+                        },
+                        {
                             data: 'name',
                             name: 'name'
                         },
@@ -67,8 +72,8 @@
                             name: 'price_sum'
                         },
                         {
-                            data: 'status',
-                            name: 'status'
+                            data: 'confirmation',
+                            name: 'confirmation'
                         },
                         {
                             data: 'action',
@@ -81,40 +86,39 @@
                     ],
                 });
 
-                // alert button terima
-                $(document).on('click', '#accBtn', function() {
+                // alert button proses
+                $(document).on('click', '#procBtn', function() {
                     $.ajaxSetup({
                         headers: {
                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                         }
                     });
-                    var acc_id = $(this).data('id');
-                    console.log('acc_id:', acc_id);
+                    var proc_id = $(this).data('id');
                     Swal.fire({
-                        title: 'Apakah anda yakin ingin menerima data ini?',
-                        text: "Data yang telah diterima tidak dapat diubah statusnya!",
+                        title: 'Apakah anda yakin ingin untuk memproses data ini?',
+                        text: "Anda harus bertanggung jawab untuk mengambil tugas ini!",
                         icon: 'warning',
                         showCancelButton: true,
                         confirmButtonColor: '#3085d6',
                         cancelButtonColor: '#d33',
                         cancelButtonText: 'Batal',
-                        confirmButtonText: 'Ya, terima data!'
+                        confirmButtonText: 'Ya, proses data!'
                     }).then((result) => {
                         if (result.isConfirmed) {
                             $.ajax({
                                 method: "POST",
                                 dataType: "json",
-                                // url: '{{ route('acc-mitra') }}',
+                                url: '{{ route("process-refund") }}',
                                 data: {
-                                    'id': acc_id,
+                                    'id': proc_id,
                                 }
                             }).done(function(data, textStatus, jqXHR) {
                                 Swal.fire(
                                     'Berhasil!',
-                                    'Data berhasil diterima!',
+                                    'Data berhasil diproses! Silahkan hubungi vendor dan customer yang terkait untuk melanjutkan proses pengembalian dana.',
                                     'success'
                                 )
-                                table_mitra.ajax.reload();
+                                table_refund.ajax.reload();
                             })
                         } else {
                             console.log('Penerimaan data gagal!');
@@ -130,7 +134,6 @@
                         }
                     });
                     var reject_id = $(this).data('id');
-                    console.log('reject_id:', reject_id);
                     Swal.fire({
                         title: 'Apakah anda yakin ingin menolak data ini?',
                         text: "Data yang telah ditolak tidak dapat diubah statusnya!",
@@ -145,7 +148,7 @@
                             $.ajax({
                                 method: "POST",
                                 dataType: "json",
-                                // url: '{{ route('acc-mitra') }}',
+                                url: '{{ route("deny-refund") }}',
                                 data: {
                                     'id': reject_id,
                                 }
@@ -155,13 +158,54 @@
                                     'Data berhasil ditolak!',
                                     'success'
                                 )
-                                table_mitra.ajax.reload();
+                                table_refund.ajax.reload();
                             })
                         } else {
                             console.log('Penolakan data gagal!');
                         }
                     });
                 });
+
+                // alert button acc
+                $(document).on('click', '#accBtn', function() {
+                    $.ajaxSetup({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        }
+                    });
+                    var acc_id = $(this).data('id');
+                    Swal.fire({
+                    title: 'Apakah anda yakin ingin menerima data ini?',
+                    text: "Data yang telah diterima tidak dapat diubah statusnya!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    cancelButtonText: 'Batal',
+                    confirmButtonText: 'Ya, terima data!'
+                    }).then((result) => {
+                    if (result.isConfirmed) {
+                        $.ajax({
+                            method: "POST",
+                            dataType: "json",
+                            url: '{{route("acc-refund")}}',
+                            data: {
+                                'id': acc_id,
+                            }
+                        }).done(function(data, textStatus, jqXHR) {
+                            Swal.fire(
+                            'Berhasil!',
+                            'Data berhasil diterima!',
+                            'success'
+                            )
+                            table_refund.ajax.reload();
+                        })
+                    }
+                    else{
+                        console.log('Penerimaan data gagal!');
+                    }
+                });
+            });
             });
         </script>
     @endpush

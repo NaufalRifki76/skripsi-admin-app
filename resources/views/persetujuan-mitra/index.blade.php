@@ -106,7 +106,6 @@
                     }
                 });
                 var acc_id = $(this).data('id');
-                console.log('acc_id:', acc_id);
                 Swal.fire({
                 title: 'Apakah anda yakin ingin menerima data ini?',
                 text: "Data yang telah diterima tidak dapat diubah statusnya!",
@@ -148,7 +147,6 @@
                     }
                 });
                 var reject_id = $(this).data('id');
-                console.log('reject_id:', reject_id);
                 Swal.fire({
                 title: 'Apakah anda yakin ingin menolak data ini?',
                 text: "Data yang telah ditolak tidak dapat diubah statusnya!",
@@ -163,7 +161,7 @@
                     $.ajax({
                         method: "POST",
                         dataType: "json",
-                        // url: '{{route("acc-mitra")}}',
+                        url: '{{route("deny-mitra")}}',
                         data: {
                             'id': reject_id,
                         }

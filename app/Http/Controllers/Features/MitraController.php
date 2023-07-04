@@ -82,8 +82,8 @@ class MitraController extends Controller{
         return redirect()->route('index-sewa');
     }
 
-    public function denymitra($id){
-        $mitra = Venue::where('id', $id)->first();
+    public function denymitra(Request $request){
+        $mitra = Venue::where('id', $request->id)->first();
         $mitra->isapproved = 2;
         $mitra->save();
         return redirect()->route('index-sewa');
