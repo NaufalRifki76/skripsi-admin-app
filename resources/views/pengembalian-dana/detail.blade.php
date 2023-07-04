@@ -28,7 +28,7 @@
                         <input type="text" class="form-control bg-white" disabled id="" value="{{$refund->name}}">
                     </div>
                     <div class="col-md-3 mb-3">
-                        <label class="text-white h5">Status</label><br>
+                        <label class="h5">Status</label><br>
                         @if ($refund->status == 0)
                             <h5><span class="badge bg-warning text-white">Pending</span></h5>
                         @elseif ($refund->status == 1)
@@ -41,7 +41,7 @@
                     </div>
                     <div class="col-md-3 mb-3">
                         <label class="h5">Bukti Transfer</label><br>
-                        <button class="btn btn-primary text-white" data-bs-toggle="modal" data-bs-target="#bukti-transfer"><i class="fa-solid fa-eye"></i></button>
+                        <button class="btn btn-primary text-white" type="button" data-bs-toggle="modal" data-bs-target="#bukti-transfer"><i class="fa-solid fa-eye"></i></button>
                     </div>
                     <div class="col-md-6">
                         <div class="mb-3">
