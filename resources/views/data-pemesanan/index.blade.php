@@ -12,25 +12,12 @@
                             <th>Nama Pemesan</th>
                             <th>Nama Tempat</th>
                             <th>Tanggal Pemesanan</th>
-                            <th>Jam</th>
+                            {{-- <th>Jam</th> --}}
                             <th>Harga Sewa</th>
                             <th>Status</th>
                             <th>Action</th>
                         </tr>
                     </thead>
-                    <tbody class="text-center">
-                        <tr>
-                          <td>Faris Hakim</td>
-                          <td>Futsal Koe</td>
-                          <td>10/12/2023</td>
-                          <td>09.00 - 10.00<br></td>
-                          <td>150000<br/></td>
-                          <td>Pending<br></td>
-                          <td class="d-flex justify-content-center text-center">
-                            <a href="{{ route('data-pemesanan.detail') }}"><button class="btn btn-sm btn-warning me-2 px-3 text-white">Detail</button></a> 
-                        </td>
-                        </tr>
-                    </tbody>
                 </table>
             </div>
         </div>

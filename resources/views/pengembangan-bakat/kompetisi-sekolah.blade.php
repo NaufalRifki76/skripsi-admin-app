@@ -16,10 +16,11 @@
                     </div>
                     <br>
 
-                    <table id="tabel-kompetisi-sekolah" class="table table-striped table-bordered display text-center"
+                    <table id="table_competition" class="table table-striped table-bordered display text-center"
                         width="100%" cellspacing="0">
                         <thead style="background-color: #439a97">
                             <tr>
+                                <th class="text-center">ID</th>
                                 <th class="text-center">Nama Kompetisi</th>
                                 <th class="text-center">Biaya Pendaftaran</th>
                                 <th class="text-center">Mulai Pendaftaran</th>
@@ -54,7 +55,7 @@
 
             <script type="text/javascript">
                 $(document).ready(function() {
-                    var table_competition = $('#tabel-kompetisi-sekolah').DataTable({
+                    var table_competition = $('#table_competition').DataTable({
                         processing: true,
                         serverSide: true,
                         responsive: true,
@@ -63,6 +64,10 @@
                             type: 'GET',
                         },
                         columns: [{
+                                data: 'id',
+                                name: 'id'
+                            },
+                            {
                                 data: 'tournament_name',
                                 name: 'tournament_name'
                             },
@@ -98,14 +103,13 @@
                     });
 
                     // alert button hapus
-                    $(document).on('click', '#deleteBtn', function() {
+                    $(document).on('click', '#delBtn', function() {
                         $.ajaxSetup({
                             headers: {
                                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                             }
                         });
                         var delete_id = $(this).data('id');
-                        console.log('delete_id:', delete_id);
                         Swal.fire({
                             title: 'Apakah anda yakin ingin menghapus data ini?',
                             text: "Data yang telah dihapus tidak dapat dikembalikan!",
@@ -120,9 +124,9 @@
                                 $.ajax({
                                     method: "POST",
                                     dataType: "json",
-                                    // url: '{{ route('acc-mitra') }}',
+                                    url: '{{ route("tournament-delete") }}',
                                     data: {
-                                        'id': reject_id,
+                                        'id': delete_id,
                                     }
                                 }).done(function(data, textStatus, jqXHR) {
                                     Swal.fire(
@@ -130,7 +134,7 @@
                                         'Data berhasil dihapus!',
                                         'success'
                                     )
-                                    table_mitra.ajax.reload();
+                                    table_competition.ajax.reload();
                                 })
                             } else {
                                 console.log('Hapus data gagal!');

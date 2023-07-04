@@ -7,6 +7,7 @@ use App\Models\Tournament;
 use App\Models\TournamentPhotos;
 use Cartalyst\Sentinel\Laravel\Facades\Sentinel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 
 class CompetitionController extends Controller{
@@ -18,9 +19,15 @@ class CompetitionController extends Controller{
             if($request->ajax()){
                 return datatables()->of($data)
                 ->addIndexColumn()
+                ->addColumn('registration_start', function ($row){
+                    return Carbon::parse($row->registration_start)->format('d-m-Y');
+                })
+                ->addColumn('start_date', function ($row){
+                    return Carbon::parse($row->start_date)->format('d-m-Y');
+                })
                 ->addColumn('action', function ($row){
                     $button = "<div class='d-flex'><a style='margin-right: 5px;' class='setuju btn btn-sm  btn-warning text-white' data-id='".$row['id']."' id='editBtn' href='edit.sekolah'>Edit</a>";
-                    $button .= "<button class='setuju btn btn-sm  btn-danger text-white' data-id='".$row['id']."' id='deleteBtn'>Hapus</button></div>";
+                    $button .= "<button class='setuju btn btn-sm  btn-danger text-white' data-id='".$row['id']."' id='delBtn'>Hapus</button></div>";
                     return $button;
                 })
                 ->rawColumns(['action'])
@@ -46,9 +53,15 @@ class CompetitionController extends Controller{
             if($request->ajax()){
                 return datatables()->of($data)
                 ->addIndexColumn()
+                ->addColumn('registration_start', function ($row){
+                    return Carbon::parse($row->registration_start)->format('d-m-Y');
+                })
+                ->addColumn('start_date', function ($row){
+                    return Carbon::parse($row->start_date)->format('d-m-Y');
+                })
                 ->addColumn('action', function ($row){
                     $button = "<div class='d-flex'><a style='margin-right: 5px;' class='setuju btn btn-sm text-white btn-warning' data-id='".$row['id']."' id='editBtn' href='edit.umur'>Edit</a>";
-                    $button .= "<button class='setuju btn btn-sm  btn-danger' data-id='".$row['id']."' id='deleteBtn2'>Hapus</button></div>";
+                    $button .= "<button class='setuju btn btn-sm btn-danger' data-id='".$row['id']."' id='delBtn'>Hapus</button></div>";
                     return $button;
                 })
                 ->rawColumns(['action'])
@@ -140,6 +153,24 @@ class CompetitionController extends Controller{
             return redirect()->route('login.index');
         } else{
             return view('pengembangan-bakat.edit-komumur');
+        }
+    }
+
+    public function delete(Request $request){
+        echo "'.$request->id.'";
+        $data = Tournament::find($request->id);
+        DB::beginTransaction();
+        try {
+            $data->delete();
+            DB::commit();
+            return response()->json([
+                'message' => 'success'
+            ], 200);
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            return response()->json([
+                'message' => 'Data Not Found'
+            ], 404);
         }
     }
 }
