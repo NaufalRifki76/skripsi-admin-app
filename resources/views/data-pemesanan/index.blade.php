@@ -6,7 +6,7 @@
             <div class="row">
                 <h3 class="mb-3">Daftar Data Pemesanan</h3>
                 <br>
-                <table id="tabel-data-pemesanan" class="table table-striped table-bordered display text-center" width="100%" cellspacing="0">
+                <table id="table_orders" class="table table-striped table-bordered display text-center" width="100%" cellspacing="0">
                     <thead style="background-color: #439a97">
                         <tr>
                             <th>Nama Pemesan</th>
@@ -25,12 +25,12 @@
 
     <script type="text/javascript">
         $(document).ready(function(){
-            $table_venue = $('#tabel-data-pemesanan').DataTable({
+            $table_orders = $('#table_orders').DataTable({
                 processing: true,
                 serverSide: true,
                 responsive: true,
                 ajax: {
-                    url: "{{route('data-pemesanan.index')}}",
+                    url: "{{route('index-orders')}}",
                     type: 'GET',
                 },
                 columns: [
@@ -57,6 +57,7 @@
     @endpush
 
     @push('scripts')
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> 
     <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.4.0/js/dataTables.responsive.min.js"></script>
@@ -67,7 +68,44 @@
     <script src="https://cdn.datatables.net/buttons/2.3.2/js/buttons.colVis.min.js"></script>
     <script>
         $(document).ready(function(){
-            $('#tabel-data-pemesanan').DataTable();
+            $(document).on('click', '#delBtn', function() {
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                var delete_id = $(this).data('id');
+                Swal.fire({
+                    title: 'Apakah anda yakin ingin menghapus data ini?',
+                    text: "Data yang telah dihapus tidak dapat dikembalikan!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    cancelButtonText: 'Batal',
+                    confirmButtonText: 'Ya, hapus data!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $.ajax({
+                            method: "POST",
+                            dataType: "json",
+                            url: '{{ route("delete-orders") }}',
+                            data: {
+                                'id': delete_id,
+                            }
+                        }).done(function(data, textStatus, jqXHR) {
+                            Swal.fire(
+                                'Berhasil!',
+                                'Data berhasil dihapus!',
+                                'success'
+                            )
+                            table_orders.ajax.reload();
+                        })
+                    } else {
+                        console.log('Hapus data gagal!');
+                    }
+                });
+            });
         });
     </script>
         

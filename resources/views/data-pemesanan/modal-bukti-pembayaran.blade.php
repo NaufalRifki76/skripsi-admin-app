@@ -7,7 +7,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body text-center">
-                <img src="{{ asset('Assets/bukti-transfer.jpg') }}" class="img-fluid" style="max-height: 800px"
+                <img src="data:image/png;base64,{{$data->transfer_confirm_base64}}" class="img-fluid" style="max-height: 800px"
                     alt="">
             </div>
         </div>

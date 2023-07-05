@@ -54,11 +54,14 @@ Route::get('detail-show/{id}', [MitraController::class, 'detail'])->name('detail
 Route::get('index-venue', [VenueController::class, 'index'])->name('index-venue');
 Route::get('create-hours-venue', [VenueController::class, 'createhours'])->name('create-hours-venue');
 Route::post('store-hours-venue', [VenueController::class, 'storehours'])->name('store-hours-venue');
+Route::get('edit-venue/{id}', [VenueController::class, 'edit'])->name('edit-venue');
+Route::post('editvenue-store/{id}', [VenueController::class, 'editstore'])->name('editvenue-store');
 Route::post('delete-venue', [VenueController::class, 'delete'])->name('delete-venue');
 
 // Data pemesanan / orders
-Route::get('/orders', [OrdersController::class, 'index'])->name('data-pemesanan.index');
-Route::get('/orders-detail', [OrdersController::class, 'detail'])->name('data-pemesanan.detail');
+Route::get('index-orders', [OrdersController::class, 'index'])->name('index-orders');
+Route::get('detail-orders/{id}', [OrdersController::class, 'detail'])->name('detail-orders');
+Route::post('delete-orders', [OrdersController::class, 'delete'])->name('delete-orders');
 
 // Refund
 Route::get('index-refund', [RefundController::class, 'index'])->name('index-refund');
@@ -95,9 +98,9 @@ Route::get('/edit-lapangan', function () {
     return view('lapangan.edit');
 })->name('lapangan.edit');
 
-Route::get('/kompetisi-sekolah', function () {
-    return view('pengembangan-bakat.kompetisi-sekolah');
-})->name('pengembangan-bakat.kompetisi-sekolah');
+// Route::get('/kompetisi-sekolah', function () {
+//     return view('pengembangan-bakat.kompetisi-sekolah');
+// })->name('pengembangan-bakat.kompetisi-sekolah');
 
 // sewa perlengkapan
 Route::get('/sewa-perlengkapan', function () {
@@ -117,9 +120,9 @@ Route::get('/edit-sewa-perlengkapan', function () {
 //     return view('data-user.index');
 // })->name('data-user.index');
 
-Route::get('/edit-user', function () {
-    return view('data-user.edit');
-})->name('data-user.edit');
+// Route::get('/edit-user', function () {
+//     return view('data-user.edit');
+// })->name('data-user.edit');
 
 // Pengembalian Dana
 // Route::get('/pengembalian-dana', function () {
