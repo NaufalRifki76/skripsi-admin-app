@@ -48,6 +48,7 @@ Route::get('detail-show/{id}', [MitraController::class, 'detail'])->name('detail
 Route::get('index-venue', [VenueController::class, 'index'])->name('index-venue');
 Route::get('create-hours-venue', [VenueController::class, 'createhours'])->name('create-hours-venue');
 Route::post('store-hours-venue', [VenueController::class, 'storehours'])->name('store-hours-venue');
+Route::post('delete-venue', [VenueController::class, 'delete'])->name('delete-venue');
 
 // Data pemesanan / orders
 Route::get('/orders', [OrdersController::class, 'index'])->name('data-pemesanan.index');
@@ -64,6 +65,7 @@ Route::get('detail-refund/{id}', [RefundController::class, 'detailrefund'])->nam
 Route::get('index-faq', [FAQController::class, 'index'])->name('index-faq');
 Route::get('create-faq', [FAQController::class, 'create'])->name('create-faq');
 Route::post('store-faq', [FAQController::class, 'store'])->name('store-faq');
+Route::post('delete-faq', [FAQController::class, 'delete'])->name('delete-faq');
 
 /*---------------- BUAT TESTING DI BAWAH --------------------*/
 // Route::get('/', function () {

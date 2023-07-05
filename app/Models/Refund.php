@@ -31,7 +31,13 @@ class Refund extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function refund_hours(){
+    public function refund_hours()
+    {
         return $this->hasMany(RefundHours::class, 'refund_id', 'id');
+    }
+
+    public function venue()
+    {
+        return $this->belongsTo(Venue::class);
     }
 }

@@ -157,24 +157,32 @@ class CompetitionController extends Controller{
     }
 
     public function deletesekolah(Request $request){
-        $photo = TournamentPhotos::where('tournament_id', $request->id)->first();
-        $data = Tournament::where('id', $request->id)->first();
-        DB::beginTransaction();
-        $photo->delete();
-        $data->delete();
-        DB::commit();
+        if(!Sentinel::getUser()) {
+            return redirect()->route('login.index');
+        } else{
+            $photo = TournamentPhotos::where('tournament_id', $request->id)->first();
+            $data = Tournament::where('id', $request->id)->first();
+            DB::beginTransaction();
+            $photo->delete();
+            $data->delete();
+            DB::commit();
 
-        return redirect()->route('tournament.sekolah');
+            return redirect()->route('tournament.sekolah');
+        }
     }
 
     public function deleteumur(Request $request){
-        $photo = TournamentPhotos::where('tournament_id', $request->id)->first();
-        $data = Tournament::where('id', $request->id)->first();
-        DB::beginTransaction();
-        $photo->delete();
-        $data->delete();
-        DB::commit();
+        if(!Sentinel::getUser()) {
+            return redirect()->route('login.index');
+        } else{
+            $photo = TournamentPhotos::where('tournament_id', $request->id)->first();
+            $data = Tournament::where('id', $request->id)->first();
+            DB::beginTransaction();
+            $photo->delete();
+            $data->delete();
+            DB::commit();
 
-        return redirect()->route('tournament.umur');
+            return redirect()->route('tournament.umur');
+        }
     }
 }

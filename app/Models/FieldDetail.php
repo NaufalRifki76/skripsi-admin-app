@@ -25,4 +25,14 @@ class FieldDetail extends Model
     {
         return $this->hasOne(FieldDetailPhotos::class);
     }
+
+    public function refund_field()
+    {
+        return $this->hasMany(Refund::class);
+    }
+
+    public function field_hours()
+    {
+        return $this->hasMany(RentHours::class);
+    }
 }

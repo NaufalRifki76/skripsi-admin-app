@@ -61,4 +61,17 @@ class FAQController extends Controller{
             }
         }
     }
+
+    public function delete(Request $request){
+        if(!Sentinel::getUser()) {
+            return redirect()->route('login.index');
+        } else {
+            $data = FAQ::where('id', $request->id)->first();
+            DB::beginTransaction();
+            $data->delete();
+            DB::commit();
+
+            return redirect()->route('index-faq');
+        }
+    }
 }

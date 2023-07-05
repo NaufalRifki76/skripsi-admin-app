@@ -19,6 +19,7 @@
                         cellspacing="0">
                         <thead style="background-color: #439a97">
                             <tr>
+                                <th class="text-center">ID</th>
                                 <th class="text-center">Pertanyaan</th>
                                 <th class="text-center">Jawaban</th>
                                 <th class="text-center">Action</th>
@@ -59,6 +60,10 @@
                             type: 'GET',
                         },
                         columns: [{
+                                data: 'id',
+                                name: 'id'
+                            },
+                            {
                                 data: 'question',
                                 name: 'question'
                             },
@@ -85,7 +90,6 @@
                             }
                         });
                         var delete_id = $(this).data('id');
-                        console.log('delete_id:', delete_id);
                         Swal.fire({
                             title: 'Apakah anda yakin ingin menghapus data ini?',
                             text: "Data yang telah dihapus tidak dapat dikembalikan!",
@@ -100,9 +104,9 @@
                                 $.ajax({
                                     method: "POST",
                                     dataType: "json",
-                                    // url: '{{ route('acc-mitra') }}',
+                                    url: '{{ route("delete-faq") }}',
                                     data: {
-                                        'id': reject_id,
+                                        'id': delete_id,
                                     }
                                 }).done(function(data, textStatus, jqXHR) {
                                     Swal.fire(
@@ -110,7 +114,7 @@
                                         'Data berhasil dihapus!',
                                         'success'
                                     )
-                                    table_mitra.ajax.reload();
+                                    table_faq.ajax.reload();
                                 })
                             } else {
                                 console.log('Hapus data gagal!');

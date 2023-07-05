@@ -17,7 +17,7 @@
                     </div>
                     <br>
                 </div>
-                <table id="tabel-lapangan" class="table table-striped table-bordered display text-center" width="100%"
+                <table id="table_venue" class="table table-striped table-bordered display text-center" width="100%"
                     cellspacing="0">
                     <thead style="background-color: #439a97">
                         <tr>
@@ -36,7 +36,7 @@
 
     <script type="text/javascript">
         $(document).ready(function() {
-            $table_venue = $('#tabel-lapangan').DataTable({
+            $table_venue = $('#table_venue').DataTable({
                 processing: true,
                 serverSide: true,
                 responsive: true,
@@ -97,7 +97,7 @@
         <script src="https://cdn.datatables.net/buttons/2.3.2/js/buttons.colVis.min.js"></script>
         <script>
             $(document).ready(function() {
-                $('#tabel-lapangan').DataTable();
+                $('#table_venue').DataTable();
 
                 // alert button hapus
                 $(document).on('click', '#deleteBtn', function() {
@@ -107,10 +107,9 @@
                         }
                     });
                     var delete_id = $(this).data('id');
-                    console.log('delete_id:', delete_id);
                     Swal.fire({
                         title: 'Apakah anda yakin ingin menghapus data ini?',
-                        text: "Data yang telah dihapus tidak dapat dikembalikan!",
+                        text: "Semua data yang terkait dengan venue ini akan terhapus permanen!",
                         icon: 'warning',
                         showCancelButton: true,
                         confirmButtonColor: '#3085d6',
@@ -122,7 +121,7 @@
                             $.ajax({
                                 method: "POST",
                                 dataType: "json",
-                                // url: '{{ route('acc-mitra') }}',
+                                url: '{{ route("delete-venue") }}',
                                 data: {
                                     'id': delete_id,
                                 }
@@ -132,7 +131,7 @@
                                     'Data berhasil dihapus!',
                                     'success'
                                 )
-                                table_mitra.ajax.reload();
+                                table_venue.ajax.reload();
                             })
                         } else {
                             console.log('Penghapusan data gagal!');

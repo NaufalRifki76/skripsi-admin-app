@@ -123,4 +123,31 @@ class VenueController extends Controller{
             }
         }
     }
+
+    public function delete(Request $request){
+        if(!Sentinel::getUser()) {
+            return redirect()->route('login.index');
+        } else {
+            $venue = Venue::find($request->id);
+
+            // $venue->refund()->each(function ($refund) {
+            //     $refund->refund_hours()->delete();
+            //     $refund->delete();
+            // });
+        
+            // $venue->field_detail()->each(function ($fieldDetail) {
+            //     $fieldDetail->fieldphoto()->delete();
+            //     $fieldDetail->delete();
+            // });
+
+            $venue->rent_order()->delete();
+            $venue->venue_base64()->delete();
+            $venue->venue_rent_item()->delete();
+            $venue->rent_hours()->delete();
+            $venue->rent_hours_available()->delete();
+            $venue->delete();
+
+            return redirect()->route('index-faq');
+        }
+    }
 }
