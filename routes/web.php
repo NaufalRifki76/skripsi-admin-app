@@ -7,6 +7,7 @@ use App\Http\Controllers\Features\FAQController;
 use App\Http\Controllers\Features\MitraController;
 use App\Http\Controllers\Features\OrdersController;
 use App\Http\Controllers\Features\RefundController;
+use App\Http\Controllers\Features\UserController;
 use App\Http\Controllers\Features\VenueController;
 use Illuminate\Support\Facades\Route;
 
@@ -26,6 +27,11 @@ Route::get('login.index', [LoginController::class, 'index'])->name('login.index'
 Route::post('login.store', [LoginController::class, 'login'])->name('login.store');
 Route::get('/', [DashboardController::class, 'index'])->name('dashboard.index');
 Route::get('logout', [LoginController::class, 'logout'])->name('logout');
+
+// User
+Route::get('index-user', [UserController::class, 'index'])->name('index-user');
+Route::get('edit-user/{id}', [UserController::class, 'edit'])->name('edit-user');
+Route::post('edituser-store/{id}', [UserController::class, 'editstore'])->name('edituser-store');
 
 // Turnamen
 Route::get('tournament.sekolah', [CompetitionController::class, 'sekolah'])->name('tournament.sekolah');
@@ -89,11 +95,9 @@ Route::get('/edit-lapangan', function () {
     return view('lapangan.edit');
 })->name('lapangan.edit');
 
-
 Route::get('/kompetisi-sekolah', function () {
     return view('pengembangan-bakat.kompetisi-sekolah');
 })->name('pengembangan-bakat.kompetisi-sekolah');
-
 
 // sewa perlengkapan
 Route::get('/sewa-perlengkapan', function () {
@@ -109,22 +113,22 @@ Route::get('/edit-sewa-perlengkapan', function () {
 })->name('sewa-perlengkapan.edit');
 
 // Data User
-Route::get('/data-user', function () {
-    return view('data-user.index');
-})->name('data-user.index');
+// Route::get('/data-user', function () {
+//     return view('data-user.index');
+// })->name('data-user.index');
 
 Route::get('/edit-user', function () {
     return view('data-user.edit');
 })->name('data-user.edit');
 
 // Pengembalian Dana
-Route::get('/pengembalian-dana', function () {
-    return view('pengembalian-dana.index');
-})->name('pengembalian-dana.index');
+// Route::get('/pengembalian-dana', function () {
+//     return view('pengembalian-dana.index');
+// })->name('pengembalian-dana.index');
 
-Route::get('/detail-pengembalian-dana', function () {
-    return view('pengembalian-dana.detail');
-})->name('pengembalian-dana.detail');
+// Route::get('/detail-pengembalian-dana', function () {
+//     return view('pengembalian-dana.detail');
+// })->name('pengembalian-dana.detail');
 
 
 // // Data pemesanan
@@ -142,9 +146,9 @@ Route::get('/detail-pengembalian-dana', function () {
 //     return view('faq.index');
 // })->name('faq.index');
 
-Route::get('/tambah-faq', function () {
-    return view('faq.tambah');
-})->name('faq.tambah');
+// Route::get('/tambah-faq', function () {
+//     return view('faq.tambah');
+// })->name('faq.tambah');
 
 // Persetujuan Pendaftaran Mitra
 // Route::get('/persetujuan-mitra', function () {

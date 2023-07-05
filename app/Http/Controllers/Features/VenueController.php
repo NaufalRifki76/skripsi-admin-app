@@ -27,6 +27,15 @@ class VenueController extends Controller{
                         return $row->field_detail->min('field_cost_hour');
                     }
                 })
+                ->addColumn('isdeleted', function($row){
+                    if($row->id != NULL){
+                        if ($row->isdeleted == 0) {
+                            return "Aktif";
+                        } elseif ($row->isdeleted == 1) {
+                            return "Tidak Aktif";
+                        }
+                    }
+                })
                 ->addColumn('action', function ($row){
                     $button = "<a style='margin-right: 5px;' class='setuju btn btn-sm  btn-warning text-white' data-id='".$row['acc-id']."' id='accBtn' href='{{route('lapangan.edit')}}'>Edit</a>";
                     $button .= "<button style='margin-right: 5px;' class='setuju btn btn-sm  btn-danger text-white' data-id='".$row['id']."' id='deleteBtn'>Delete</button>";
@@ -140,14 +149,17 @@ class VenueController extends Controller{
             //     $fieldDetail->delete();
             // });
 
-            $venue->rent_order()->delete();
-            $venue->venue_base64()->delete();
-            $venue->venue_rent_item()->delete();
-            $venue->rent_hours()->delete();
-            $venue->rent_hours_available()->delete();
-            $venue->delete();
+            // $venue->rent_order()->delete();
+            // $venue->venue_base64()->delete();
+            // $venue->venue_rent_item()->delete();
+            // $venue->rent_hours()->delete();
+            // $venue->rent_hours_available()->delete();
+            // $venue->delete();
 
-            return redirect()->route('index-faq');
+            $venue->isdeleted = 1;
+            $venue->save();
+
+            return redirect()->route('index-venue');
         }
     }
 }

@@ -26,6 +26,7 @@
                             <th class="text-center">Jam Buka</th>
                             <th class="text-center">Jam Tutup</th>
                             <th class="text-center">Harga Sewa (Mulai Dari)</th>
+                            <th class="text-center">Status</th>
                             <th class="text-center">Action</th>
                         </tr>
                     </thead>
@@ -34,7 +35,7 @@
         </div>
     </div>
 
-    <script type="text/javascript">
+    <script>
         $(document).ready(function() {
             $table_venue = $('#table_venue').DataTable({
                 processing: true,
@@ -63,6 +64,10 @@
                     {
                         data: 'starting_fee',
                         name: 'starting_fee'
+                    },
+                    {
+                        data: 'isdeleted',
+                        name: 'isdeleted'
                     },
                     {
                         data: 'action',

@@ -15,7 +15,7 @@
                 <a href="{{ route('data-pemesanan.index') }}"><i class="fa-solid fa-user mr-3 ml-2"></i></span> Data Pemesanan</a>
             </li>
             <li>
-                <a href="{{ route('data-user.index') }}"><i class="fa-solid fa-user mr-3 ml-2"></i></span> Data User</a>
+                <a href="{{ route('index-user') }}"><i class="fa-solid fa-user mr-3 ml-2"></i></span> Data User</a>
             </li>
             <li>
                 <a href="{{ route('index-venue') }}"><i class="fa-solid fa-futbol mr-3 ml-2"></i></span> Data Lapangan</a>

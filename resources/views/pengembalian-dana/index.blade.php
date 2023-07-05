@@ -15,7 +15,6 @@
                             <th class="text-center">Nama Tempat</th>
                             <th class="text-center">Tanggal Pemesanan</th>
                             <th class="text-center">Harga Sewa</th>
-                            {{-- <th class="text-center">Bukti Pembayaran</th> --}}
                             <th class="text-center">Status</th>
                             <th class="text-center">Action</th>
                         </tr>

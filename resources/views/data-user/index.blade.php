@@ -6,10 +6,10 @@
             <div class="row">
                 <h3 class="mb-3">Data User</h3>
                 <br>
-                <table id="tabel-user" class="table table-striped table-bordered display text-center" width="100%" cellspacing="0">
+                <table id="table_user" class="table table-striped table-bordered display text-center" width="100%" cellspacing="0">
                     <thead style="background-color: #439a97">
                         <tr>
-                            <th class="text-center">#</th>
+                            <th class="text-center">ID</th>
                             <th class="text-center">Nama</th>
                             <th class="text-center">Email</th>
                             <th class="text-center">Phone</th>
@@ -18,30 +18,6 @@
                             <th class="text-center">Action</th>
                         </tr>
                     </thead>
-                    <tbody class="text-center">
-                        <tr>
-                            <td>1</td>
-                            <td>Koe Futsal</td>
-                            <td>koefutsal@google.com</td>
-                            <td>021659365448</td>
-                            <td>Mitra</td>
-                            <td>Normal</td>
-                            <td class="d-flex justify-content-center text-center">
-                              <a href="{{ route('data-user.edit') }}"><button class="btn btn-sm btn-warning text-white me-2 px-3">Edit</button></a> 
-                          </td>
-                          </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Faris Hakim</td>
-                            <td>faris@google.com</td>
-                            <td>081265996988</td>
-                            <td>User</td>
-                            <td>Normal</td>
-                            <td class="d-flex justify-content-center text-center">
-                              <a href="{{ route('data-user.edit') }}"><button class="btn btn-sm btn-warning text-white me-2 px-3">Edit</button></a> 
-                          </td>
-                          </tr>
-                    </tbody>
                 </table>
             </div>
         </div>
@@ -64,7 +40,48 @@
     <script src="https://cdn.datatables.net/buttons/2.3.2/js/buttons.colVis.min.js"></script>
     <script>
         $(document).ready(function(){
-            $('#tabel-user').DataTable();
+            var table_user = $('#table_user').DataTable({
+                    processing: true,
+                    serverSide: true,
+                    responsive: true,
+                    ajax: {
+                        url: '{{route("index-user")}}',
+                        type: 'GET',
+                    },
+                    columns: [{
+                            data: 'id',
+                            name: 'id'
+                        },
+                        {
+                            data: 'name',
+                            name: 'name'
+                        },
+                        {
+                            data: 'email',
+                            name: 'email'
+                        },
+                        {
+                            data: 'no_telephone',
+                            name: 'no_telephone'
+                        },
+                        {
+                            data: 'role',
+                            name: 'role'
+                        },
+                        {
+                            data: 'vip_status',
+                            name: 'vip_status'
+                        },
+                        {
+                            data: 'action',
+                            name: 'action'
+                        }
+                    ],
+
+                    order: [
+                        [0, 'asc']
+                    ],
+                });
         });
     </script>
         

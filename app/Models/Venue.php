@@ -24,7 +24,8 @@ class Venue extends Model
         'parking_space',
         'wifi',
         'rent_equipments',
-        'isapproved'
+        'isapproved',
+        'isdeleted'
     ];
     
     protected $table = 'venue';
