@@ -64,21 +64,21 @@ class RefundController extends Controller{
         $refund = Refund::where('id', $request->id)->first();
         $refund->confirmation = 3;
         $refund->save();
-        return redirect()->route('index-refund');
+        return redirect()->route('index-refund')->with('success', 'Data pengembalian dana ditolak!');
     }
 
     public function processrefund(Request $request){
         $refund = Refund::where('id', $request->id)->first();
         $refund->confirmation = 1;
         $refund->save();
-        return redirect()->route('index-refund');
+        return redirect()->route('index-refund')->with('success', 'Data sedang diproses!');
     }
 
     public function accrefund(Request $request){
         $refund = Refund::where('id', $request->id)->first();
         $refund->confirmation = 2;
         $refund->save();
-        return redirect()->route('index-refund');
+        return redirect()->route('index-refund')->with('success', 'Data telah disetujui!');
     }
 
     public function detailrefund($id){

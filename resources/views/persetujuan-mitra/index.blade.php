@@ -1,6 +1,7 @@
 @extends('layout.index')
 
 @section('content')
+    @include('session-flash')
     <div class="card shadow">
         <div class="card-body">
             <div class="row">

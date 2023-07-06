@@ -239,7 +239,7 @@ class VenueController extends Controller{
                 $hours->save();
 
                 DB::commit();
-                return redirect()->route('index-venue');
+                return redirect()->route('index-venue')->with('success', 'Data berhasil diedit!');
             } catch (\Throwable $th) {
                 DB::rollBack();
                 dd($th);
@@ -256,7 +256,7 @@ class VenueController extends Controller{
             $venue->isdeleted = 1;
             $venue->save();
 
-            return redirect()->route('index-venue');
+            return redirect()->route('index-venue')->with('success', 'Data berhasil dihapus!');
         }
     }
 }

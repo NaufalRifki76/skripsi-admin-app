@@ -53,7 +53,7 @@ class FAQController extends Controller{
                 $faq->save();
 
                 DB::commit();
-                return redirect()->route('index-faq');
+                return redirect()->route('index-faq')->with('success', 'Berhasil menambahkan data!');
             } catch (\Throwable $th) {
                 DB::rollBack();
                 dd($th);
@@ -71,7 +71,7 @@ class FAQController extends Controller{
             $data->delete();
             DB::commit();
 
-            return redirect()->route('index-faq');
+            return redirect()->route('index-faq')->with('success', 'Berhasil menghapus data!');
         }
     }
 }

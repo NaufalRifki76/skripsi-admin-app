@@ -79,14 +79,14 @@ class MitraController extends Controller{
         $user->roles()->detach();
         $user->roles()->attach($vendorRole->id);
 
-        return redirect()->route('index-sewa');
+        return redirect()->route('index-sewa')->with('success', 'Data telah disetujui!');
     }
 
     public function denymitra(Request $request){
         $mitra = Venue::where('id', $request->id)->first();
         $mitra->isapproved = 2;
         $mitra->save();
-        return redirect()->route('index-sewa');
+        return redirect()->route('index-sewa')->with('success', 'Data berhasil ditolak!');
     }
 
     public function detail($id){

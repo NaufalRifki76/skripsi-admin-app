@@ -84,7 +84,7 @@ class UserController extends Controller{
                 $role->users()->attach($user);
 
                 DB::commit();
-                return redirect()->route('index-user');
+                return redirect()->route('index-user')->with('success', 'Data user "'.$user->name.'" berhasil diedit!');
             } catch (\Exception $th) {
                 DB::rollBack();
                 dd($th);

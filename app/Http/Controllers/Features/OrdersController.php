@@ -64,7 +64,7 @@ class OrdersController extends Controller{
             $data->delete();
             DB::commit();
 
-            return redirect()->route('index-orders');
+            return redirect()->route('index-orders')->with('success', 'Data berhasil dihapus!');
         }
     }
 }
