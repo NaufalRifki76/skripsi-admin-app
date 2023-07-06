@@ -26,7 +26,7 @@ class CompetitionController extends Controller{
                     return Carbon::parse($row->start_date)->format('d-m-Y');
                 })
                 ->addColumn('action', function ($row){
-                    $button = "<div class='d-flex'><a style='margin-right: 5px;' class='setuju btn btn-sm  btn-warning text-white' data-id='".$row['id']."' id='editBtn' href='edit.sekolah'>Edit</a>";
+                    $button = "<div class='d-flex'><a style='margin-right: 5px;' class='setuju btn btn-sm  btn-warning text-white' data-id='".$row['id']."' id='editBtn' href='".route('edit-tournament-sekolah', [$row->id])."'>Edit</a>";
                     $button .= "<button class='setuju btn btn-sm btn-danger' data-id='".$row['id']."' id='delBtn'>Hapus</button></div>";
                     return $button;
                 })
@@ -60,7 +60,7 @@ class CompetitionController extends Controller{
                     return Carbon::parse($row->start_date)->format('d-m-Y');
                 })
                 ->addColumn('action', function ($row){
-                    $button = "<div class='d-flex'><a style='margin-right: 5px;' class='setuju btn btn-sm text-white btn-warning' data-id='".$row['id']."' id='editBtn' href='edit.umur'>Edit</a>";
+                    $button = "<div class='d-flex'><a style='margin-right: 5px;' class='setuju btn btn-sm text-white btn-warning' data-id='".$row['id']."' id='editBtn' href='".route('edit-tournament-umur', [$row->id])."'>Edit</a>";
                     $button .= "<button class='setuju btn btn-sm btn-danger' data-id='".$row['id']."' id='delBtn'>Hapus</button></div>";
                     return $button;
                 })
@@ -140,19 +140,129 @@ class CompetitionController extends Controller{
         }
     }
 
-    public function editsekolah(){
+    public function editsekolah($id){
         if(!Sentinel::getUser()) {
             return redirect()->route('login.index');
         } else{
-            return view('pengembangan-bakat.edit-komsekolah');
+            $data = Tournament::where('id', $id)->first();
+            return view('pengembangan-bakat.edit-komsekolah', compact('data', 'id'));
         }
     }
 
-    public function editumur(){
+    public function editumur($id){
         if(!Sentinel::getUser()) {
             return redirect()->route('login.index');
         } else{
-            return view('pengembangan-bakat.edit-komumur');
+            $data = Tournament::where('id', $id)->first();
+            return view('pengembangan-bakat.edit-komumur', compact('data', 'id'));
+        }
+    }
+
+    public function editstoresekolah(Request $request, $id){
+        if(!Sentinel::getUser()) {
+            return redirect()->route('login.index');
+        } else {
+            $request->validate([
+                'tournament_name'           => 'required',
+                'entry_fee'                 => 'required',
+                'registration_start'        => 'required',
+                'registration_end'          => 'required',
+                'team_pool'                 => 'required',
+                'tournament_address'        => 'required',
+                'tournament_photo_base64'   => 'nullable',
+                'education_category'        => 'required',
+                'start_date'                => 'required',
+                'end_date'                  => 'required',
+                'contact_person'            => 'required',
+                'tournament_detail'         => 'required',
+            ]);
+
+            DB::beginTransaction();
+            try {
+                $tournament = Tournament::where('id', $id)->first();
+                $tournament->tournament_name    = $request->tournament_name;
+                $tournament->entry_fee          = $request->entry_fee;
+                $tournament->registration_start = $request->registration_start;
+                $tournament->registration_end   = $request->registration_end;
+                $tournament->team_pool          = $request->team_pool;
+                $tournament->tournament_address = $request->tournament_address;
+                $tournament->education_category = $request->education_category;
+                $tournament->start_date         = $request->start_date;
+                $tournament->end_date           = $request->end_date;
+                $tournament->contact_person     = $request->contact_person;
+                $tournament->tournament_detail  = $request->tournament_detail;
+                $tournament->save();
+
+                if ($request->tournament_photo_base64 != null) {
+                    $photo = TournamentPhotos::where('tournament_id', $id)->first();
+                    $imageFile = $request->tournament_photo_base64;
+                    $tournamentBase64 = base64_encode(file_get_contents($imageFile));
+
+                    $photo->tournament_photo_base64 = $tournamentBase64;
+                    $photo->save();
+                }
+
+                DB::commit();
+                return redirect()->route('tournament.sekolah');
+            } catch (\Throwable $th) {
+                DB::rollBack();
+                dd($th);
+                abort(404, 'Oops!');
+            }
+        }
+    }
+
+    public function editstoreumur(Request $request, $id){
+        if(!Sentinel::getUser()) {
+            return redirect()->route('login.index');
+        } else {
+            $request->validate([
+                'tournament_name'           => 'required',
+                'entry_fee'                 => 'required',
+                'registration_start'        => 'required',
+                'registration_end'          => 'required',
+                'team_pool'                 => 'required',
+                'tournament_address'        => 'required',
+                'tournament_photo_base64'   => 'nullable',
+                'age_category'              => 'required',
+                'start_date'                => 'required',
+                'end_date'                  => 'required',
+                'contact_person'            => 'required',
+                'tournament_detail'         => 'required',
+            ]);
+
+            DB::beginTransaction();
+            try {
+                $tournament = Tournament::where('id', $id)->first();
+                $tournament->tournament_name    = $request->tournament_name;
+                $tournament->entry_fee          = $request->entry_fee;
+                $tournament->registration_start = $request->registration_start;
+                $tournament->registration_end   = $request->registration_end;
+                $tournament->team_pool          = $request->team_pool;
+                $tournament->tournament_address = $request->tournament_address;
+                $tournament->age_category       = $request->age_category;
+                $tournament->start_date         = $request->start_date;
+                $tournament->end_date           = $request->end_date;
+                $tournament->contact_person     = $request->contact_person;
+                $tournament->tournament_detail  = $request->tournament_detail;
+                $tournament->save();
+
+                if ($request->tournament_photo_base64 != null) {
+                    $photo = TournamentPhotos::where('tournament_id', $id)->first();
+                    $imageFile = $request->tournament_photo_base64;
+                    $tournamentBase64 = base64_encode(file_get_contents($imageFile));
+
+                    $photo->tournament_photo_base64 = $tournamentBase64;
+                    $photo->save();
+                }
+
+                DB::commit();
+                return redirect()->route('tournament.umur');
+            } catch (\Throwable $th) {
+                DB::rollBack();
+                dd($th);
+                abort(404, 'Oops!');
+            }
         }
     }
 

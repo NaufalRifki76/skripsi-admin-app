@@ -39,8 +39,10 @@ Route::get('add.sekolah', [CompetitionController::class, 'addsekolah'])->name('a
 Route::get('tournament.umur', [CompetitionController::class, 'umur'])->name('tournament.umur');
 Route::get('add.umur', [CompetitionController::class, 'addumur'])->name('add.tournament.umur');
 Route::post('tournament.store', [CompetitionController::class, 'store'])->name('tournament.store');
-Route::get('edit.sekolah', [CompetitionController::class, 'editsekolah'])->name('edit.tournament.sekolah');
-Route::get('edit.umur', [CompetitionController::class, 'editumur'])->name('edit.tournament.umur');
+Route::get('edit-tournament-sekolah/{id}', [CompetitionController::class, 'editsekolah'])->name('edit-tournament-sekolah');
+Route::get('edit-tournament-umur/{id}', [CompetitionController::class, 'editumur'])->name('edit-tournament-umur');
+Route::post('edit-sekolah-store/{id}', [CompetitionController::class, 'editstoresekolah'])->name('edit-sekolah-store');
+Route::post('edit-umur-store/{id}', [CompetitionController::class, 'editstoreumur'])->name('edit-umur-store');
 Route::post('sekolah-delete', [CompetitionController::class, 'deletesekolah'])->name('sekolah-delete');
 Route::post('umur-delete', [CompetitionController::class, 'deleteumur'])->name('umur-delete');
 

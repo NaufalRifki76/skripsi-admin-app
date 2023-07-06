@@ -91,7 +91,7 @@
 
     @push('scripts')
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
         <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
         <script src="https://cdn.datatables.net/responsive/2.4.0/js/dataTables.responsive.min.js"></script>
@@ -100,7 +100,7 @@
         <script src="https://cdn.datatables.net/buttons/2.3.2/js/dataTables.buttons.min.js"></script>
         <script src="https://cdn.datatables.net/buttons/2.3.2/js/buttons.bootstrap5.min.js"></script>
         <script src="https://cdn.datatables.net/buttons/2.3.2/js/buttons.colVis.min.js"></script>
-        <script>
+        <script text="text/javascript">
             $(document).ready(function() {
                 $('#table_venue').DataTable();
 
@@ -113,14 +113,14 @@
                     });
                     var delete_id = $(this).data('id');
                     Swal.fire({
-                        title: 'Apakah anda yakin ingin menghapus data ini?',
-                        text: "Semua data yang terkait dengan venue ini akan terhapus permanen!",
+                        title: 'Apakah anda yakin ingin untuk deaktivasi aktivitas venue ini?',
+                        text: "Venue ini akan tidak muncul pada pencarian aplikasi utama!",
                         icon: 'warning',
                         showCancelButton: true,
                         confirmButtonColor: '#3085d6',
                         cancelButtonColor: '#d33',
                         cancelButtonText: 'Batal',
-                        confirmButtonText: 'Ya, hapus data!'
+                        confirmButtonText: 'Ya, deaktivasi venue!'
                     }).then((result) => {
                         if (result.isConfirmed) {
                             $.ajax({
@@ -133,7 +133,7 @@
                             }).done(function(data, textStatus, jqXHR) {
                                 Swal.fire(
                                     'Berhasil!',
-                                    'Data berhasil dihapus!',
+                                    'Venue sudah tidak aktif!',
                                     'success'
                                 )
                                 table_venue.ajax.reload();

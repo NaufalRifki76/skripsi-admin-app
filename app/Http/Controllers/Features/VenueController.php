@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\RentHours;
 use App\Models\RentHoursAvailable;
 use App\Models\Venue;
+use App\Models\VenuePhotos;
 use Cartalyst\Sentinel\Laravel\Facades\Sentinel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -40,7 +41,7 @@ class VenueController extends Controller{
                 })
                 ->addColumn('action', function ($row){
                     $button = "<a style='margin-right: 5px;' class='setuju btn btn-sm  btn-warning text-white' data-id='".$row['acc-id']."' id='accBtn' href='".route('edit-venue', [$row->id])."'>Edit</a>";
-                    $button .= "<button style='margin-right: 5px;' class='setuju btn btn-sm  btn-danger text-white' data-id='".$row['id']."' id='deleteBtn'>Delete</button>";
+                    $button .= "<button style='margin-right: 5px;' class='setuju btn btn-sm  btn-danger text-white' data-id='".$row['id']."' id='deleteBtn'>Deaktivasi</button>";
                     return $button;
                 })
                 ->rawColumns(['action'])
@@ -210,6 +211,15 @@ class VenueController extends Controller{
                 $data->wifi             = $request->wifi;
                 $data->rent_equipments  = $request->rent_equipments;
                 $data->save();
+
+                if ($request->venue_photo_base64 != null) {
+                    $photo = VenuePhotos::where('venue_id', $id)->first();
+                    $imageFile = $request->venue_photo_base64;
+                    $venueBase64 = base64_encode(file_get_contents($imageFile));
+
+                    $photo->venue_photo_base64 = $venueBase64;
+                    $photo->save();
+                }
 
                 $hours = RentHoursAvailable::where('venue_id', $id)->first();
                 $hours->up00 = $request->up00;
