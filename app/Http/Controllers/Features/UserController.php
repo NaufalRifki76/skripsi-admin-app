@@ -37,7 +37,7 @@ class UserController extends Controller{
                     }
                 })
                 ->addColumn('action', function ($row){
-                    $button = "<a style='margin-right: 5px;' class='setuju btn btn-sm btn-info text-white' data-id='".$row['id']."' id='editBtn' href='".route('edit-user', [$row->id])."'>Edit</a>";
+                    $button = "<a style='margin-right: 5px;' class='setuju btn btn-sm btn-warning text-white' data-id='".$row['id']."' id='editBtn' href='".route('edit-user', [$row->id])."'>Edit</a>";
                     return $button;
                 })
                 ->rawColumns(['action'])
