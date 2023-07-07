@@ -56,8 +56,9 @@ class FAQController extends Controller{
                 return redirect()->route('index-faq')->with('success', 'Berhasil menambahkan data!');
             } catch (\Throwable $th) {
                 DB::rollBack();
-                dd($th);
-                abort(404, 'Oops!');
+                // dd($th);
+                // abort(404, 'Oops!');
+                return back()->with('failed', 'Cek kelengkapan dari form anda!');
             }
         }
     }

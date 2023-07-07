@@ -129,7 +129,7 @@ class VenueController extends Controller{
                 DB::commit();
                 return redirect()->route('index-venue')->with('success', 'Jam opersaional berhasil ditambahkan!');
             } catch (\Throwable $th) {
-                dd($th);
+                // dd($th);
                 DB::rollBack();
                 return back()->with('failed', 'Cek kelengkapan dari form anda!');
             }
@@ -252,8 +252,9 @@ class VenueController extends Controller{
                 return redirect()->route('index-venue')->with('success', 'Data berhasil diedit!');
             } catch (\Throwable $th) {
                 DB::rollBack();
-                dd($th);
-                abort(404, 'Oops!');
+                // dd($th);
+                // abort(404, 'Oops!');
+                return back()->with('failed', 'Cek kelengkapan dari form anda!');
             }
         }
     }

@@ -134,8 +134,9 @@ class CompetitionController extends Controller{
                 return redirect()->route('dashboard.index');
             } catch (\Throwable $th) {
                 DB::rollBack();
-                dd($th);
-                abort(404, 'Oops!');
+                // dd($th);
+                // abort(404, 'Oops!');
+                return back()->with('failed', 'Cek kelengkapan dari form anda!');
             }
         }
     }
@@ -206,8 +207,9 @@ class CompetitionController extends Controller{
                 return redirect()->route('tournament.sekolah');
             } catch (\Throwable $th) {
                 DB::rollBack();
-                dd($th);
-                abort(404, 'Oops!');
+                // dd($th);
+                // abort(404, 'Oops!');
+                return back()->with('failed', 'Cek kelengkapan dari form anda!');
             }
         }
     }
@@ -260,8 +262,9 @@ class CompetitionController extends Controller{
                 return redirect()->route('tournament.umur');
             } catch (\Throwable $th) {
                 DB::rollBack();
-                dd($th);
-                abort(404, 'Oops!');
+                // dd($th);
+                // abort(404, 'Oops!');
+                return back()->with('failed', 'Cek kelengkapan dari form anda!');
             }
         }
     }

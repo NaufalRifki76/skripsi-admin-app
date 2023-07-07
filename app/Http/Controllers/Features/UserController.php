@@ -87,8 +87,9 @@ class UserController extends Controller{
                 return redirect()->route('index-user')->with('success', 'Data user "'.$user->name.'" berhasil diedit!');
             } catch (\Exception $th) {
                 DB::rollBack();
-                dd($th);
-                abort(404, 'Oops!');
+                // dd($th);
+                // abort(404, 'Oops!');
+                return back()->with('failed', 'Cek kelengkapan dari form anda!');
             }
         }
     }
